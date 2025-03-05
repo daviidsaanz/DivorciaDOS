@@ -23,14 +23,8 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         playerInput.actions["Move"].performed += OnMove;
-
-
-
-
         TakePositionInfo();
     }
-
-
 
     private void Update()
     {
@@ -43,9 +37,9 @@ public class PlayerController : MonoBehaviour
         Ray playerRay = new Ray(transform.GetChild(0).position, -transform.up); //tira raycast cap avall
         RaycastHit hit;
 
-        if(Physics.Raycast(playerRay, out hit)) //si toca alguna cosa
+        if (Physics.Raycast(playerRay, out hit)) //si toca alguna cosa
         {
-            if(hit.transform.GetComponent<Navigable>()) //si toca un node
+            if (hit.transform.GetComponent<Navigable>()) //si toca un node
             {
                 currentNode = hit.transform; //el node actual es el que toca (en el que estem)
 
@@ -73,9 +67,9 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(touchPoint); //tira un raycast des de la posició del touch
 
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit)) //si toca alguna cosa
+        if (Physics.Raycast(ray, out hit)) //si toca alguna cosa
         {
-            if(hit.transform.GetComponent<Navigable>()) //si toca un node
+            if (hit.transform.GetComponent<Navigable>()) //si toca un node
             {
                 clickedNode = hit.transform; //el node al que volem anar es el que toca
             }
@@ -90,12 +84,12 @@ public class PlayerController : MonoBehaviour
 
     private void FindPath()
     {
-        List <Transform> NextCubes = new List<Transform>(); //la llista de nodes que toquen al node actual
+        List<Transform> NextCubes = new List<Transform>(); //la llista de nodes que toquen al node actual
         List<Transform> VisitedCubes = new List<Transform>(); //la llista de nodes visitats
 
-        foreach(TransitablePath path in currentNode.GetComponent<Navigable>().possiblePaths) //per cada camí possible
+        foreach (TransitablePath path in currentNode.GetComponent<Navigable>().possiblePaths) //per cada camí possible
         {
-           if(path.active) //si el camí esta actiu
+            if (path.active) //si el camí esta actiu
             {
                 NextCubes.Add(path.target); //afegim el node al que porta a la llista de nodes següents
                 path.target.GetComponent<Navigable>().PrevoiusNode = currentNode; //el node anterior del node al que porta es el node actual
@@ -105,29 +99,50 @@ public class PlayerController : MonoBehaviour
         VisitedCubes.Add(currentNode); //afegim el node actual a la llista de nodes visitats
     }
 
-    private void ExplreCube(List<Transform> NextCubes, List<Transform> VisitedCubes)
+    private void ExploreCube(List<Transform> NextCubes, List<Transform> VisitedCubes)
     {
         Transform current = NextCubes.First(); //el node actual es el primer de la llista de nodes següents
         NextCubes.Remove(current); //eliminem el node actual de la llista de nodes següents
 
-        if(current == clickedNode)
+        if (current == clickedNode)
         {
             return;
         }
 
         foreach (TransitablePath path in currentNode.GetComponent<Navigable>().possiblePaths) //per cada camí possible
-        {   
-            if(!VisitedCubes.Contains(path.target) && path.active) //si el node ja esta visitat
+        {
+            if (!VisitedCubes.Contains(path.target) && path.active) //si el node ja esta visitat
             {
-                
+                NextCubes.Add(path.target); //afegim el node al que porta a la llista de nodes següents
+                path.target.GetComponent<Navigable>().PrevoiusNode = currentNode; //el node anterior del node al que porta es el node actual
             }
+        }
 
-          
-            
+        VisitedCubes.Add(current); //afegim el node actual a la llista de nodes visitats
+
+        if (NextCubes.Any()) //si hi ha nodes següents a visitar, cridem a la funció amb els nodes següents
+        {
+            ExploreCube(NextCubes, VisitedCubes);
         }
 
     }
 
 
+    private void BuildPath()
+    {
+        Transform node = clickedNode; //el node es el node al que volem anar
+        while (node != currentNode) //mentre el node no sigui el node actual
+        {
+            finalPath.Add(node); //afegim el node a la llista de nodes del camí
+            if(node.GetComponent<Navigable>().PrevoiusNode != null) //si el node te un node anterior
+            {
+                node = node.GetComponent<Navigable>().PrevoiusNode; //el node es el node anterior
+            }
+            else
+            {
+                return;
+            }
 
+        }
+    }
 }
