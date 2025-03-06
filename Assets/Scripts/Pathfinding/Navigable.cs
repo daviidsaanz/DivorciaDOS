@@ -19,12 +19,12 @@ public class Navigable : MonoBehaviour
     public Vector3 GetWalkPoint()
     {
         float stair = isStair ? stairOffset : 0;
-        return transform.position + transform.up * walkOffset - transform.up * stair; //retorna la posicio a caminar amb un offset
+        return transform.position + Vector3.up * (walkOffset - stair); //retorna la posició del punt de cami
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.gray;
         float stair = isStair ? 0.4f : 0f;
         Gizmos.DrawSphere(GetWalkPoint(), 0.1f); //dibuija una esfera en el punt de cada cami
 
@@ -37,4 +37,11 @@ public class Navigable : MonoBehaviour
             Gizmos.DrawLine(GetWalkPoint(), path.target.GetComponent<Navigable>().GetWalkPoint()); //sibuiza una linia entre els punts de cami
         }
     }
+}
+
+[System.Serializable]
+public class TransitablePath //classe de cami transitable
+{
+    public Transform target;
+    public bool active = true;
 }
