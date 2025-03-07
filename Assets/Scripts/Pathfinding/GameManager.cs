@@ -3,85 +3,68 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-using UnityEditorInternal;
-using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance; //singleton
+    public static GameManager instance;
 
     public PlayerController player;
+    public List<PathCondition> pathConditions = new List<PathCondition>();
+    public List<Transform> pivots;
 
-    public List<PathCondition> pathConditions = new List<PathCondition>(); //la llista de condicions de camí
-    public List<Transform> pivots; //la llista de pivots per moure'ls
-
-    public Transform[] objectsToCover; //els objectes a cobrir quan es mogui algun pivot
-
-    private Vector2 touchPosition; //la posició del touch
+    public Transform[] objectsToHide;
 
     private void Awake()
     {
         instance = this;
     }
 
-    private void Update()
+    void Update()
     {
-        CheckIfPathConditionsAreMet(); //comprova si les condicions de camí estan complertes
-        if (player.isWalking) return; //si el jugador esta caminant, no es pot fer res
-        //ListenClicksOnObjects(touchPosition); //escolta els clicks als objectes
-    }
-
-    private void CheckIfPathConditionsAreMet()
-    {
-        foreach (PathCondition pathCondition in pathConditions) //per cada condició de camí
+        foreach (PathCondition pc in pathConditions)
         {
-            int count = 0; //comptador de condicions complertes
-            for (int i = 0; i < pathCondition.conditions.Count; i++) //per cada condició de la llista de condicions
+            int count = 0;
+            for (int i = 0; i < pc.conditions.Count; i++)
             {
-                if (pathCondition.conditions[i].conditionObject.eulerAngles == pathCondition.conditions[i].eulerAngle) //si la rotació de l'objecte es correspon amb la rotació de la condició
+                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle)
                 {
-                    count++; //augmenta el comptador
+                    count++;
                 }
             }
-            foreach (SinglePath singlePath in pathCondition.paths) //per cada single path de la llista de paths de la condició
-            {
-                singlePath.block.possiblePaths[singlePath.index].active = (count == pathCondition.conditions.Count); //activa o desactiva el camí segons si totes les condicions estan complertes o no
-            }
+            foreach (SinglePath sp in pc.paths)
+                sp.block.possiblePaths[sp.index].active = (count == pc.conditions.Count);
         }
-    }
 
-    private void OnMove(InputAction.CallbackContext context) //escolta els inputs del jugador
-    {
-        if(context.performed && !player.isWalking) //si s'ha fet un input i el jugador no esta caminant
+        if (player.walking)
+            return;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-            ListenClicksOnObjects(touchPosition);
+            int multiplier = Input.GetKey(KeyCode.RightArrow) ? 1 : -1;
+            pivots[0].DOComplete();
+            pivots[0].DORotate(new Vector3(0, 90 * multiplier, 0), .6f, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack);
         }
-    }
 
-    private void ListenClicksOnObjects(Vector2 touchPosition)
-    {
-        pivots[0].DOComplete(); //cancel·la la animació del pivot 0
-        pivots[0].DORotate(new Vector3(0, 90, 0), .6f, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack); //rota el pivot 0 90 graus en l'eix Y
-
-        foreach(Transform obj in objectsToCover) //per cada objecte a cobrir
+        foreach (Transform t in objectsToHide)
         {
-            obj.gameObject.SetActive(pivots[0].eulerAngles.y > 45 && pivots[0].eulerAngles.y < 90 + 45);//activa o desactiva l'objecte segons la rotació del pivot 0 (si esta cobert o no) 
+            t.gameObject.SetActive(pivots[0].eulerAngles.y > 45 && pivots[0].eulerAngles.y < 90 + 45);
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+        }
+
     }
 
     public void RotateRightPivot()
     {
-        pivots[1].DOComplete(); //cancel·la la animació del pivot 1
-        pivots[1].DORotate(new Vector3(0, 0, 90), .6f).SetEase(Ease.OutBack); //rota el pivot 1 90 graus en l'eix Z
-
+        pivots[1].DOComplete();
+        pivots[1].DORotate(new Vector3(0, 0, 90), .6f).SetEase(Ease.OutBack);
     }
 }
 
-//Classes necessaries
-
 [System.Serializable]
-
 public class PathCondition
 {
     public string pathConditionName;
