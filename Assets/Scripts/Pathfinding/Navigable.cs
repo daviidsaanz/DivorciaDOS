@@ -4,43 +4,47 @@ using UnityEngine;
 
 public class Navigable : MonoBehaviour
 {
-    public List<TransitablePath> possiblePaths = new List<TransitablePath>(); //llista de canins disponibles
+    public List<TransitablePath> possiblePaths = new List<TransitablePath>();
 
-    public Transform PrevoiusNode; //Node anterior
+    public Transform previousNode;
 
     public bool isStair = false;
+    public bool isCurved = false;
     public bool movingGround = false;
     public bool isButton;
     public bool dontRotate;
 
-    public float walkOffset = 0.5f;
-    public float stairOffset = 0.4f;
-   
+    public float walkPointOffset = .5f;
+    public float stairOffset = .4f;
+    public Vector3 customRotation;
+
     public Vector3 GetWalkPoint()
     {
         float stair = isStair ? stairOffset : 0;
-        return transform.position + Vector3.up * (walkOffset - stair); //retorna la posició del punt de cami
+        return transform.position + transform.up * walkPointOffset - transform.up * stair;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.gray;
-        float stair = isStair ? 0.4f : 0f;
-        Gizmos.DrawSphere(GetWalkPoint(), 0.1f); //dibuija una esfera en el punt de cada cami
+        float stair = isStair ? .4f : 0;
+        Gizmos.DrawSphere(GetWalkPoint(), .1f);
 
-        if (possiblePaths == null) return;
+        if (possiblePaths == null)
+            return;
 
-        foreach (TransitablePath path in possiblePaths)
+        foreach (TransitablePath p in possiblePaths)
         {
-            if (path.target == null) return;
-            Gizmos.color =path.active ? Color.green : Color.clear; //si el cami esta actiu el dibuixa de color verd si no no
-            Gizmos.DrawLine(GetWalkPoint(), path.target.GetComponent<Navigable>().GetWalkPoint()); //sibuiza una linia entre els punts de cami
+            if (p.target == null)
+                return;
+            Gizmos.color = p.active ? Color.black : Color.clear;
+            Gizmos.DrawLine(GetWalkPoint(), p.target.GetComponent<Navigable>().GetWalkPoint());
         }
     }
 }
 
 [System.Serializable]
-public class TransitablePath //classe de cami transitable
+public class TransitablePath
 {
     public Transform target;
     public bool active = true;

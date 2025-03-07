@@ -1,238 +1,219 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Linq;
 using DG.Tweening;
-using Photon.Pun.Demo.PunBasics;
 
+[SelectionBase]
 public class PlayerController : MonoBehaviour
 {
-    private PlayerInput playerInput;
+    public bool walking = false;
 
-    public bool isWalking = false;
+    [Space]
 
-    public Transform currentNode; //el node en el que estem
-    public Transform clickedNode; //el node al que volem anar
-    public Transform marker; //el marker que es mou
+    public Transform currentNode;
+    public Transform clickedNode;
+    public Transform marker;
 
-    public List<Transform> finalPath = new List<Transform>(); //la llista de nodes que formen el camí
+    [Space]
+
+    public List<Transform> finalPath = new List<Transform>();
+
     private float blend;
 
-    private Vector2 touchPosition;
-
-    private void Start()
+    void Start()
     {
-        playerInput = GetComponent<PlayerInput>();
-        TakePositionInfo();
+        GetInfoOfCurrentNode();
     }
 
-    private void Update()
+    void Update()
     {
-        TakePositionInfo();
-        UpdateParent();
-    }
 
-    private void TakePositionInfo()
-    {
-        Ray playerRay = new Ray(transform.position + Vector3.up * 0.5f, -transform.up); //tira un raycast des de la posició del player cap avall
-        RaycastHit hit;
+        GetInfoOfCurrentNode();
 
-        if (Physics.Raycast(playerRay, out hit)) //si toca alguna cosa
+        if (currentNode.GetComponent<Navigable>().movingGround)
         {
-            Debug.Log("Hitting " + hit.transform.name);
-            if (hit.transform.GetComponent<Navigable>()) //si toca un node
-            {
-                Debug.Log("Hitting " + hit.transform.name); 
-                currentNode = hit.transform; //el node actual es el que toca (en el que estem)
-
-                if(hit.transform.GetComponent<Navigable>().isStair) //Si el node en el que estem es una escala
-                {
-                    DOVirtual.Float(GetBlend(), blend, 0.1f, SetBlend);
-                }
-                else
-                {
-                    DOVirtual.Float(GetBlend(), 0, .1f, SetBlend); //si no es una escala, la blend es 0
-                }
-            }
-        }
-    }
-
-    private void UpdateParent()
-    {
-        if (currentNode.GetComponent<Navigable>().movingGround) //si el node en el que estem es mou 
-        {
-            transform.parent = currentNode;
+            transform.parent = currentNode.parent;
         }
         else
         {
             transform.parent = null;
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition); RaycastHit mouseHit;
+
+            if (Physics.Raycast(mouseRay, out mouseHit))
+            {
+                if (mouseHit.transform.GetComponent<Navigable>() != null)
+                {
+                    clickedNode = mouseHit.transform;
+                    DOTween.Kill(gameObject.transform);
+                    finalPath.Clear();
+                    FindPath();
+
+                    blend = transform.position.y - clickedNode.position.y > 0 ? -1 : 1;
+
+                    marker.position = mouseHit.transform.GetComponent<Navigable>().GetWalkPoint();
+                    Sequence s = DOTween.Sequence();
+                    s.AppendCallback(() => marker.GetComponentInChildren<ParticleSystem>().Play());
+                    s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.white, .1f));
+                    s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.black, .3f).SetDelay(.2f));
+                    s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.clear, .3f));
+
+                }
+            }
+        }
     }
 
-    private void ListenClicks(Vector2 touchPoint)
+    void FindPath()
     {
-        Ray ray = Camera.main.ScreenPointToRay(touchPoint); //tira un raycast des de la posició del touch
-        
-        RaycastHit hit;
+        List<Transform> nodesToVisit = new List<Transform>();
+        List<Transform> visitedNodes = new List<Transform>();
 
-        if (Physics.Raycast(ray, out hit)) //si toca alguna cosa
+        foreach (TransitablePath path in currentNode.GetComponent<Navigable>().possiblePaths)
         {
-            if (hit.transform.GetComponent<Navigable>()) //si toca un node
+            if (path.active)
             {
-                clickedNode = hit.transform; //el node al que volem anar es el que toca
-                DOTween.Kill(gameObject.transform);
-                finalPath.Clear(); //netejem la llista de nodes del camí
-                FindPath(); //busquem el camí
-
-                blend = transform.position.y - clickedNode.position.y > 0 ? -1 : 1; //si la posició del player es mes gran que la del node al que volem anar, la blend es -1, si no, es 1
-
-                marker.position = hit.transform.GetComponent<Navigable>().GetWalkPoint(); //la posició del marker es la posició del walkpoint del node al que volem anar
-                Sequence sequence = DOTween.Sequence();
-                sequence.AppendCallback(() => marker.GetComponentInChildren<ParticleSystem>().Play()); //activem el particle system del marker
-                sequence.Append(marker.GetComponent<Renderer>().material.DOColor(Color.white, 0.1f)); //canviem el color del marker a blanc
-                sequence.Append(marker.GetComponent<Renderer>().material.DOColor(Color.black, .3f).SetDelay(.2f)); //canviem el color del marker a negre
-                sequence.Append(marker.GetComponent<Renderer>().material.DOColor(Color.clear, .3f)); //canviem el color del marker a transparent
+                nodesToVisit.Add(path.target);
+                path.target.GetComponent<Navigable>().previousNode = currentNode;
             }
         }
 
-    }
-    private void OnMove(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-            ListenClicks(touchPosition);
-        }
-        else if (Mouse.current != null && Mouse.current.leftButton.isPressed)
-        {
-            // Clic del ratón
-            touchPosition = Mouse.current.position.ReadValue();
-        }
+        visitedNodes.Add(currentNode);
 
+        ExploreNode(nodesToVisit, visitedNodes);
+        BuildPath();
     }
 
-    private void FindPath()
+    void ExploreNode(List<Transform> nodesToVisit, List<Transform> visitedNodes)
     {
-        List<Transform> NextCubes = new List<Transform>(); //la llista de nodes que toquen al node actual
-        List<Transform> VisitedCubes = new List<Transform>(); //la llista de nodes visitats
-
-        foreach (TransitablePath path in currentNode.GetComponent<Navigable>().possiblePaths) //per cada camí possible
-        {
-            if (path.active) //si el camí esta actiu
-            {
-                NextCubes.Add(path.target); //afegim el node al que porta a la llista de nodes següents
-                path.target.GetComponent<Navigable>().PrevoiusNode = currentNode; //el node anterior del node al que porta es el node actual
-            }
-        }
-
-        VisitedCubes.Add(currentNode); //afegim el node actual a la llista de nodes visitats
-
-        ExploreCube(NextCubes, VisitedCubes); //cridem a la funció que explora els nodes
-        BuildPath(); //cridem a la funció que construeix el camí
-    }
-
-    private void ExploreCube(List<Transform> NextCubes, List<Transform> VisitedCubes)
-    {
-        Transform current = NextCubes.First(); //el node actual es el primer de la llista de nodes següents
-        NextCubes.Remove(current); //eliminem el node actual de la llista de nodes següents
+        Transform current = nodesToVisit.First();
+        nodesToVisit.Remove(current);
 
         if (current == clickedNode)
         {
             return;
         }
 
-        foreach (TransitablePath path in currentNode.GetComponent<Navigable>().possiblePaths) //per cada camí possible
+        foreach (TransitablePath path in current.GetComponent<Navigable>().possiblePaths)
         {
-            if (!VisitedCubes.Contains(path.target) && path.active) //si el node ja esta visitat
+            if (!visitedNodes.Contains(path.target) && path.active)
             {
-                NextCubes.Add(path.target); //afegim el node al que porta a la llista de nodes següents
-                path.target.GetComponent<Navigable>().PrevoiusNode = currentNode; //el node anterior del node al que porta es el node actual
+                nodesToVisit.Add(path.target);
+                path.target.GetComponent<Navigable>().previousNode = current;
             }
         }
 
-        VisitedCubes.Add(current); //afegim el node actual a la llista de nodes visitats
+        visitedNodes.Add(current);
 
-        if (NextCubes.Any()) //si hi ha nodes següents a visitar, cridem a la funció amb els nodes següents
+        if (nodesToVisit.Any())
         {
-            ExploreCube(NextCubes, VisitedCubes);
-        }
-
-    }
-
-
-    private void BuildPath()
-    {
-        Transform node = clickedNode; //el node es el node al que volem anar
-
-        while (node != currentNode) //mentre el node no sigui el node actual
-        {
-            finalPath.Add(node); //afegim el node a la llista de nodes del camí
-            if(node.GetComponent<Navigable>().PrevoiusNode != null) //si el node te un node anterior
-            {
-                node = node.GetComponent<Navigable>().PrevoiusNode; //el node es el node anterior
-            }
-            else { return; }
-        }
-
-        finalPath.Insert(0, currentNode); //afegim el node actual al principi de la llista de nodes del camí (osigui que el primer node es el node actual)
-
-        FollowPath(); //cridem a la funció que segueix el camí
-    }
-
-    private void FollowPath()
-    {
-        Sequence sequence = DOTween.Sequence(); //creem una sequencia de tweens
-
-        isWalking = true; //estem caminant
-
-        for (int i = finalPath.Count -1; i > 0; i--)
-        {
-            float time = finalPath[i].GetComponent<Navigable>().isStair ? 1.5f : 1f; //el temps que triga a anar d'un node a l'altre es 0.5 segons, si el node es una escala, es 1 segon
-
-            sequence.Append(transform.DOMove(finalPath[i].GetComponent<Navigable>().GetWalkPoint(), 0.2f * time).SetEase(Ease.Linear)); //movem el player al walkpoint del node actual amb el temps que toca i amb l'ease lineal (sense acceleració)
-
-            if (!finalPath[i].GetComponent<Navigable>().dontRotate) //si el node no te la variable dontRotate activada
-            {
-                sequence.Join(transform.DOLookAt(finalPath[i].position, 0.1f, AxisConstraint.Y, Vector3.up)); //girem el player cap al node actual
-            }
-
-            if (clickedNode.GetComponent<Navigable>().isButton) //si el node te un boto
-            {
-                sequence.AppendCallback(() => GameManager.instance.RotateRightPivot()); //girem el pivot a la dreta
-            }
-
-            sequence.AppendCallback(() => Clear()); //netejem el camí
-
+            ExploreNode(nodesToVisit, visitedNodes);
         }
     }
 
-    private void Clear()
+    void BuildPath()
     {
-        foreach(Transform transform in finalPath)
+        Transform node = clickedNode;
+        while (node != currentNode)
         {
-            transform.GetComponent<Navigable>().PrevoiusNode = null; //netejem la variable PrevoiusNode de tots els nodes del camí
+            finalPath.Add(node);
+            if (node.GetComponent<Navigable>().previousNode != null)
+                node = node.GetComponent<Navigable>().previousNode;
+            else
+                return;
         }
-        finalPath.Clear(); //netejem la llista de nodes del camí
-        isWalking = false;
+
+        finalPath.Insert(0, clickedNode);
+
+        FollowPath();
+    }
+
+    void FollowPath()
+    {
+        Sequence s = DOTween.Sequence();
+        walking = true;
+
+        for (int i = finalPath.Count - 1; i > 0; i--)
+        {
+            Navigable nav = finalPath[i].GetComponent<Navigable>();
+            float time = nav.isStair ? 1.5f : 1; // Si es escalera, más lento
+
+            // Movimiento del jugador
+            s.Append(transform.DOMove(nav.GetWalkPoint(), .2f * time).SetEase(Ease.Linear));
+
+            // Si el nodo permite rotación, aplicamos la rotación personalizada
+            if (nav.isCurved)
+            {
+                s.Join(transform.DORotate(nav.customRotation, .3f).SetEase(Ease.OutSine));
+            }
+            else if (!nav.dontRotate) // Si no es curva, simplemente rota hacia la dirección normal
+            {
+                s.Join(transform.DOLookAt(nav.transform.position, .1f, AxisConstraint.Y, Vector3.up));
+            }
+        }
+
+        // Si el nodo final es un botón, ejecutamos su acción
+        if (clickedNode.GetComponent<Navigable>().isButton)
+        {
+            s.AppendCallback(() => GameManager.instance.RotateRightPivot());
+        }
+
+        // Limpieza al terminar el movimiento
+        s.AppendCallback(() => Clear());
+    }
+
+
+    void Clear()
+    {
+        foreach (Transform t in finalPath)
+        {
+            t.GetComponent<Navigable>().previousNode = null;
+        }
+        finalPath.Clear();
+        walking = false;
+    }
+
+    public void GetInfoOfCurrentNode()
+    {
+
+        Ray playerRay = new Ray(transform.GetChild(0).position, -transform.up);
+        RaycastHit playerHit;
+
+        if (Physics.Raycast(playerRay, out playerHit))
+        {
+            if (playerHit.transform.GetComponent<Navigable>() != null)
+            {
+                currentNode = playerHit.transform;
+
+                if (playerHit.transform.GetComponent<Navigable>().isStair)
+                {
+                    DOVirtual.Float(GetBlend(), blend, .1f, SetBlend);
+                }
+                else
+                {
+                    DOVirtual.Float(GetBlend(), 0, .1f, SetBlend);
+                }
+            }
+        }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Ray playerRay = new Ray(transform.position + Vector3.up * 0.5f, -transform.up);
-        Gizmos.DrawRay(playerRay);
+        Ray ray = new Ray(transform.GetChild(0).position, -transform.up);
+        Gizmos.DrawRay(ray);
     }
 
-    private void SetBlend(float value)
-    {
-        GetComponentInChildren<Animator>().SetFloat("Blend", value); //Aixo ens servira per fer l'animació del personatge depenent del tipus de terreny
-    }
-
-    private float GetBlend()
+    float GetBlend()
     {
         return GetComponentInChildren<Animator>().GetFloat("Blend");
     }
+    void SetBlend(float x)
+    {
+        GetComponentInChildren<Animator>().SetFloat("Blend", x);
+    }
+
 }
