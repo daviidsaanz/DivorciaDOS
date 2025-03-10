@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
+using Photon.Pun;
 
 [SelectionBase]
 public class PlayerController : MonoBehaviour
@@ -21,9 +22,13 @@ public class PlayerController : MonoBehaviour
 
     private float blend;
 
+    private PhotonView photonView; //es per que funcioni el multiplayer
+
     void Start()
     {
+        marker = GameObject.FindGameObjectWithTag("indicator").transform;
         GetInfoOfCurrentNode();
+        photonView = GetComponent<PhotonView>();
     }
 
     void Update()
@@ -40,28 +45,31 @@ public class PlayerController : MonoBehaviour
             transform.parent = null;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if(photonView.IsMine) //es per que funcioni el multiplayer i que nomes el jugador que controla el personatge pugui moure'l
         {
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition); RaycastHit mouseHit;
-
-            if (Physics.Raycast(mouseRay, out mouseHit))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (mouseHit.transform.GetComponent<Navigable>() != null)
+                Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition); RaycastHit mouseHit;
+
+                if (Physics.Raycast(mouseRay, out mouseHit))
                 {
-                    clickedNode = mouseHit.transform;
-                    DOTween.Kill(gameObject.transform);
-                    finalPath.Clear();
-                    FindPath();
+                    if (mouseHit.transform.GetComponent<Navigable>() != null)
+                    {
+                        clickedNode = mouseHit.transform;
+                        DOTween.Kill(gameObject.transform);
+                        finalPath.Clear();
+                        FindPath();
 
-                    blend = transform.position.y - clickedNode.position.y > 0 ? -1 : 1;
+                        blend = transform.position.y - clickedNode.position.y > 0 ? -1 : 1;
 
-                    marker.position = mouseHit.transform.GetComponent<Navigable>().GetWalkPoint();
-                    Sequence s = DOTween.Sequence();
-                    s.AppendCallback(() => marker.GetComponentInChildren<ParticleSystem>().Play());
-                    s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.white, .1f));
-                    s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.black, .3f).SetDelay(.2f));
-                    s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.clear, .3f));
+                        marker.position = mouseHit.transform.GetComponent<Navigable>().GetWalkPoint();
+                        Sequence s = DOTween.Sequence();
+                        s.AppendCallback(() => marker.GetComponentInChildren<ParticleSystem>().Play());
+                        s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.white, .1f));
+                        s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.black, .3f).SetDelay(.2f));
+                        s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.clear, .3f));
 
+                    }
                 }
             }
         }
@@ -147,7 +155,7 @@ public class PlayerController : MonoBehaviour
             // Si el nodo permite rotación, aplicamos la rotación personalizada
             if (nav.isCurved)
             {
-                s.Join(transform.DORotate(nav.customRotation, .3f).SetEase(Ease.OutSine));
+                s.Join(transform.DORotate(nav.customRotation, .2f).SetEase(Ease.OutSine));
             }
             else if (!nav.dontRotate) // Si no es curva, simplemente rota hacia la dirección normal
             {
