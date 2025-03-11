@@ -44,38 +44,35 @@ public class GameManager : MonoBehaviour
             return;
         }*/ //commentat per testing
 
-        foreach (PathCondition pc in pathConditions) //per cada condicio de cami
+        foreach (PathCondition pc in pathConditions) //per cada PathCondition que hi hagi a la llista
         {
             int count = 0;
-            for (int i = 0; i < pc.conditions.Count; i++)
+            for (int i = 0; i < pc.conditions.Count; i++) //per cada condicio que hi hagi a la llista de condicions
             {
-                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle) // si la rotacio de l'objecte es igual a la rotacio de la condicio
+                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition)
                 {
-                    count++;
+                    count++; //sumar 1 al contador
+                }
+            }
+            foreach (SinglePath sp in pc.paths)
+            {
+                if (sp.index >= 0 && sp.index < sp.block.possiblePaths.Count) // Verifica que el índice sea válido
+                {
+                    sp.block.possiblePaths[sp.index].active = (count == pc.conditions.Count);
+                }
+                else
+                {
+                    Debug.LogError($"Índice fuera de rango: sp.index = {sp.index}, posiblesPaths.Count = {sp.block.possiblePaths.Count}");
+                }
+            }
 
-                }
-            }
-            foreach (SinglePath sp in pc.paths) //per cada cami
-            {
-                if (sp.block == null || sp.block.possiblePaths == null)
-                {
-                    continue; // Si no hay posibles caminos, saltar
-                }
-                if (sp.index < 0 || sp.index >= sp.block.possiblePaths.Count)
-                {
-                    Debug.LogWarning($"Índice fuera de rango: sp.index = {sp.index}, pero possiblePaths tiene {sp.block.possiblePaths.Count} elementos.");
-                    continue; // Evita que el índice sea inválido
-                }
-                Debug.Log($"Path: {sp.block.name}, Índice: {sp.index}, Tamaño de possiblePaths: {sp.block.possiblePaths.Count}");
-                sp.block.possiblePaths[sp.index].active = (count == pc.conditions.Count); //activar o desactivar el cami segons si totes les condicions es compleixen
-            }
-                
+
         }
 
         /*if (player1.walking || player2.walking)
             return;*/ //comentat per testing
 
-        if(player.walking)
+        if (player.walking)
         {
             return;
         }
@@ -86,10 +83,14 @@ public class GameManager : MonoBehaviour
 
             if(Physics.Raycast(mouseRay, out mouseHit))
             {
-                if (mouseHit.transform.CompareTag("interactuable"))
+                if(mouseHit.transform.CompareTag("interactuable"))
                 {
-                    pivots[0].DOComplete();
-                    pivots[0].DORotate(new Vector3(0, 90 * 1, 0), .6f, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack); //rotar el pivot 90 graus en l'eix y
+                    Interactuable interactuable = mouseHit.transform.GetComponentInParent<Interactuable>();
+
+                    if (interactuable != null)
+                    {
+                        interactuable.Interact(); //crudem a la funcio Interact de Interactuable
+                    }
                 }
             }
         }
@@ -106,11 +107,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void RotateRightPivot()
+    public void RotateRightPivot() //ejemplo de rotacion de algun pivote al presionar un boton
     {
         pivots[1].DOComplete();
-        pivots[1].DORotate(new Vector3(0, 0, 90), .6f).SetEase(Ease.OutBack);
+        pivots[1].DORotate(new Vector3(0, 0, 90), .6f).SetEase(Ease.OutBack); //podemos hacerlo asi o dandole el componente interactuable y llamando a la funcion Interact
     }
+
+    //aqui podemos poner mas funciones para rotar los pivotes o asignarles el componente interactuable y llamar a la funcion Interact
 }
 
 [System.Serializable]
