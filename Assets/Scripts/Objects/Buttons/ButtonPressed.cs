@@ -8,6 +8,7 @@ public class ButtonPressed : MonoBehaviour
     public Vector3 pressedPositionOffset = new Vector3(0f, -0.05f, 0f); 
     private bool pressed = false;
     public float pressDuration = 0.1f;
+    public GameObject objectToMove;
 
     void Start()
     {

@@ -113,6 +113,11 @@ public class GameManager : MonoBehaviour
         pivots[1].DORotate(new Vector3(0, 0, 90), .6f).SetEase(Ease.OutBack); //podemos hacerlo asi o dandole el componente interactuable y llamando a la funcion Interact
     }
 
+    public void ButtonPressed(Navigable button)
+    { 
+        button.GetComponent<ButtonPressed>().objectToMove.GetComponent<Interactuable>().Interact();
+    }
+
     //aqui podemos poner mas funciones para rotar los pivotes o asignarles el componente interactuable y llamar a la funcion Interact
 }
 
