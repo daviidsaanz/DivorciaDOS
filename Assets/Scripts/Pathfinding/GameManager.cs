@@ -114,7 +114,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void ButtonPressed(Navigable button)
-    { 
+    {
+        if (button.GetComponent<ButtonPressed>().onlyPressedOneTime) { return; }
         button.GetComponent<ButtonPressed>().objectToMove.GetComponent<Interactuable>().Interact();
     }
 

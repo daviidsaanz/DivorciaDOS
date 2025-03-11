@@ -9,6 +9,7 @@ public class ButtonPressed : MonoBehaviour
     private bool pressed = false;
     public float pressDuration = 0.1f;
     public GameObject objectToMove;
+    public bool onlyPressedOneTime = false;
 
     void Start()
     {
