@@ -5858,6 +5858,7 @@ MonoBehaviour:
     conditions:
     - conditionObject: {fileID: 1471961880}
       eulerAngle: {x: 0, y: 270, z: 0}
+      position: {x: 14, y: 0.5, z: -3}
     paths:
     - block: {fileID: 964115133}
       index: 1
@@ -5867,6 +5868,7 @@ MonoBehaviour:
     conditions:
     - conditionObject: {fileID: 1471961880}
       eulerAngle: {x: 0, y: 90, z: 0}
+      position: {x: 14, y: 0.5, z: -3}
     paths:
     - block: {fileID: 1135807305}
       index: 1
