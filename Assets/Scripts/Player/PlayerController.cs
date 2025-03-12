@@ -164,11 +164,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //si el node clicat es un botó, rota el pivot dret (exemple: es crida a un callback al GameManager) --> fer-ho escalable
-        if (clickedNode.GetComponent<Navigable>().isButton)
+        //ARA MATEIX HO CRIDEM DESDE EL BUTTONPRESSED
+        /*if (clickedNode.GetComponent<Navigable>().isButton)
         {
-            s.AppendCallback(() => GameManager.instance.ButtonPressed(clickedNode.GetComponent<Navigable>()));
-        }
+            s.AppendCallback(() => GameManager.instance.ButtonPressed(clickedNode.GetComponentInChildren<ButtonPressed>()));
+        }*/
 
         // Limpieza al terminar el movimiento
         s.AppendCallback(() => Clear()); //neteja el cami final

@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 7353704261744083918}
   - component: {fileID: 9059091412011746604}
   - component: {fileID: 7646909031030452097}
-  - component: {fileID: 1698389598739950188}
-  - component: {fileID: 7181690609272009116}
   - component: {fileID: 883088269093013620}
   m_Layer: 2
   m_Name: Button
@@ -744,34 +742,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1698389598739950188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615319635527793286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 226646ad2e6d7014385be5841b02a86d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToMove: {fileID: 0}
-  animationName: move
---- !u!114 &7181690609272009116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6615319635527793286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 434faecc6b9e115488903a1a2464a616, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressedPositionOffset: {x: 0, y: -0.1, z: 0}
-  pressDuration: 0.1
 --- !u!65 &883088269093013620
 BoxCollider:
   m_ObjectHideFlags: 0
