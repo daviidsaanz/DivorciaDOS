@@ -5,34 +5,40 @@ using DG.Tweening;
 
 public class Interactuable : MonoBehaviour
 {
-    public Vector3 rotationAmount; //si volem que roti en lloc de moure
-    public Vector3 moveAmount; //si volem que es mogui en lloc de rotar
+    public Vector3 _rotationAmount;
+    public Vector3 RotationAmount { get { return _rotationAmount; } set { _rotationAmount = value; } } //si volem que rote
+
+    public Vector3 _moveAmount;
+    public Vector3 MoveAmount { get { return _moveAmount; } set { _moveAmount = value; } } //si volem que es mogui
+
     public float duration = 0.6f; //duracio de l'animacio
     public bool useRotation = true; //si cal que roti o no
     public bool useMove = true;
 
+    public bool useToggle; //si volem alternar entre dos estats
     private bool toggled = false; //si volem alternar entre dos estats
 
     public void Interact()
     {
-        if (useRotation && !useMove) //si nomes volem que roti
+        transform.DOComplete();
+
+        if (useRotation && !useMove)
         {
-            transform.DOComplete(); //para la animacio actual
-            transform.DORotate(toggled ? Vector3.zero : rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack); //rota l'objecte com volem
+            transform.DORotate(useToggle && toggled ? Vector3.zero : _rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack);
         }
-        else if (useMove && !useRotation) //si nomes volem que es mogui
+        else if (useMove && !useRotation)
         {
-            transform.DOComplete();
-            transform.DOMove(toggled ? transform.position - moveAmount : transform.position + moveAmount, duration).SetEase(Ease.OutBack); //mou l'objecte com volem
+            transform.DOMove(useToggle && toggled ? transform.position - _moveAmount : transform.position + _moveAmount, duration).SetEase(Ease.OutBack);
+        }
+        else if (useMove && useRotation)
+        {
+            transform.DORotate(useToggle && toggled ? Vector3.zero : _rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack);
+            transform.DOMove(useToggle && toggled ? transform.position - _moveAmount : transform.position + _moveAmount, duration).SetEase(Ease.OutBack);
         }
 
-        else if(useMove && useRotation) //si volem que es mogui i roti
+        if (useToggle) // Solo cambia `toggled` si está activado
         {
-            transform.DOComplete();
-            transform.DORotate(toggled ? Vector3.zero : rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack); //rota l'objecte com volem
-            transform.DOMove(toggled ? transform.position - moveAmount : transform.position + moveAmount, duration).SetEase(Ease.OutBack); //mou l'objecte com volem
+            toggled = !toggled;
         }
-
-        toggled = !toggled; //canvia l'estat de l'objecte (si estava activat, ara està desactivat i viceversa)
     }
 }

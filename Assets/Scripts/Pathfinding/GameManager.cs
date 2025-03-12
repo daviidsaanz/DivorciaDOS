@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem.LowLevel;
 
 public class GameManager : MonoBehaviour
 {
@@ -113,13 +114,20 @@ public class GameManager : MonoBehaviour
         pivots[1].DORotate(new Vector3(0, 0, 90), .6f).SetEase(Ease.OutBack); //podemos hacerlo asi o dandole el componente interactuable y llamando a la funcion Interact
     }
 
-    public void ButtonPressed(Navigable button)
+    /*public void ButtonPressed(ButtonPressed button) ARA MATEIX HO FEM DESDE EL BUTTONPRESSED
     {
-        if (button.GetComponent<ButtonPressed>().onlyPressedOneTime) { return; }
-        button.GetComponent<ButtonPressed>().objectToMove.GetComponent<Interactuable>().Interact();
-    }
+        if(button.disabled)
+        {
+            return;
+        }
+        else 
+        {
+            button.SetMovmentAndRotation(); //fem el set a les variables de l'objecte que volem moure (depenent de cada boto)
+            Debug.Log("Button pressed");
+            button.objectToMove.GetComponent<Interactuable>().Interact(); //cridem a la funcio Interact de Interactuable
+        }
+    }*/
 
-    //aqui podemos poner mas funciones para rotar los pivotes o asignarles el componente interactuable y llamar a la funcion Interact
 }
 
 [System.Serializable]
