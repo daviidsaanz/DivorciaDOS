@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
             int count = 0;
             for (int i = 0; i < pc.conditions.Count; i++) //per cada condicio que hi hagi a la llista de condicions
             {
-                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition)
+                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle && pc.conditions[i].conditionObject.position == pc.conditions[i].position) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition) i el transform de l'objecte es igual al transform de la condicio
                 {
                     count++; //sumar 1 al contador
                 }
@@ -142,6 +142,8 @@ public class Condition
 {
     public Transform conditionObject;
     public Vector3 eulerAngle;
+    public Vector3 position;
+
 
 }
 [System.Serializable]

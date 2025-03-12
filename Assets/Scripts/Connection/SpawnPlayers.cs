@@ -11,24 +11,16 @@ public class SpawnPlayers : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(WaitForPlayers());
+        StartCoroutine(SpawnPlayerWithDelay());
     }
 
-    private IEnumerator WaitForPlayers()
+    private IEnumerator SpawnPlayerWithDelay()
     {
         // Esperar a que se instancien los jugadores
         yield return new WaitForSeconds(1);
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.Instantiate(playerPrefab1.name, spawnPositions[0].position, Quaternion.identity);
-        }
-        else
-        {
-            PhotonNetwork.Instantiate(playerPrefab2.name, spawnPositions[1].position, Quaternion.identity);
-        }
-        if (GameObject.Find("Player1") != null && GameObject.Find("Player2") != null)
-        {
-            StopCoroutine(WaitForPlayers());
-        }
+        GameObject prefabToSpawn = PhotonNetwork.IsMasterClient ? playerPrefab1 : playerPrefab2;
+        int spawnIndex = PhotonNetwork.IsMasterClient ? 0 : 1;
+
+        PhotonNetwork.Instantiate(prefabToSpawn.name, spawnPositions[spawnIndex].position, Quaternion.identity);
     }
 }
