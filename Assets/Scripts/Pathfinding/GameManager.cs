@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         //esperar a que se instancien los jugadores
         //StartCoroutine(WaitForPlayers()); //comemntat per testing
     }
@@ -50,7 +51,8 @@ public class GameManager : MonoBehaviour
             int count = 0;
             for (int i = 0; i < pc.conditions.Count; i++) //per cada condicio que hi hagi a la llista de condicions
             {
-                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle && pc.conditions[i].conditionObject.position == pc.conditions[i].position) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition) i el transform de l'objecte es igual al transform de la condicio
+
+                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle && pc.conditions[i].conditionObject.transform.localPosition == pc.conditions[i].position) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition) i el transform de l'objecte es igual al transform de la condicio
                 {
                     count++; //sumar 1 al contador
                 }
