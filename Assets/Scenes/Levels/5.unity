@@ -31148,9 +31148,9 @@ MonoBehaviour:
   pathConditions:
   - pathConditionName: connectionStairs
     conditions:
-    - conditionObject: {fileID: 480764011}
-      eulerAngle: {x: 0, y: 90, z: 0}
-      position: {x: 0.9632325, y: -1.0804877, z: -3.1003819}
+    - conditionObject: {fileID: 1498789328}
+      eulerAngle: {x: 0, y: 0, z: 0}
+      position: {x: 0, y: 0.45, z: 0}
     paths:
     - block: {fileID: 480764013}
       index: 0
@@ -31168,6 +31168,14 @@ MonoBehaviour:
       index: 1
     - block: {fileID: 976212259}
       index: 0
+    - block: {fileID: 1718557750}
+      index: 0
+    - block: {fileID: 1718557750}
+      index: 1
+    - block: {fileID: 565089890}
+      index: 0
+    - block: {fileID: 1230830583}
+      index: 1
   pivots: []
   objectsToHide: []
 --- !u!4 &1438426749
@@ -33081,7 +33089,7 @@ Transform:
   m_GameObject: {fileID: 1498789327}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5830002, z: -0.0069999695}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33120,7 +33128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434faecc6b9e115488903a1a2464a616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressedPositionOffset: {x: 0, y: -0.05, z: 0}
+  pressedPositionOffset: {x: 0, y: -0.1, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: 1, z: 0}
   pressDuration: 0.1
