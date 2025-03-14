@@ -7,6 +7,7 @@ using ExitGames.Client.Photon;
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public TMP_InputField createInput;
+    public TMP_InputField joinInput;
     public TMP_Text playWithFriendText; // Boto de "Jugar amb X"
     public GameObject invitePanel; // Panel de invitació per acceptar o rebutjar
     public TMP_Text inviteText; // Text de la invitació
@@ -17,57 +18,124 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        savedPartnerID = PlayerPrefs.GetString("LastPartnerID", ""); //agafa el id del segon jugador
-        savedPartnerName = PlayerPrefs.GetString("LastPartnerName", ""); //guarda el nom del segon jugador
-        savedLevel = PlayerPrefs.GetInt("LastLevel", 0); //guarda el nivell on es va quedar
+        savedPartnerID = PlayerPrefs.GetString("LastPartnerID", "");
+        savedPartnerName = PlayerPrefs.GetString("LastPartnerName", "");
+        savedLevel = PlayerPrefs.GetInt("LastLevel", 1);
 
-        if(!string.IsNullOrEmpty(savedPartnerID)) //si no esta buit
+        if (!string.IsNullOrEmpty(savedPartnerID))
         {
-            playWithFriendText.text = "Play with " + savedPartnerName; //mostra el nom del segon jugador
-            playWithFriendText.transform.parent.gameObject.SetActive(true); //activa el boto
+            playWithFriendText.text = "Jugar con " + savedPartnerName;
+            playWithFriendText.transform.parent.gameObject.SetActive(true);
         }
     }
+
 
     public void InviteFriend()
     {
-        int targetActor = GetPlayerActorNumber(savedPartnerID); //guarda el numero d'actor del segon jugador
-        if(targetActor != -1)
+        int targetActor = GetPlayerActorNumber(savedPartnerID);
+        if (targetActor != -1)
         {
-            object[] data = new object[] { PhotonNetwork.LocalPlayer.UserId, PhotonNetwork.LocalPlayer.NickName }; //guarda el id i el nom del jugador local
-            PhotonNetwork.RaiseEvent(1, data, new RaiseEventOptions { TargetActors = new int[] { targetActor } }, SendOptions.SendReliable); //envia un event amb el id i el nom del jugador local al segon jugador
+            string roomName = PlayerPrefs.GetString("LastRoomName", "");
+            if (string.IsNullOrEmpty(roomName))
+            {
+                Debug.LogError("No hay una sala guardada para invitar.");
+                return;
+            }
+
+            object[] data = new object[] { PhotonNetwork.LocalPlayer.UserId, PhotonNetwork.LocalPlayer.NickName, roomName };
+            PhotonNetwork.RaiseEvent(1, data, new RaiseEventOptions { TargetActors = new int[] { targetActor } }, SendOptions.SendReliable);
         }
     }
 
+
+
     public void AcceptInvite()
     {
-        string lastRoom = PlayerPrefs.GetString("LastRoomName", ""); //agafa el nom de la ultima sala
-        if(!string.IsNullOrEmpty(lastRoom)) //si no esta buit
+        string invitedRoom = PlayerPrefs.GetString("InvitedRoomName", "");
+        if (!string.IsNullOrEmpty(invitedRoom))
         {
-            PhotonNetwork.JoinRoom(lastRoom); //entra a la sala
+            PhotonNetwork.JoinRoom(invitedRoom);
+            invitePanel.SetActive(false);
         }
-        invitePanel.SetActive(false); //tanca el panell de invitacio
     }
+
+
 
     public void RejectInvite()
     {
         invitePanel.SetActive(false); //tanca el panell de invitacio
     }
 
+    public void SwitchOfCreateOrJoin()
+    {
+        //si joinInput té algo escrit i createInput tambe, no fa resw
+        if (!string.IsNullOrEmpty(joinInput.text) && !string.IsNullOrEmpty(createInput.text))
+        {
+            return;
+        }
+        //si joinInput te algo escrit, i createInput no, crida a joinRoom
+        if (!string.IsNullOrEmpty(joinInput.text))
+        {
+            JoinRoom();
+        }
+
+        //si joinInput no te algo escrit, i createInput si, crida a createRoom
+        if (!string.IsNullOrEmpty(createInput.text))
+        {
+            CreateRoom();
+        }
+
+    }
+
+
     public void CreateRoom()
     {
-        RoomOptions roomOptions = new RoomOptions { MaxPlayers = 2 }; //crea una sala amb 2 jugadors
+        if (string.IsNullOrEmpty(createInput.text))
+        {
+            Debug.LogError("Debes escribir un nombre para la sala.");
+            return;
+        }
 
-        Hashtable roomProperties = new Hashtable(); //crea una taula de propietats
-        roomProperties["FirstPlayerID"] = PhotonNetwork.LocalPlayer.UserId; //guarda el id del primer jugador
-        roomProperties["SavedLevel"] = savedLevel; //guarda el nivell on es va quedar   
+        RoomOptions roomOptions = new RoomOptions { MaxPlayers = 2 };
 
-        roomOptions.CustomRoomProperties = roomProperties; //guarda les propietats a la sala
-        roomOptions.CustomRoomPropertiesForLobby = new string[] { "FirstPlayerID", "SavedLevel" }; //mostra les propietats a la llista de sales
+        Hashtable roomProperties = new Hashtable();
+        roomProperties["FirstPlayerID"] = PhotonNetwork.LocalPlayer.UserId;
+        roomProperties["SavedLevel"] = savedLevel > 0 ? savedLevel : 1;
 
-        PhotonNetwork.CreateRoom(createInput.text, roomOptions); //crea la sala amb el nom introduit
-        PlayerPrefs.SetString("LastRoomName", createInput.text); //guarda el nom de la sala
+        roomOptions.CustomRoomProperties = roomProperties;
+        roomOptions.CustomRoomPropertiesForLobby = new string[] { "FirstPlayerID", "SavedLevel" };
+
+        Debug.Log("Creando sala: " + createInput.text);
+        PhotonNetwork.CreateRoom(createInput.text, roomOptions);
+
+        // Guarda el nombre de la sala para que el compañero lo pueda recordar después
+        PlayerPrefs.SetString("LastRoomName", createInput.text);
         PlayerPrefs.Save();
+
+        //carga el nivel 1
+        PhotonNetwork.LoadLevel("Level1");
+
+
+
     }
+
+    public void JoinRoom()
+    {
+        if (string.IsNullOrEmpty(joinInput.text))
+        {
+            Debug.LogError("Debes escribir el nombre de la sala para unirte.");
+            return;
+        }
+
+        Debug.Log("Intentando unirse a la sala: " + joinInput.text);
+        PhotonNetwork.JoinRoom(joinInput.text);
+        PhotonNetwork.LoadLevel("Level1");
+
+
+    }
+
+
+
 
     public void JoinSavedPartner() //metode per unir-se al amic guardat
     {
@@ -81,21 +149,35 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        string firstPlayerID = PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FirstPlayerID") ? PhotonNetwork.CurrentRoom.CustomProperties["FirstPlayerID"].ToString() : ""; //guarda el id del primer jugador, si no hi ha, guarda un string buit
-        
-        int roomLevel = PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SavedLevel") ? (int)PhotonNetwork.CurrentRoom.CustomProperties["SavedLevel"] : 0; //guarda el nivell on es va quedar, si no hi ha, guarda 0
+        Debug.Log("Se ha unido a la sala correctamente: " + PhotonNetwork.CurrentRoom.Name);
 
-        if(!string.IsNullOrEmpty(firstPlayerID) && firstPlayerID != PhotonNetwork.LocalPlayer.UserId) //si no esta buit i el id del primer jugador no es igual al del jugador local
+        string firstPlayerID = PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FirstPlayerID")
+            ? PhotonNetwork.CurrentRoom.CustomProperties["FirstPlayerID"].ToString()
+            : "";
+
+        int roomLevel = PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SavedLevel")
+            ? (int)PhotonNetwork.CurrentRoom.CustomProperties["SavedLevel"]
+            : 1;
+
+        if (!string.IsNullOrEmpty(firstPlayerID) && firstPlayerID != PhotonNetwork.LocalPlayer.UserId)
         {
-            PlayerPrefs.SetString("LastPartnerID", firstPlayerID); //guarda el id del segon jugador
-            PlayerPrefs.SetString("LastPartnerName", PhotonNetwork.CurrentRoom.Name); //guarda el nom del segon jugador
-            PlayerPrefs.SetInt("LastLevel", roomLevel); //guarda el nivell on es va quedar
+            // Guardamos el compañero para futuras partidas
+            PlayerPrefs.SetString("LastPartnerID", firstPlayerID);
+            PlayerPrefs.SetString("LastPartnerName", PhotonNetwork.CurrentRoom.Name);
+            PlayerPrefs.SetInt("LastLevel", roomLevel);
+            PlayerPrefs.SetString("LastRoomName", PhotonNetwork.CurrentRoom.Name);
             PlayerPrefs.Save();
         }
 
-        int lastLevel = PlayerPrefs.GetInt("LastLevel", 0); //agafa el nivell on es va quedar
-        PhotonNetwork.LoadLevel("Level" + lastLevel); //carrega el nivell on es va quedar
+        // Cargar nivel
+        PhotonNetwork.LoadLevel("Level" + roomLevel);
     }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        Debug.LogError("Error al unirse a la sala: " + message);
+    }
+
 
     public override void OnEnable()
     {
@@ -109,17 +191,25 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     private void OnEvent(EventData photonEvent)
     {
-        if(photonEvent.Code == 1) //si el codi de l'event es 1
+        if (photonEvent.Code == 1)
         {
-            object[] data = (object[])photonEvent.CustomData; //guarda les dades de l'event
-            string inviterID = (string)data[0]; //guarda el id del jugador que envia la invitacio
-            string inviterName = (string)data[1]; //guarda el nom del jugador que envia la invitacio
+            object[] data = (object[])photonEvent.CustomData;
+            string inviterID = (string)data[0];
+            string inviterName = (string)data[1];
+            string roomName = (string)data[2];
 
-            inviteText.text = inviterName + " wants to play with you"; //mostra el nom del jugador que envia la invitacio
-            invitePanel.SetActive(true); //activa el panell de invitacio
+            inviteText.text = inviterName + " quiere jugar contigo en la sala " + roomName;
+            invitePanel.SetActive(true);
+
+            // Guardar el nombre de la sala en "LastRoomName"
+            PlayerPrefs.SetString("LastRoomName", roomName);
+            PlayerPrefs.Save();
+
+            Debug.Log("Se recibió una invitación para unirse a la sala: " + roomName);
         }
-       
     }
+
+
 
     private int GetPlayerActorNumber(string userID)
     {
