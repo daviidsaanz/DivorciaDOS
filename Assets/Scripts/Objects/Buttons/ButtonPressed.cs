@@ -30,7 +30,7 @@ public class ButtonPressed : MonoBehaviour
     {
         if ((other.CompareTag("Player1") || other.CompareTag("Player2")) && !pressed)
         {
-            OnButtonPress();
+            StartCoroutine(OnButtonPress());
         }
     }
 
@@ -42,9 +42,9 @@ public class ButtonPressed : MonoBehaviour
         }
     }
 
-    public void OnButtonPress()
+    public IEnumerator OnButtonPress()
     {
-        if (disabled) return; //si esta desactivat no fa res
+        if (disabled) yield break;
 
         pressed = true; //es marca com a presionat
         buttonTransform.DOComplete(); //para l'animacio actual (si n'hi ha)
@@ -53,7 +53,8 @@ public class ButtonPressed : MonoBehaviour
         if (objectToMove != null)
         {
             SetMovmentAndRotation(); // Asigna los valores al objeto a mover
-            objectToMove.GetComponent<Interactuable>().Interact(); // Activa la interacción
+            yield return new WaitForSeconds(0.25f);
+            objectToMove.GetComponent<Interactuable>().Interact();
         }
 
         if (onlyPressedOneTime)
