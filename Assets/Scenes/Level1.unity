@@ -6047,8 +6047,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressedPositionOffset: {x: 0, y: -0.1, z: 0}
-  rotation: {x: 0, y: 0, z: 0}
-  moveAmount: {x: 0, y: 5, z: 0}
+  rotation: {x: 0, y: 90, z: 0}
+  moveAmount: {x: 0, y: 0, z: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 946051639}
   onlyPressedOneTime: 0
@@ -15338,8 +15338,8 @@ MonoBehaviour:
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
   duration: 2
-  useRotation: 0
-  useMove: 1
+  useRotation: 1
+  useMove: 0
   useToggle: 1
 --- !u!65 &946051641
 BoxCollider:
@@ -15420,13 +15420,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 946051639}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 11.8, y: -3.15, z: 8.3}
   m_LocalScale: {x: 1, y: 13.462, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &953870745
 GameObject:
   m_ObjectHideFlags: 0
@@ -34091,7 +34091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4707bbd4e246f094caa555928535685a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationAmount: {x: 0, y: 0, z: 0}
+  _rotationAmount: {x: 0, y: -90, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
   duration: 2
   useRotation: 0

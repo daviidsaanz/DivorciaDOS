@@ -18,13 +18,21 @@ public class Interactuable : MonoBehaviour
     public bool useToggle; //si volem alternar entre dos estats
     private bool toggled = false; //si volem alternar entre dos estats
 
+    private Quaternion initialRotation;
+
+
+    private void Start()
+    {
+        initialRotation = transform.rotation;
+    }
+
     public void Interact()
     {
         transform.DOComplete();
 
         if (useRotation && !useMove)
         {
-            transform.DORotate(useToggle && toggled ? Vector3.zero : _rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack);
+            transform.DORotate(useToggle && toggled ? initialRotation.eulerAngles : initialRotation.eulerAngles + _rotationAmount, duration, RotateMode.FastBeyond360).SetEase(Ease.OutBack);
         }
         else if (useMove && !useRotation)
         {
@@ -32,11 +40,11 @@ public class Interactuable : MonoBehaviour
         }
         else if (useMove && useRotation)
         {
-            transform.DORotate(useToggle && toggled ? Vector3.zero : _rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack);
+            transform.DORotate(useToggle && toggled ? initialRotation.eulerAngles : initialRotation.eulerAngles + _rotationAmount, duration, RotateMode.FastBeyond360).SetEase(Ease.OutBack);
             transform.DOMove(useToggle && toggled ? transform.position - _moveAmount : transform.position + _moveAmount, duration).SetEase(Ease.OutBack);
         }
 
-        if (useToggle) // Solo cambia `toggled` si está activado
+        if (useToggle)
         {
             toggled = !toggled;
         }
