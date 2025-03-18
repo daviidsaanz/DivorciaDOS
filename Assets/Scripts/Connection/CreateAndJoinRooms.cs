@@ -4,7 +4,7 @@ using Photon.Realtime;
 using TMPro;
 using ExitGames.Client.Photon;
 using System.Collections.Generic;
-
+/*
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public TMP_InputField createInput;
@@ -149,4 +149,4 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         joinInput.text = code;
         JoinRoom();
     }
-}
+}*/
