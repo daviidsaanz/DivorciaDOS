@@ -26,16 +26,21 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
         //esperar a que se instancien los jugadores
         //StartCoroutine(WaitForPlayers()); //comemntat per testing
     }
 
     /*IEnumerator WaitForPlayers()
     {
-        yield return new WaitForSeconds(1);
-        player1 = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
-        player2 = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerController>();
-    }*/ //comentat per testing
+        while (player1 == null || player2 == null) // Espera hasta que ambos jugadores sean encontrados
+        {
+            player1 = GameObject.FindGameObjectWithTag("Player1")?.GetComponent<PlayerController>();
+            player2 = GameObject.FindGameObjectWithTag("Player2")?.GetComponent<PlayerController>();
+            yield return null; // Espera un frame antes de volver a comprobar
+        }
+    }*/
+
 
 
     void Update()
@@ -50,8 +55,10 @@ public class GameManager : MonoBehaviour
             int count = 0;
             for (int i = 0; i < pc.conditions.Count; i++) //per cada condicio que hi hagi a la llista de condicions
             {
-                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle && pc.conditions[i].conditionObject.position == pc.conditions[i].position) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition) i el transform de l'objecte es igual al transform de la condicio
+
+                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle && pc.conditions[i].conditionObject.transform.localPosition == pc.conditions[i].position) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition) i el transform de l'objecte es igual al transform de la condicio
                 {
+                    Debug.Log(pc.pathConditionName);
                     count++; //sumar 1 al contador
                 }
             }
@@ -71,12 +78,12 @@ public class GameManager : MonoBehaviour
         }
 
         /*if (player1.walking || player2.walking)
-            return;*/ //comentat per testing
+            return;*///comentat per testing
 
         if (player.walking)
         {
             return;
-        }
+        } //comentat per testing
 
         if (Input.GetMouseButtonDown(0))
         {
