@@ -56,6 +56,8 @@ MonoBehaviour:
   clickedNode: {fileID: 0}
   marker: {fileID: 0}
   finalPath: []
+  isEnabled: 1
+  photonView: {fileID: 5096689603528192145}
 --- !u!114 &3866768528999047784
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,16 +22,17 @@ public class PlayerController : MonoBehaviour
 
     private float blend;
 
-    private bool isEnabled = true;
+    public bool isEnabled = true;
 
-    private PhotonView photonView; //es per que funcioni el multiplayer
+    public PhotonView photonView; //es per que funcioni el multiplayer
 
     void Start()
     {
-        marker = GameObject.FindGameObjectWithTag("indicator").transform;
+        //marker = GameObject.FindGameObjectWithTag("indicator").transform;
         GetInfoOfCurrentNode(); //pilla la info del node actual
         photonView = GetComponent<PhotonView>();
     }
+
 
     void Update()
     {
@@ -232,6 +233,7 @@ public class PlayerController : MonoBehaviour
 
     public void GoToPoint(Navigable node) //funcio per fer que el player vagi a un punt concret per si sol
     {
+        GetInfoOfCurrentNode(); //pilla la info del node actual
         clickedNode = node.transform;
         DOTween.Kill(gameObject.transform); //para l'animacio actual
         finalPath.Clear(); //neteja el path actual
