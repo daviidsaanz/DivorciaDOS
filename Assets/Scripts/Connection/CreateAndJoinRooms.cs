@@ -4,7 +4,7 @@ using Photon.Realtime;
 using TMPro;
 using ExitGames.Client.Photon;
 using System.Collections.Generic;
-/*
+
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public TMP_InputField createInput;
@@ -48,7 +48,18 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        cachedRoomList = roomList; // Guardamos la lista de salas activas
+        foreach (RoomInfo room in roomList)
+        {
+            if(room.RemovedFromList) //si ha estat eliminada
+            {
+                cachedRoomList.RemoveAll(r => r.Name == room.Name); //la eliminem de la llista de sales actives
+            }
+            else
+            {
+                cachedRoomList.Add(room);
+            }
+        }
+        
     }
 
     public void CreateRoom()
@@ -92,6 +103,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("Te has unido a la sala: " + PhotonNetwork.CurrentRoom.Name);
+
         string localPlayerID = PhotonNetwork.LocalPlayer.UserId;
 
         if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("Player1", out object player1) &&
@@ -99,12 +111,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         {
             if (string.IsNullOrEmpty((string)player2) && (string)player1 != localPlayerID)
             {
-                // Si hay espacio y el jugador es el segundo en entrar
                 PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "Player2", localPlayerID } });
-            }
-            if (!string.IsNullOrEmpty((string)player1) && !string.IsNullOrEmpty((string)player2))
-            {
-                SaveRoom((string)PhotonNetwork.CurrentRoom.CustomProperties["Code"]);
             }
             else if ((string)player1 != localPlayerID && (string)player2 != localPlayerID)
             {
@@ -114,14 +121,35 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+    {
+        if (propertiesThatChanged.ContainsKey("Player2")) //si s'ha ctualitzat el jugador 2
+        {
+            Hashtable roomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
+
+            if (roomProperties.ContainsKey("Player1") && roomProperties.ContainsKey("Player2") &&
+                !string.IsNullOrEmpty((string)roomProperties["Player1"]) &&
+                !string.IsNullOrEmpty((string)roomProperties["Player2"]))
+            {
+                Debug.Log("La sala está llena, empezando partida...");
+                SaveRoom((string)roomProperties["Code"]);
+            }
+        }
+    }
+
+
     private void SaveRoom(string roomCode)
     {
         List<string> savedRooms = new List<string>(PlayerPrefs.GetString("SavedRooms", "").Split(','));
+
+        savedRooms.RemoveAll(s => string.IsNullOrEmpty(s)); //netegem els strings buits
+         
         if (!savedRooms.Contains(roomCode))
         {
             savedRooms.Add(roomCode);
             PlayerPrefs.SetString("SavedRooms", string.Join(",", savedRooms));
             PlayerPrefs.Save();
+            Debug.Log("Sala guardada: " + roomCode);
         }
     }
 
@@ -149,4 +177,4 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         joinInput.text = code;
         JoinRoom();
     }
-}*/
+}
