@@ -84,6 +84,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
             CustomRoomPropertiesForLobby = new string[] { "Code" }
         };
         PhotonNetwork.CreateRoom(roomCode, roomOptions);
+        Debug.Log("Creando sala con código: " + roomCode);
+        PhotonNetwork.LoadLevel("Waiting");
     }
 
     public void JoinRoom()
@@ -112,6 +114,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
             if (string.IsNullOrEmpty((string)player2) && (string)player1 != localPlayerID)
             {
                 PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "Player2", localPlayerID } });
+                PhotonNetwork.LoadLevel("Waiting");
             }
             else if ((string)player1 != localPlayerID && (string)player2 != localPlayerID)
             {
