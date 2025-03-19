@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
                 if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle && pc.conditions[i].conditionObject.transform.localPosition == pc.conditions[i].position) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition) i el transform de l'objecte es igual al transform de la condicio
                 {
-                    Debug.Log(pc.pathConditionName);
+                    //Debug.Log(pc.pathConditionName);
                     count++; //sumar 1 al contador
                 }
             }

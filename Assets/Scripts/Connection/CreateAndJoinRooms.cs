@@ -4,7 +4,7 @@ using Photon.Realtime;
 using TMPro;
 using ExitGames.Client.Photon;
 using System.Collections.Generic;
-
+/*
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public TMP_InputField createInput;
@@ -101,6 +101,9 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
             {
                 // Si hay espacio y el jugador es el segundo en entrar
                 PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "Player2", localPlayerID } });
+            }
+            if (!string.IsNullOrEmpty((string)player1) && !string.IsNullOrEmpty((string)player2))
+            {
                 SaveRoom((string)PhotonNetwork.CurrentRoom.CustomProperties["Code"]);
             }
             else if ((string)player1 != localPlayerID && (string)player2 != localPlayerID)
@@ -146,4 +149,4 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         joinInput.text = code;
         JoinRoom();
     }
-}
+}*/
