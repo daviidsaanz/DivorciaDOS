@@ -55,11 +55,10 @@ public class GameManager : MonoBehaviour
             int count = 0;
             for (int i = 0; i < pc.conditions.Count; i++) //per cada condicio que hi hagi a la llista de condicions
             {
-
-                if (pc.conditions[i].conditionObject.eulerAngles == pc.conditions[i].eulerAngle && pc.conditions[i].conditionObject.transform.localPosition == pc.conditions[i].position) // si la rotacio de l'objecte es igual a la rotacio de la condicio (la que poseam a pathCondition) i el transform de l'objecte es igual al transform de la condicio
+                if (IsRotationClose(pc.conditions[i].conditionObject.eulerAngles, pc.conditions[i].eulerAngle)
+                    && Vector3.Distance(pc.conditions[i].conditionObject.localPosition, pc.conditions[i].position) < 0.01f)
                 {
-                    //Debug.Log(pc.pathConditionName);
-                    count++; //sumar 1 al contador
+                    count++; // La condición se cumple
                 }
             }
             foreach (SinglePath sp in pc.paths)
@@ -113,6 +112,13 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
         }
 
+    }
+
+    private bool IsRotationClose(Vector3 a, Vector3 b)
+    {
+        return Mathf.Abs(Mathf.DeltaAngle(a.x, b.x)) < 1f &&
+               Mathf.Abs(Mathf.DeltaAngle(a.y, b.y)) < 1f &&
+               Mathf.Abs(Mathf.DeltaAngle(a.z, b.z)) < 1f;
     }
 
     public void RotateRightPivot() //ejemplo de rotacion de algun pivote al presionar un boton
