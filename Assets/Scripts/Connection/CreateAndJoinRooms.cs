@@ -4,6 +4,7 @@ using Photon.Realtime;
 using TMPro;
 using ExitGames.Client.Photon;
 using System.Collections.Generic;
+using System.Collections;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
@@ -50,6 +51,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         foreach (RoomInfo room in roomList)
         {
+            Debug.Log("Sala encontrada: " + room.Name);
             if(room.RemovedFromList) //si ha estat eliminada
             {
                 cachedRoomList.RemoveAll(r => r.Name == room.Name); //la eliminem de la llista de sales actives
@@ -64,6 +66,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
+        string roomName = createInput.text;
         string roomCode = GenerateRoomCode();
         if (roomCode == null)
         {
@@ -74,18 +77,27 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         RoomOptions roomOptions = new RoomOptions
         {
             MaxPlayers = 2,
-            CustomRoomProperties = new Hashtable
-            {
+            CustomRoomProperties = new ExitGames.Client.Photon.Hashtable 
+            { 
                 { "Code", roomCode },
-                { "Level", 0 },
-                { "Player1", PhotonNetwork.LocalPlayer.UserId }, // Jugador 1
-                { "Player2", "" } // Jugador 2 aún vacío
+                { "RoomName", roomName },
+                { "Level", 0 }, 
+                { "Player1", PhotonNetwork.LocalPlayer.UserId }, 
+                { "Player2", "" } 
             },
-            CustomRoomPropertiesForLobby = new string[] { "Code" }
+            CustomRoomPropertiesForLobby = new string[] { "Code", "RoomName" }
         };
         PhotonNetwork.CreateRoom(roomCode, roomOptions);
-        Debug.Log("Creando sala con código: " + roomCode);
-        PhotonNetwork.LoadLevel("Waiting");
+        Debug.Log("Creando sala: " + roomName + " con código: " + roomCode);
+    }
+
+    public override void OnCreatedRoom()
+    {
+        Debug.Log("Sala creada correctamente. Estableciendo propiedades...");
+
+        PhotonNetwork.CurrentRoom.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Code", PhotonNetwork.CurrentRoom.Name } });
+
+        //PhotonNetwork.LoadLevel("Waiting");
     }
 
     public void JoinRoom()
@@ -107,14 +119,21 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         Debug.Log("Te has unido a la sala: " + PhotonNetwork.CurrentRoom.Name);
 
         string localPlayerID = PhotonNetwork.LocalPlayer.UserId;
+        Debug.Log("Tu ID: " + localPlayerID);
 
         if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("Player1", out object player1) &&
             PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("Player2", out object player2))
         {
             if (string.IsNullOrEmpty((string)player2) && (string)player1 != localPlayerID)
             {
-                PhotonNetwork.CurrentRoom.SetCustomProperties(new Hashtable { { "Player2", localPlayerID } });
-                PhotonNetwork.LoadLevel("Waiting");
+                Debug.Log("Estableciendo jugador 2...");
+
+                Debug.Log("Player2 antes del cambio: " + (string)player2);
+
+                ExitGames.Client.Photon.Hashtable props = new ExitGames.Client.Photon.Hashtable { { "Player2", localPlayerID } };
+
+                PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+                StartCoroutine(WaitForPropertyUpdate());
             }
             else if ((string)player1 != localPlayerID && (string)player2 != localPlayerID)
             {
@@ -124,60 +143,100 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnRoomPropertiesUpdate(Hashtable propertiesThatChanged)
+    // 🔄 Espera y vuelve a comprobar la propiedad
+    private IEnumerator WaitForPropertyUpdate()
     {
-        if (propertiesThatChanged.ContainsKey("Player2")) //si s'ha ctualitzat el jugador 2
-        {
-            Hashtable roomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
+        yield return new WaitForSeconds(1f); //Esperar a que Photon propague la actualización
 
+        if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("Player2", out object player2)) //Comprobar si se ha actualizado
+        {
+            Debug.Log("Después de 1 segundo, Player2 es: " + (string)player2);
+            //PhotonNetwork.LoadLevel("Waiting");
+
+        }
+        else
+        {
+            Debug.LogError("Error: Player2 sigue sin actualizarse.");
+        }
+    }
+
+    public override void OnRoomPropertiesUpdate(ExitGames.Client.Photon.Hashtable propertiesThatChanged) 
+    {
+        Debug.Log("Propiedades de la sala actualizadas");
+        if (propertiesThatChanged.ContainsKey("Player2")) // Si se ha actualizado el jugador 2
+        {
+            ExitGames.Client.Photon.Hashtable roomProperties = PhotonNetwork.CurrentRoom.CustomProperties;
+            Debug.Log("Jugador 2: " + roomProperties["Player2"]);
             if (roomProperties.ContainsKey("Player1") && roomProperties.ContainsKey("Player2") &&
                 !string.IsNullOrEmpty((string)roomProperties["Player1"]) &&
                 !string.IsNullOrEmpty((string)roomProperties["Player2"]))
             {
-                Debug.Log("La sala está llena, empezando partida...");
-                SaveRoom((string)roomProperties["Code"]);
+                string roomCode = (string)roomProperties["Code"];
+                string roomName = roomProperties.ContainsKey("RoomName") ? (string)roomProperties["RoomName"] : "Sala guardada";
+
+                Debug.Log("La sala ahora tiene 2 jugadores, guardando...");
+                SaveRoom(roomCode, roomName);
             }
         }
     }
 
 
-    private void SaveRoom(string roomCode)
+    private void SaveRoom(string roomCode, string roomName)
     {
-        List<string> savedRooms = new List<string>(PlayerPrefs.GetString("SavedRooms", "").Split(','));
-
-        savedRooms.RemoveAll(s => string.IsNullOrEmpty(s)); //netegem els strings buits
-         
-        if (!savedRooms.Contains(roomCode))
-        {
-            savedRooms.Add(roomCode);
-            PlayerPrefs.SetString("SavedRooms", string.Join(",", savedRooms));
-            PlayerPrefs.Save();
-            Debug.Log("Sala guardada: " + roomCode);
-        }
+        PlayerPrefs.SetString("SavedRoomCode", roomCode);   // Guardamos el código
+        PlayerPrefs.SetString("SavedRoomName", roomName);   // Guardamos el nombre de la sala
+        PlayerPrefs.Save();
+        Debug.Log("Última sala guardada: " + roomName + " (" + roomCode + ")");
     }
 
     public void LoadSavedRooms()
     {
-        string savedRoomsStr = PlayerPrefs.GetString("SavedRooms", "");
-        if (string.IsNullOrEmpty(savedRoomsStr)) return;
+        string savedRoomCode = PlayerPrefs.GetString("SavedRoomCode", "");
+        string savedRoomName = PlayerPrefs.GetString("SavedRoomName", "Sala guardada");
 
-        string[] savedRooms = savedRoomsStr.Split(',');
-        foreach (string roomCode in savedRooms)
-        {
-            GameObject btn = Instantiate(roomButtonPrefab, savedRoomsPanel);
-            btn.GetComponentInChildren<TMP_Text>().text = roomCode;
-            btn.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => JoinRoomByCode(roomCode));
-        }
+        if (string.IsNullOrEmpty(savedRoomCode)) return;
+
+        GameObject btn = Instantiate(roomButtonPrefab, savedRoomsPanel);
+        btn.GetComponentInChildren<TMP_Text>().text = savedRoomName;
+        btn.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => JoinRoomByCode(savedRoomCode));
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
+    public void JoinOrCreateSavedRoom()
     {
-        Debug.LogError("Error al unirse a la sala: " + message);
+        string savedRoomCode = PlayerPrefs.GetString("SavedRoomCode", "");
+
+        if (string.IsNullOrEmpty(savedRoomCode))
+        {
+            Debug.LogError("No hay sala guardada.");
+            return;
+        }
+
+        string roomName = PlayerPrefs.GetString("SavedRoomName", "Sala guardada");
+        int level = PlayerPrefs.GetInt("SavedRoomLevel", 0);
+
+        RoomOptions roomOptions = new RoomOptions
+        {
+            MaxPlayers = 2,
+            CustomRoomProperties = new ExitGames.Client.Photon.Hashtable
+        {
+            { "Code", savedRoomCode },
+            { "RoomName", roomName },
+            { "Level", level },
+            { "Player1", PhotonNetwork.LocalPlayer.UserId },
+            { "Player2", "" }
+        },
+            CustomRoomPropertiesForLobby = new string[] { "Code", "RoomName", "Level" }
+        };
+
+        PhotonNetwork.JoinOrCreateRoom(savedRoomCode, roomOptions, TypedLobby.Default);
+        Debug.Log("Intentando unirse o crear la sala guardada: " + savedRoomCode);
+
     }
+
 
     private void JoinRoomByCode(string code)
     {
         joinInput.text = code;
-        JoinRoom();
+        JoinOrCreateSavedRoom();
     }
 }

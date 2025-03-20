@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
         //marker = GameObject.FindGameObjectWithTag("indicator").transform;
         GetInfoOfCurrentNode(); //pilla la info del node actual
         photonView = GetComponent<PhotonView>();
+        PhotonNetwork.SendRate = 30;
+        PhotonNetwork.SerializationRate = 20;
     }
 
 
@@ -240,6 +242,7 @@ public class PlayerController : MonoBehaviour
         FindPath(); //busca el path fins al node clicat
 
         blend = transform.position.y - clickedNode.position.y > 0 ? -1 : 1; //si el jugador esta per sobre del node clicat, la blend sera -1, si esta per sota, sera 1 (a revisar)
+
     }
 
 }
