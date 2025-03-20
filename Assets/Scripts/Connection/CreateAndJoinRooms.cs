@@ -97,7 +97,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CurrentRoom.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Code", PhotonNetwork.CurrentRoom.Name } });
 
-        PhotonNetwork.LoadLevel("Waiting");
+        //PhotonNetwork.LoadLevel("Waiting");
     }
 
     public void JoinRoom()
@@ -151,7 +151,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("Player2", out object player2)) //Comprobar si se ha actualizado
         {
             Debug.Log("Después de 1 segundo, Player2 es: " + (string)player2);
-            PhotonNetwork.LoadLevel("Waiting");
+            //PhotonNetwork.LoadLevel("Waiting");
 
         }
         else
@@ -201,14 +201,42 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         btn.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => JoinRoomByCode(savedRoomCode));
     }
 
-    public override void OnJoinRoomFailed(short returnCode, string message)
+    public void JoinOrCreateSavedRoom()
     {
-        Debug.LogError("Error al unirse a la sala: " + message);
+        string savedRoomCode = PlayerPrefs.GetString("SavedRoomCode", "");
+
+        if (string.IsNullOrEmpty(savedRoomCode))
+        {
+            Debug.LogError("No hay sala guardada.");
+            return;
+        }
+
+        string roomName = PlayerPrefs.GetString("SavedRoomName", "Sala guardada");
+        int level = PlayerPrefs.GetInt("SavedRoomLevel", 0);
+
+        RoomOptions roomOptions = new RoomOptions
+        {
+            MaxPlayers = 2,
+            CustomRoomProperties = new ExitGames.Client.Photon.Hashtable
+        {
+            { "Code", savedRoomCode },
+            { "RoomName", roomName },
+            { "Level", level },
+            { "Player1", PhotonNetwork.LocalPlayer.UserId },
+            { "Player2", "" }
+        },
+            CustomRoomPropertiesForLobby = new string[] { "Code", "RoomName", "Level" }
+        };
+
+        PhotonNetwork.JoinOrCreateRoom(savedRoomCode, roomOptions, TypedLobby.Default);
+        Debug.Log("Intentando unirse o crear la sala guardada: " + savedRoomCode);
+
     }
+
 
     private void JoinRoomByCode(string code)
     {
         joinInput.text = code;
-        JoinRoom();
+        JoinOrCreateSavedRoom();
     }
 }
