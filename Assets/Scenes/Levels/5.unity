@@ -3890,9 +3890,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 943391295}
+    active: 0
+  - target: {fileID: 1086341810}
+    active: 1
   previousNode: {fileID: 0}
-  isStair: 0
+  isStair: 1
   isCurved: 0
   movingGround: 0
   isButton: 0
@@ -4675,7 +4679,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 2023189158}
+    active: 1
+  - target: {fileID: 1697514953}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -5051,7 +5059,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 1086341810}
+    active: 1
+  - target: {fileID: 1782242962}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -9682,7 +9694,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 2102286618}
+  m_Mesh: {fileID: 957016909}
 --- !u!33 &337226439
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -18449,7 +18461,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 927181072}
+    active: 1
+  - target: {fileID: 2073264696}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -21337,8 +21353,6 @@ MonoBehaviour:
   possiblePaths:
   - target: {fileID: 1086830307}
     active: 0
-  - target: {fileID: 0}
-    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -23303,7 +23317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 1697514953}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -27312,7 +27328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 1782242962}
+    active: 1
+  - target: {fileID: 626525969}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -27664,6 +27684,8 @@ MonoBehaviour:
     active: 1
   - target: {fileID: 1086830307}
     active: 1
+  - target: {fileID: 86206488}
+    active: 0
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -30110,9 +30132,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 1355530007}
+    active: 0
+  - target: {fileID: 1404043868}
+    active: 1
   previousNode: {fileID: 0}
-  isStair: 0
+  isStair: 1
   isCurved: 0
   movingGround: 0
   isButton: 0
@@ -30486,7 +30512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 86206488}
+    active: 1
+  - target: {fileID: 109304509}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -32503,7 +32533,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 1404043868}
+    active: 1
+  - target: {fileID: 2023189158}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -39011,6 +39045,8 @@ MonoBehaviour:
     active: 1
   - target: {fileID: 878682096}
     active: 1
+  - target: {fileID: 1058088603}
+    active: 0
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -39716,7 +39752,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 1058088603}
+    active: 1
+  - target: {fileID: 1152129361}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -40853,6 +40893,80 @@ MonoBehaviour:
       index: 2
     - block: {fileID: 1716161281}
       index: 1
+  - pathConditionName: connectHeartUpRight
+    conditions:
+    - conditionObject: {fileID: 1088188043}
+      eulerAngle: {x: 0, y: 0, z: 0}
+      position: {x: -1.5367677, y: 1.4195123, z: 4.399618}
+    paths:
+    - block: {fileID: 1735020720}
+      index: 0
+    - block: {fileID: 2072236738}
+      index: 0
+  - pathConditionName: connectHeartUpLeft
+    conditions:
+    - conditionObject: {fileID: 449852468}
+      eulerAngle: {x: 0, y: 0, z: 0}
+      position: {x: -3.5367677, y: 1.4195123, z: 2.3996181}
+    paths:
+    - block: {fileID: 777247661}
+      index: 0
+    - block: {fileID: 1086830308}
+      index: 1
+  - pathConditionName: connectCenter
+    conditions:
+    - conditionObject: {fileID: 95527602}
+      eulerAngle: {x: 0, y: 180, z: 0}
+      position: {x: -6.536768, y: 2.4195123, z: 7.399618}
+    paths:
+    - block: {fileID: 1058088609}
+      index: 0
+    - block: {fileID: 1355530008}
+      index: 2
+    - block: {fileID: 943391296}
+      index: 2
+    - block: {fileID: 86206494}
+      index: 0
+  - pathConditionName: connectStairsUpLeft
+    conditions:
+    - conditionObject: {fileID: 434921492}
+      eulerAngle: {x: 0, y: 180, z: 0}
+      position: {x: -5.036768, y: 0.9195123, z: -0.10038185}
+    paths:
+    - block: {fileID: 434921493}
+      index: 1
+    - block: {fileID: 1443223842}
+      index: 0
+  - pathConditionName: connectStairsDownLeft
+    conditions:
+    - conditionObject: {fileID: 434921492}
+      eulerAngle: {x: 0, y: 90, z: 0}
+      position: {x: -5.036768, y: 0.9195123, z: -0.10038185}
+    paths:
+    - block: {fileID: 434921493}
+      index: 0
+    - block: {fileID: 2095683131}
+      index: 1
+  - pathConditionName: connectStairsUpRight
+    conditions:
+    - conditionObject: {fileID: 778072187}
+      eulerAngle: {x: 0, y: 90, z: 0}
+      position: {x: 0.9632323, y: 0.9195123, z: 5.899618}
+    paths:
+    - block: {fileID: 778072188}
+      index: 0
+    - block: {fileID: 1235635429}
+      index: 1
+  - pathConditionName: connectStairsDownRight
+    conditions:
+    - conditionObject: {fileID: 778072187}
+      eulerAngle: {x: 0, y: 180, z: 0}
+      position: {x: 0.9632323, y: 0.9195123, z: 5.899618}
+    paths:
+    - block: {fileID: 778072188}
+      index: 1
+    - block: {fileID: 782926639}
+      index: 0
   pivots: []
   objectsToHide: []
 --- !u!4 &1438426749
@@ -49333,7 +49447,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 99547368}
+    active: 1
+  - target: {fileID: 798896235}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -52405,7 +52523,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 109304509}
+    active: 1
+  - target: {fileID: 927181072}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -56426,7 +56548,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 1152129361}
+    active: 1
+  - target: {fileID: 99547368}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -58277,12 +58403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possiblePaths:
-  - target: {fileID: 0}
-    active: 0
   - target: {fileID: 1735020719}
     active: 0
-  - target: {fileID: 0}
-    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
@@ -58658,7 +58780,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb0a8fcb05d7f54b8428770cee01f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possiblePaths: []
+  possiblePaths:
+  - target: {fileID: 626525969}
+    active: 1
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 0
