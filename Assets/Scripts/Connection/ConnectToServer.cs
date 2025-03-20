@@ -16,6 +16,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         if(PlayerPrefs.HasKey("PhotonUserId")) //si ja te un id guardat
         {
             ConnectToPhoton();
+            Debug.Log("PhotonUserId: " + PlayerPrefs.GetString("PhotonUserId"));
+           
         }
         else
         {

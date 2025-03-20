@@ -18,6 +18,7 @@ public class Navigable : MonoBehaviour
     public float stairOffset = .4f;
     public Vector3 customRotation;
 
+
     public Vector3 GetWalkPoint()
     {
         float stair = isStair ? stairOffset : 0;
