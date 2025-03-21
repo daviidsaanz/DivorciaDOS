@@ -7973,13 +7973,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2409957757361418650, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
         type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 2409957757361418650, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409957757361418650, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dc9f0bfe93111e146998c6eb6b4fed6f, type: 2}
+    - target: {fileID: 4648124619895671137, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4648124619895671137, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
         type: 3}
       propertyPath: NoiseModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648124619895671137, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
+        type: 3}
+      propertyPath: SizeModule.separateAxes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648124619895671137, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4648124619895671137, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7568292142368609611, guid: 3895bfcd7288a2b499acb4eb8a66c0e5,
         type: 3}
