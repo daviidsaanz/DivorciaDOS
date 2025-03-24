@@ -5646,7 +5646,7 @@ MonoBehaviour:
   previousNode: {fileID: 0}
   isStair: 0
   isCurved: 1
-  movingGround: 0
+  movingGround: 1
   isButton: 0
   dontRotate: 0
   walkPointOffset: 0.5
@@ -14936,7 +14936,7 @@ PrefabInstance:
     - target: {fileID: 6460655439657191199, guid: 50faafd9a54d3c7449fb0027ce0d5946,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: -0.73727727
       objectReference: {fileID: 0}
     - target: {fileID: 6460655439657191199, guid: 50faafd9a54d3c7449fb0027ce0d5946,
         type: 3}
@@ -14946,12 +14946,12 @@ PrefabInstance:
     - target: {fileID: 6460655439657191199, guid: 50faafd9a54d3c7449fb0027ce0d5946,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.6755903
       objectReference: {fileID: 0}
     - target: {fileID: 6460655439657191199, guid: 50faafd9a54d3c7449fb0027ce0d5946,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6460655439657191199, guid: 50faafd9a54d3c7449fb0027ce0d5946,
         type: 3}
@@ -14961,7 +14961,7 @@ PrefabInstance:
     - target: {fileID: 6460655439657191199, guid: 50faafd9a54d3c7449fb0027ce0d5946,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 275
       objectReference: {fileID: 0}
     - target: {fileID: 6460655439657191199, guid: 50faafd9a54d3c7449fb0027ce0d5946,
         type: 3}
@@ -15340,6 +15340,7 @@ MonoBehaviour:
   duration: 2
   useRotation: 1
   useMove: 0
+  calledByButton: 1
   useToggle: 1
 --- !u!65 &946051641
 BoxCollider:
@@ -23353,6 +23354,8 @@ MonoBehaviour:
   spawnPositions:
   - {fileID: 473502144}
   - {fileID: 1338225499}
+  waitingAnimation: {fileID: 0}
+  lobbyCode: {fileID: 0}
 --- !u!4 &1193726229
 Transform:
   m_ObjectHideFlags: 0
@@ -26526,7 +26529,7 @@ MonoBehaviour:
   isCurved: 0
   movingGround: 0
   isButton: 0
-  dontRotate: 0
+  dontRotate: 1
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -27501,6 +27504,7 @@ MonoBehaviour:
   duration: 0.6
   useRotation: 1
   useMove: 1
+  calledByButton: 1
   useToggle: 0
 --- !u!1 &1488638584
 GameObject:
@@ -33685,7 +33689,7 @@ MonoBehaviour:
   isCurved: 0
   movingGround: 0
   isButton: 0
-  dontRotate: 0
+  dontRotate: 1
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -33819,7 +33823,7 @@ MonoBehaviour:
   isCurved: 0
   movingGround: 0
   isButton: 0
-  dontRotate: 0
+  dontRotate: 1
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -34096,6 +34100,7 @@ MonoBehaviour:
   duration: 2
   useRotation: 0
   useMove: 1
+  calledByButton: 1
   useToggle: 0
 --- !u!65 &1781150070
 BoxCollider:
@@ -35128,7 +35133,7 @@ MonoBehaviour:
   isCurved: 0
   movingGround: 0
   isButton: 0
-  dontRotate: 0
+  dontRotate: 1
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -39262,7 +39267,7 @@ MonoBehaviour:
   isCurved: 0
   movingGround: 0
   isButton: 0
-  dontRotate: 0
+  dontRotate: 1
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}

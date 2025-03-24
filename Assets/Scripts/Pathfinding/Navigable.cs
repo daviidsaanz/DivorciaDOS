@@ -13,11 +13,28 @@ public class Navigable : MonoBehaviour
     public bool movingGround = false;
     public bool isButton;
     public bool dontRotate;
+    public bool isChildrenOfInteractuable;
 
     public float walkPointOffset = .5f;
     public float stairOffset = .4f;
     public Vector3 customRotation;
 
+
+    public bool GetInclination()
+    {
+        Interactuable objectInteractuable = GetComponentInParent<Interactuable>();
+
+        if (objectInteractuable != null)
+        {
+            Quaternion currentRotation = objectInteractuable.transform.rotation;
+            Quaternion savedRotation = Quaternion.Euler(objectInteractuable.VerticalRotation);
+
+            float angleDifference = Quaternion.Angle(currentRotation, savedRotation);
+
+            return angleDifference < 1f;
+        }
+        return false;
+    }
 
     public Vector3 GetWalkPoint()
     {

@@ -5,17 +5,22 @@ using DG.Tweening;
 
 public class Interactuable : MonoBehaviour
 {
+    [Header("Rotacion y movimiento del objeto interactuable")]
     public Vector3 _rotationAmount;
     public Vector3 RotationAmount { get { return _rotationAmount; } set { _rotationAmount = value; } } //si volem que rote
 
     public Vector3 _moveAmount;
     public Vector3 MoveAmount { get { return _moveAmount; } set { _moveAmount = value; } } //si volem que es mogui
 
+    [Header("Condiciones SOLO para plataformas verticales!")]
+    public Vector3 VerticalRotation;
+    public Vector3 HorizontalRotation;
+
+    [Header("Parametros animacion")]
     public float duration = 0.6f; //duracio de l'animacio
     public bool useRotation = true; //si cal que roti o no
     public bool useMove = true;
     public bool calledByButton = true; //si ha estat cridat per un boto
-
     public bool useToggle; //si volem alternar entre dos estats
     private bool toggled = false; //si volem alternar entre dos estats
 
