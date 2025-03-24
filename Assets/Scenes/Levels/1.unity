@@ -2411,7 +2411,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 73.666626}
+  m_AnchoredPosition: {x: 0, y: 48}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &278846338
@@ -2434,7 +2434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Entre Desconocidos
+  m_text: ENTRE DESCONOCIDOS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 04451dd000d2eef479aba1ae5e42cdd5, type: 2}
   m_sharedMaterial: {fileID: 8330940700383011539, guid: 04451dd000d2eef479aba1ae5e42cdd5,
@@ -2462,8 +2462,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7251,35 +7251,35 @@ MonoBehaviour:
   - startDelay: 0
     dialogue: "\xBFQue es esto..."
     readTime: 2
-    textColor: {r: 0.8962264, g: 0.6637148, b: 0.6637148, a: 0}
+    textColor: {r: 1, g: 0, b: 0, a: 0}
   - startDelay: 1
     dialogue: "d\xF3nde estoy?"
     readTime: 2
-    textColor: {r: 0.8980392, g: 0.6627451, b: 0.6627451, a: 0}
+    textColor: {r: 1, g: 0, b: 0, a: 0}
   - startDelay: 1
     dialogue: "\xBFQui\xE9n eres t\xFA? "
     readTime: 2
-    textColor: {r: 0.6627451, g: 0.8862745, b: 0.8980392, a: 0}
+    textColor: {r: 0, g: 0.20553756, b: 1, a: 0}
   - startDelay: 1
     dialogue: "\xBFQu\xE9 es este lugar?"
     readTime: 2
-    textColor: {r: 0.6627451, g: 0.8854997, b: 0.8980392, a: 0}
+    textColor: {r: 0, g: 0.20392157, b: 1, a: 0}
   - startDelay: 1
     dialogue: "No lo s\xE9"
     readTime: 2
-    textColor: {r: 0.8980392, g: 0.6627451, b: 0.6627451, a: 0}
+    textColor: {r: 1, g: 0, b: 0, a: 0}
   - startDelay: 1
     dialogue: No lo recuerdo
     readTime: 2
-    textColor: {r: 0.8980392, g: 0.6627451, b: 0.6627451, a: 0}
+    textColor: {r: 1, g: 0, b: 0, a: 0}
   - startDelay: 1
     dialogue: "Debemos cooperar si queremos salir de aqu\xED"
     readTime: 2
-    textColor: {r: 0.6627451, g: 0.8862745, b: 0.8980392, a: 0}
+    textColor: {r: 0, g: 0.20392157, b: 1, a: 0}
   - startDelay: 1
     dialogue: Si, creo que tenemos que usar esos botones...
     readTime: 2
-    textColor: {r: 0.8980392, g: 0.6627451, b: 0.6627451, a: 0}
+    textColor: {r: 1, g: 0, b: 0, a: 0}
 --- !u!43 &1177448947
 Mesh:
   m_ObjectHideFlags: 0
@@ -8237,37 +8237,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906b3ce11f48dac429a134f6bab577eb, type: 3}
---- !u!1 &1454200827
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1454200828}
-  m_Layer: 0
-  m_Name: testBORRAR
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1454200828
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454200827}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.52655184, y: -8.37205, z: -6.2380567}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1464834591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8420020214412610823, guid: 4fe6826b96d853d469f7293f02edcb47,
@@ -16752,6 +16721,74 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1737214710}
+--- !u!1001 &7847485224550743272
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1961122465578360743, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_Name
+      value: SkyBoxController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.763764
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -20.5312
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25.932896
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2527101720062916438, guid: 9a4b4413d8d5129468981e13fa53e29e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a4b4413d8d5129468981e13fa53e29e, type: 3}
 --- !u!33 &8268777599608517018
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16971,4 +17008,4 @@ SceneRoots:
   - {fileID: 43263176}
   - {fileID: 1042231069}
   - {fileID: 656044743}
-  - {fileID: 1454200828}
+  - {fileID: 7847485224550743272}
