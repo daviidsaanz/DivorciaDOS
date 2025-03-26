@@ -9,10 +9,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    //private PlayerController player1; //comentat per testing
-    //private PlayerController player2;
+    private PlayerController player1; //comentat per testing
+    private PlayerController player2;
 
-    public PlayerController player;
+    //public PlayerController player;
 
     public List<PathCondition> pathConditions = new List<PathCondition>(); //lista de condicions de camins
     public List<Transform> pivots; //pivots que es poden rotar
@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
     {
 
         //esperar a que se instancien los jugadores
-        //StartCoroutine(WaitForPlayers()); //comemntat per testing
+        StartCoroutine(WaitForPlayers()); //comemntat per testing
     }
 
-    /*IEnumerator WaitForPlayers()
+    IEnumerator WaitForPlayers()
     {
         while (player1 == null || player2 == null) // Espera hasta que ambos jugadores sean encontrados
         {
@@ -39,16 +39,16 @@ public class GameManager : MonoBehaviour
             player2 = GameObject.FindGameObjectWithTag("Player2")?.GetComponent<PlayerController>();
             yield return null; // Espera un frame antes de volver a comprobar
         }
-    }*/
+    }
 
 
 
     void Update()
     {
-        /*if(player1 == null || player2 == null)
+        if(player1 == null || player2 == null)
         {
             return;
-        }*/ //commentat per testing
+        } //commentat per testing
 
         foreach (PathCondition pc in pathConditions) //per cada PathCondition que hi hagi a la llista
         {
@@ -76,13 +76,13 @@ public class GameManager : MonoBehaviour
 
         }
 
-        /*if (player1.walking || player2.walking)
-            return;*///comentat per testing
+        if (player1.walking || player2.walking)
+            return;///comentat per testing
 
-        if (player.walking)
+        /*if (player.walking)
         {
             return;
-        } //comentat per testing
+        }*/ //comentat per testing
 
         if (Input.GetMouseButtonDown(0))
         {

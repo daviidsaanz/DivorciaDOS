@@ -10,6 +10,9 @@ public class ButtonPressed : MonoBehaviour
     public Vector3 pressedPositionOffset = new Vector3(0f, -0.05f, 0f);
     public Vector3 rotation;
     public Vector3 moveAmount;
+    public ButtonPressed otherButton;
+    public Light light;
+
 
     public float pressDuration = 0.1f;
 
@@ -19,6 +22,7 @@ public class ButtonPressed : MonoBehaviour
     public bool onlyPressedOneTime = false; //solo se puede pulsar una vez
     public bool disabled = false; //desactivar el boto
     public bool holdToActivate = false; //mantenir apretat per activar (NOMES PER AQUELLS BOTONS QUE VULGUEU QUE SI DEIXEN DE PULSAR TORNI A LA NORMALITAT)
+    public bool cooperateButton = false;
 
     void Start()
     {
@@ -52,11 +56,29 @@ public class ButtonPressed : MonoBehaviour
 
         if (objectToMove != null)
         {
-            SetMovmentAndRotation(); // Asigna los valores al objeto a mover
-            yield return new WaitForSeconds(0.25f);
-            objectToMove.GetComponent<Interactuable>().Interact();
+            if(cooperateButton && CheckOtherButton())
+            {
+                if (!disabled && !otherButton.disabled) // Asegurarse de que no se activa varias veces
+                {
+                    SetMovmentAndRotation(); // Asigna los valores al objeto a mover
+                    yield return new WaitForSeconds(0.25f);
+                    objectToMove.GetComponent<Interactuable>().Interact();
+                    disabled = true;
+                    otherButton.disabled = true;
+                }
+            }
+            else if(!cooperateButton)
+            {
+                SetMovmentAndRotation(); // Asigna los valores al objeto a mover
+                yield return new WaitForSeconds(0.25f);
+                objectToMove.GetComponent<Interactuable>().Interact();
+            }
+           
         }
-
+        if(light != null)
+        {
+            light.DOIntensity(0.24f, 0.5f);
+        }
         if (onlyPressedOneTime)
         {
             disabled = true;
@@ -69,9 +91,15 @@ public class ButtonPressed : MonoBehaviour
         buttonTransform.DOComplete();
         buttonTransform.DOLocalMove(originalPosition, pressDuration).SetEase(Ease.OutBack);
 
-        if (objectToMove != null)
+        if (objectToMove != null && !cooperateButton)
         {
+            Debug.Log("Button released");
             objectToMove.GetComponent<Interactuable>().Interact(); //crida de nou per tornar a l'estat inicial
+        }
+        if(light != null)
+        {
+            Debug.Log("Light off");
+            light.DOIntensity(0f, 0.5f);
         }
     }
 
@@ -83,6 +111,12 @@ public class ButtonPressed : MonoBehaviour
             interactuable.MoveAmount = moveAmount;
             interactuable.RotationAmount = rotation;
         }
+    }
+
+    private bool CheckOtherButton()
+    {
+        Debug.Log($"Checking other button: {otherButton.pressed}");
+        return otherButton.pressed;
     }
 
     /* public void OnButtonRelease()

@@ -14,6 +14,8 @@ public class Navigable : MonoBehaviour
     public bool isButton;
     public bool dontRotate;
     public bool isChildrenOfInteractuable;
+    public bool forceClimbing;
+    public bool blockPlayer;
 
     public float walkPointOffset = .5f;
     public float stairOffset = .4f;
@@ -33,6 +35,10 @@ public class Navigable : MonoBehaviour
 
             return angleDifference < 1f;
         }
+        else if(forceClimbing)
+        {
+            return true;
+        }
         return false;
     }
 
@@ -44,6 +50,10 @@ public class Navigable : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        //dibuixa una linea groga del vector3.up del objecte
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.up + transform.position, -transform.up + transform.position);
+
         Gizmos.color = Color.gray;
         float stair = isStair ? .4f : 0;
         Gizmos.DrawSphere(GetWalkPoint(), .1f);

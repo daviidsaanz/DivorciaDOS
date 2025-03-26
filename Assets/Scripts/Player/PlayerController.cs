@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     public bool isClimbing = false;
 
+    public bool wasClimbing = false;
+
     public PhotonView photonView; //es per que funcioni el multiplayer
 
     void Start()
@@ -161,28 +163,25 @@ public class PlayerController : MonoBehaviour
         {
             Navigable nav = finalPath[i].GetComponent<Navigable>(); //agafa el component Navigable del node
             float time = nav.isStair ? 1.5f : 1; //si el node es una escala, el temps de moviment sera 1.5, sino, sera 1
+            if(nav.blockPlayer) { isEnabled = true; }  
+            //si el node es fill d'un interactuable i te la opcio de forçar escalada activada, el player escalara
+            if((nav.isChildrenOfInteractuable && nav.GetInclination()) || nav.forceClimbing) { isClimbing = true; }
+            else { isClimbing = false; } //sino, no escalara
+            //si el player esta en el nodo, activar occupied 
 
-            if (nav.isChildrenOfInteractuable)
-            {
-                if (nav.GetInclination())
-                {
-                    isClimbing = true;
-                }
-                else
-                {
-                    isClimbing = false;
-                }
-            }
 
             //moviment del player
             s.Append(transform.DOMove(nav.GetWalkPoint(), .2f * time).SetEase(Ease.Linear)); //mou el player al punt on ha de caminar
 
-            if (isClimbing)
+            if (isClimbing) //si esta escalant i ja estava escalant
             {
-                Vector3 groundNormal = currentNode.up; // Obtiene la normal del nodo actual
-                Vector3 upDirection = isClimbing ? groundNormal : Vector3.up;
-                s.Join(transform.DOLookAt(nav.transform.position, .1f, AxisConstraint.X, upDirection));
+                //Vector3 groundNormal = currentNode.up; //Obtiene la normal del nodo actual
+                //transform.rotation = Quaternion.LookRotation(-nav.transform.forward, groundNormal); //rota el player per mirar a la direccio correcta
+                //Vector3 upDirection = groundNormal; 
+                //if (walking) { transform.rotation = Quaternion.LookRotation(nav.transform.position - transform.position, upDirection); } //si no esta caminant, rota per mirar al node
+                s.Join(transform.DOLookAt(nav.transform.position, .1f, AxisConstraint.X, nav.transform.up));
             }
+
             else
             {
                 s.Join(transform.DOLookAt(nav.transform.position, .1f, AxisConstraint.Y, Vector3.up));
