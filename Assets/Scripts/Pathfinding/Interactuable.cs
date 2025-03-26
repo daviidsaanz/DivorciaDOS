@@ -23,6 +23,7 @@ public class Interactuable : MonoBehaviour
     public bool calledByButton = true; //si ha estat cridat per un boto
     public bool useToggle; //si volem alternar entre dos estats
     private bool toggled = false; //si volem alternar entre dos estats
+    public Animator animatorController; //animacio que es vol reproduir
 
     private Quaternion initialRotation;
 
@@ -50,6 +51,10 @@ public class Interactuable : MonoBehaviour
             {
                 transform.DORotate(useToggle && toggled ? initialRotation.eulerAngles : initialRotation.eulerAngles + _rotationAmount, duration, RotateMode.FastBeyond360).SetEase(Ease.OutBack);
                 transform.DOMove(useToggle && toggled ? transform.position - _moveAmount : transform.position + _moveAmount, duration).SetEase(Ease.OutBack);
+            }
+            else if(animatorController != null)
+            {
+                animatorController.SetTrigger("Final");
             }
         }
 
