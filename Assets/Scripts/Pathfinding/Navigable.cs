@@ -13,11 +13,34 @@ public class Navigable : MonoBehaviour
     public bool movingGround = false;
     public bool isButton;
     public bool dontRotate;
+    public bool isChildrenOfInteractuable;
+    public bool forceClimbing;
+    public bool blockPlayer;
 
     public float walkPointOffset = .5f;
     public float stairOffset = .4f;
     public Vector3 customRotation;
 
+
+    public bool GetInclination()
+    {
+        Interactuable objectInteractuable = GetComponentInParent<Interactuable>();
+
+        if (objectInteractuable != null)
+        {
+            Quaternion currentRotation = objectInteractuable.transform.rotation;
+            Quaternion savedRotation = Quaternion.Euler(objectInteractuable.VerticalRotation);
+
+            float angleDifference = Quaternion.Angle(currentRotation, savedRotation);
+
+            return angleDifference < 1f;
+        }
+        else if(forceClimbing)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public Vector3 GetWalkPoint()
     {
@@ -27,6 +50,10 @@ public class Navigable : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        //dibuixa una linea groga del vector3.up del objecte
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.up + transform.position, -transform.up + transform.position);
+
         Gizmos.color = Color.gray;
         float stair = isStair ? .4f : 0;
         Gizmos.DrawSphere(GetWalkPoint(), .1f);

@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
 
     public bool isEnabled = true;
 
+    public bool isClimbing = false;
+
+    public bool wasClimbing = false;
+
     public PhotonView photonView; //es per que funcioni el multiplayer
 
     void Start()
@@ -159,19 +163,38 @@ public class PlayerController : MonoBehaviour
         {
             Navigable nav = finalPath[i].GetComponent<Navigable>(); //agafa el component Navigable del node
             float time = nav.isStair ? 1.5f : 1; //si el node es una escala, el temps de moviment sera 1.5, sino, sera 1
+            if(nav.blockPlayer) { isEnabled = true; }  
+            //si el node es fill d'un interactuable i te la opcio de forçar escalada activada, el player escalara
+            if((nav.isChildrenOfInteractuable && nav.GetInclination()) || nav.forceClimbing) { isClimbing = true; }
+            else { isClimbing = false; } //sino, no escalara
+            //si el player esta en el nodo, activar occupied 
+
 
             //moviment del player
             s.Append(transform.DOMove(nav.GetWalkPoint(), .2f * time).SetEase(Ease.Linear)); //mou el player al punt on ha de caminar
 
-            
-            if (nav.isCurved) //si el node es una curva, rota segons la rotacio asignada al inspector del node
+            if (isClimbing) //si esta escalant i ja estava escalant
+            {
+                //Vector3 groundNormal = currentNode.up; //Obtiene la normal del nodo actual
+                //transform.rotation = Quaternion.LookRotation(-nav.transform.forward, groundNormal); //rota el player per mirar a la direccio correcta
+                //Vector3 upDirection = groundNormal; 
+                //if (walking) { transform.rotation = Quaternion.LookRotation(nav.transform.position - transform.position, upDirection); } //si no esta caminant, rota per mirar al node
+                s.Join(transform.DOLookAt(nav.transform.position, .1f, AxisConstraint.X, nav.transform.up));
+            }
+
+            else
+            {
+                s.Join(transform.DOLookAt(nav.transform.position, .1f, AxisConstraint.Y, Vector3.up));
+            }
+
+            /*if (nav.isCurved) //si el node es una curva, rota segons la rotacio asignada al inspector del node
             {
                 s.Join(transform.DORotate(nav.customRotation, .2f).SetEase(Ease.OutSine));
             }
             else if (!nav.dontRotate) //si no es una curva i no te l'opcio de no rotar activada, rota per mirar al node
             {
-                s.Join(transform.DOLookAt(nav.transform.position, .1f, AxisConstraint.Y, Vector3.up));
-            }
+                s.Join(transform.DOLookAt(nav.transform.position, .1f, AxisConstraint.None, Vector3.up));
+            }*/
         }
 
         //ARA MATEIX HO CRIDEM DESDE EL BUTTONPRESSED
@@ -222,6 +245,17 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.blue;
         Ray ray = new Ray(transform.GetChild(0).position, -transform.up);
         Gizmos.DrawRay(ray);
+
+        if (currentNode != null)
+        {
+            // Dibuja una línea desde el nodo en la dirección de su "up"
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(currentNode.position, currentNode.up * 3); // Flecha de 2 unidades
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawRay(currentNode.position, Vector3.up * 2);
+        }
+        
     }
 
     float GetBlend()
