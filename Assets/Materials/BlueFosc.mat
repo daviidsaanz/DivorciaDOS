@@ -117,7 +117,7 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.5
+    - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -126,8 +126,13 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+<<<<<<< HEAD:Assets/Designs/Materials/TexturedCube2 2.mat
+    - _BaseColor: {r: 0.6156863, g: 0.1254902, b: 0.17254902, a: 1}
+    - _Color: {r: 0.6156863, g: 0.12549016, b: 0.17254898, a: 1}
+=======
     - _BaseColor: {r: 0.2520915, g: 0.327181, b: 0.5188679, a: 1}
     - _Color: {r: 0.25209144, g: 0.32718098, b: 0.51886785, a: 1}
+>>>>>>> origin/dev:Assets/Materials/BlueFosc.mat
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

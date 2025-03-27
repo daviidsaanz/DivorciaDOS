@@ -4740,6 +4740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 1533899044}
+  animationName: move
 --- !u!64 &171956936
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16450,7 +16451,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
+  rotation: {x: 0, y: 0, z: 0}
+  moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.3
+  objectToMove: {fileID: 0}
+  onlyPressedOneTime: 0
+  disabled: 0
+  holdToActivate: 0
+  cooperateButton: 0
 --- !u!43 &193506187
 Mesh:
   m_ObjectHideFlags: 0
@@ -20900,6 +20910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToMove: {fileID: 670113730}
+  animationName: move
 --- !u!64 &371382800
 MeshCollider:
   m_ObjectHideFlags: 0
