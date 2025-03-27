@@ -309,10 +309,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 0
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!1 &25818885
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,10 +366,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 0
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!1 &36636939
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +722,9 @@ MonoBehaviour:
   movingGround: 1
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -4011,6 +4022,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -4268,10 +4282,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 180, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 0
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!43 &97719290
 Mesh:
   m_ObjectHideFlags: 0
@@ -4814,6 +4832,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -5194,6 +5215,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -5820,6 +5844,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -7636,6 +7663,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -8228,18 +8258,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &269077223 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3877757588074466346, guid: 50faafd9a54d3c7449fb0027ce0d5946,
-    type: 3}
-  m_PrefabInstance: {fileID: 269077219}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269077220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de89593c4f927b4ab8c56c17d1d9b40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &278631450
 GameObject:
   m_ObjectHideFlags: 0
@@ -8315,11 +8333,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: 1, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 1453864968}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &278631454
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9040,11 +9061,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: 1, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 410974308}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!1 &283519066
 GameObject:
   m_ObjectHideFlags: 0
@@ -9323,11 +9347,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: -90, z: 0}
   moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 449852467}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &290605598
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13007,6 +13034,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -13024,10 +13054,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 0
   useMove: 1
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!1 &429449130
 GameObject:
   m_ObjectHideFlags: 0
@@ -13077,10 +13111,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 0
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!1 &434921486
 GameObject:
   m_ObjectHideFlags: 0
@@ -14133,6 +14171,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -14150,10 +14191,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 0
+  calledByButton: 1
   useToggle: 1
+  animatorController: {fileID: 0}
 --- !u!1 &445439044
 GameObject:
   m_ObjectHideFlags: 0
@@ -14878,10 +14923,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 1
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!1 &457376236
 GameObject:
   m_ObjectHideFlags: 0
@@ -15229,6 +15278,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -16275,10 +16327,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 0
   useMove: 1
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!114 &480764013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16302,6 +16358,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -18097,6 +18156,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -18709,11 +18771,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: -1, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 1141797725}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &596449024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19434,11 +19499,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: -1, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 480764005}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!43 &621564280
 Mesh:
   m_ObjectHideFlags: 0
@@ -19981,6 +20049,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -21895,6 +21966,9 @@ MonoBehaviour:
   movingGround: 1
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -22246,6 +22320,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -22762,6 +22839,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -23480,6 +23560,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -24535,6 +24618,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -24552,10 +24638,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 0
+  calledByButton: 1
   useToggle: 1
+  animatorController: {fileID: 0}
 --- !u!1 &782926633
 GameObject:
   m_ObjectHideFlags: 0
@@ -24904,6 +24994,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -25447,6 +25540,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -25689,11 +25785,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: -90, z: 0}
   moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 429449130}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &810577097
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26747,6 +26846,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -27263,6 +27365,9 @@ MonoBehaviour:
   movingGround: 1
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -27615,6 +27720,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -27692,11 +27800,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 90, z: 0}
   moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 22614670}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &830828474
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29410,6 +29521,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -29790,6 +29904,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -30143,6 +30260,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -30825,6 +30945,9 @@ MonoBehaviour:
   movingGround: 1
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -31207,10 +31330,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 0
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!43 &1017478688
 Mesh:
   m_ObjectHideFlags: 0
@@ -32592,6 +32719,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -32972,6 +33102,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -33324,6 +33457,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -33374,10 +33510,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 1
   useMove: 1
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!1 &1141797725
 GameObject:
   m_ObjectHideFlags: 0
@@ -34421,10 +34561,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 0
   useMove: 1
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!114 &1141797733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34448,6 +34592,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -34993,6 +35140,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -35713,6 +35863,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -36286,11 +36439,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: -1, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 410974308}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &1224222879
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37011,11 +37167,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: -1, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 1453864968}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!1 &1230830577
 GameObject:
   m_ObjectHideFlags: 0
@@ -37365,6 +37524,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -37717,6 +37879,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -39042,11 +39207,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: -90, z: 0}
   moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 434921486}
   onlyPressedOneTime: 0
   disabled: 0
   holdToActivate: 1
+  cooperateButton: 0
 --- !u!64 &1291846749
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40156,11 +40324,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 90, z: 0}
   moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 1088188042}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &1329616187
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41381,6 +41552,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -42586,6 +42760,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -43602,7 +43779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 993577487d073eb46b36d68776b9b9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 269077223}
   pathConditions:
   - pathConditionName: connectionStairsLeft
     conditions:
@@ -44147,6 +44323,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -45367,6 +45546,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -45384,10 +45566,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationAmount: {x: 0, y: 0, z: 0}
   _moveAmount: {x: 0, y: 0, z: 0}
+  VerticalRotation: {x: 0, y: 0, z: 0}
+  HorizontalRotation: {x: 0, y: 0, z: 0}
   duration: 0.6
   useRotation: 0
   useMove: 1
+  calledByButton: 1
   useToggle: 0
+  animatorController: {fileID: 0}
 --- !u!850595691 &1455991566
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -46885,11 +47071,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: 1, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 480764005}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &1498789331
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47610,11 +47799,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveAmount: {x: 0, y: 1, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 1141797725}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!43 &1505660740
 Mesh:
   m_ObjectHideFlags: 0
@@ -49015,11 +49207,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 90, z: 0}
   moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 778072181}
   onlyPressedOneTime: 0
   disabled: 0
   holdToActivate: 1
+  cooperateButton: 0
 --- !u!64 &1593286965
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50778,6 +50973,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -52056,11 +52254,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: 90, z: 0}
   moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 25818885}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &1687465999
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53143,6 +53344,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -53216,7 +53420,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 06fdd4e2982b09443995dc6a5125ff6c, type: 2}
+  - {fileID: 2100000, guid: ed060542072dff946873224bf863efad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -53818,6 +54022,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -54170,6 +54377,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -54949,6 +55159,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -55298,6 +55511,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -55812,6 +56028,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -56192,6 +56411,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -57567,6 +57789,9 @@ MonoBehaviour:
   movingGround: 1
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -57848,11 +58073,14 @@ MonoBehaviour:
   pressedPositionOffset: {x: 0, y: -0.05, z: 0}
   rotation: {x: 0, y: -90, z: 0}
   moveAmount: {x: 0, y: 0, z: 0}
+  otherButton: {fileID: 0}
+  light: {fileID: 0}
   pressDuration: 0.1
   objectToMove: {fileID: 1005939118}
   onlyPressedOneTime: 1
   disabled: 0
   holdToActivate: 0
+  cooperateButton: 0
 --- !u!64 &1932542089
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60625,6 +60853,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -61631,6 +61862,9 @@ MonoBehaviour:
   movingGround: 1
   isButton: 1
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -62581,6 +62815,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -62959,6 +63196,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
@@ -63515,6 +63755,9 @@ MonoBehaviour:
   movingGround: 0
   isButton: 0
   dontRotate: 0
+  isChildrenOfInteractuable: 0
+  forceClimbing: 0
+  blockPlayer: 0
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
