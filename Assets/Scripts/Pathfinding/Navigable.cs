@@ -16,11 +16,12 @@ public class Navigable : MonoBehaviour
     public bool isChildrenOfInteractuable;
     public bool forceClimbing;
     public bool blockPlayer;
+    public bool ifPlayerWalksDisable;
+    public Interactuable neighbourInteractuable;
 
     public float walkPointOffset = .5f;
     public float stairOffset = .4f;
     public Vector3 customRotation;
-
 
     public bool GetInclination()
     {
@@ -40,6 +41,25 @@ public class Navigable : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void DesactivateInteractuable()
+    {
+        Interactuable objectInteractuable = GetComponentInParent<Interactuable>();
+        if (objectInteractuable != null)
+        {
+            objectInteractuable.isEnabled = false;
+            objectInteractuable.UpdateAnimator(false);
+        }
+    }
+
+    public void ActivateInteractuable()
+    {
+        if (neighbourInteractuable != null)
+        {
+            neighbourInteractuable.isEnabled = true;
+            neighbourInteractuable.UpdateAnimator(true);
+        }
     }
 
     public Vector3 GetWalkPoint()

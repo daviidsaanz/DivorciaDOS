@@ -24,7 +24,9 @@ public class Interactuable : MonoBehaviour
     public bool calledByButton = true; //si ha estat cridat per un boto
     public bool useToggle; //si volem alternar entre dos estats
     private bool toggled = false; //si volem alternar entre dos estats
+    public bool isEnabled = true; //desactivar el objeto interactuable
     public Animator animatorController; //animacio que es vol reproduir
+
 
     [Header("Photon")]
     public PhotonView photonView;
@@ -37,8 +39,20 @@ public class Interactuable : MonoBehaviour
         initialRotation = transform.rotation;
     }
 
+    public void UpdateAnimator(bool isEnabled)
+    {
+        if (animatorController != null)
+        {
+            animatorController.SetBool("Enabled", isEnabled);
+        }
+    }
+
     public void Interact()
     {
+        if(!isEnabled)
+        {
+            return;
+        }
         if (photonView != null && !photonView.IsMine)
         {
             photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
