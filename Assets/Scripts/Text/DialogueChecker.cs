@@ -89,10 +89,10 @@ public class DialogueChecker : MonoBehaviour
 
     private IEnumerator FadeCanvasGroup(CanvasGroup group, float startAlpha, float endAlpha, float duration)
     {
-        PlayerController p1 = GameObject.FindGameObjectWithTag("Player1")?.GetComponent<PlayerController>();
+       /* PlayerController p1 = GameObject.FindGameObjectWithTag("Player1")?.GetComponent<PlayerController>();
         PlayerController p2 = GameObject.FindGameObjectWithTag("Player2")?.GetComponent<PlayerController>();
         p1.isEnabled = true;
-        p2.isEnabled = true;
+        p2.isEnabled = true;*/
 
         float elapsedTime = 0f;
 
