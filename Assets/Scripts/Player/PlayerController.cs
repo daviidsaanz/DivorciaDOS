@@ -32,29 +32,29 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //marker = GameObject.FindGameObjectWithTag("indicator").transform;
-        GetInfoOfCurrentNode(); //pilla la info del node actual
+        marker = GameObject.FindGameObjectWithTag("indicator").transform;
         photonView = GetComponent<PhotonView>();
         PhotonNetwork.SendRate = 30;
         PhotonNetwork.SerializationRate = 20;
+        GetInfoOfCurrentNode(); //pilla la info del node actual
     }
 
 
     void Update()
     {
-        GetInfoOfCurrentNode(); //pilla la info del node actual (tot el rato)
+        if (isEnabled)
+        {
+            GetInfoOfCurrentNode(); //pilla la info del node actual (tot el rato)
 
-        if (currentNode.GetComponent<Navigable>().movingGround) //si el node actual te movingGround activat (es a dir, es una plataforma que es mou) el jugador es moura amb la plataforma
-        {
-            transform.parent = currentNode.parent;
-        }
-        else
-        {
-            transform.parent = null;
-        }
+            if (currentNode.GetComponent<Navigable>().movingGround) //si el node actual te movingGround activat (es a dir, es una plataforma que es mou) el jugador es moura amb la plataforma
+            {
+                transform.parent = currentNode.parent;
+            }
+            else
+            {
+                transform.parent = null;
+            }
 
-        if (isEnabled) //si el player esta habilitat per moure's
-        {
             if (photonView.IsMine) //es per que funcioni el multiplayer i que nomes el jugador que controla el personatge pugui moure'l
             {
                 if (Input.GetMouseButtonDown(0))
@@ -84,8 +84,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        
-
     }
 
     void FindPath() //busca el path fins al node clicat
