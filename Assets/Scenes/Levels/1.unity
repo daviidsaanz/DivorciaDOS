@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: b355397d01d955042966ad8376aa2345, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1cf6f4c6e6e0518419839d3f5448dd99, type: 2}
   m_HaloStrength: 1
   m_FlareStrength: 1
   m_FlareFadeSpeed: 2
@@ -122,6 +122,70 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &7277754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7277755}
+  m_Layer: 0
+  m_Name: Cape_bone.015
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7277755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277754}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.020263473, y: 0.0047300165, z: -0.018568182, w: 0.999611}
+  m_LocalPosition: {x: 0.0000000012072269, y: 0.010000001, z: -9.313225e-11}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000002}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 197122287}
+  m_Father: {fileID: 144869356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7577624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7577625}
+  m_Layer: 0
+  m_Name: Cape_bone.031
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7577625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7577624}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0027384423, y: -0.00012888579, z: 0.0026073877, w: 0.99999285}
+  m_LocalPosition: {x: -6.7520883e-10, y: 0.01131959, z: -1.238368e-10}
+  m_LocalScale: {x: 0.99999976, y: 0.99999994, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1285740838}
+  m_Father: {fileID: 273221720}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &11139208
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,6 +935,70 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1284703204}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &112890383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112890384}
+  m_Layer: 0
+  m_Name: Cape_bone.024
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &112890384
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112890383}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.003649151, y: -0.00008764333, z: 0.0009909993, w: 0.99999285}
+  m_LocalPosition: {x: -5.62286e-10, y: 0.01131959, z: 6.178743e-10}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999998}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1011224880}
+  m_Father: {fileID: 2042457369}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &144869355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144869356}
+  m_Layer: 0
+  m_Name: Cape_bone.014
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144869356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144869355}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.6964879, y: -0.06863842, z: 0.06609287, w: 0.7112138}
+  m_LocalPosition: {x: -0.014732814, y: 0.0035580567, z: -0.0028599624}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7277755}
+  m_Father: {fileID: 696858678}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &145544152
 Mesh:
   m_ObjectHideFlags: 0
@@ -1720,6 +1848,38 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &197122286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 197122287}
+  m_Layer: 0
+  m_Name: Cape_bone.016
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &197122287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197122286}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.052314397, y: 0.0070474227, z: -0.049085777, w: 0.9973987}
+  m_LocalPosition: {x: -8.521601e-10, y: 0.010030245, z: -1.6298145e-10}
+  m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1752565528}
+  m_Father: {fileID: 7277755}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &221479680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,6 +2234,131 @@ MonoBehaviour:
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
+--- !u!1 &233936609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233936610}
+  - component: {fileID: 233936611}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &233936610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233936609}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071068, y: 0.0000000035232148, z: -0.000000004201515, w: 0.7071067}
+  m_LocalPosition: {x: -0.0000000099465245, y: -0.000000007450581, z: -0.000000029802322}
+  m_LocalScale: {x: 99.999985, y: 99.99998, z: 99.999985}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 385192234}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &233936611
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233936609}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 4da9758e2fc973548a1d31fa25e03dfb, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: -462981019419857548, guid: 03667b714633c4a489ae4bd3671df230, type: 3}
+  m_Bones:
+  - {fileID: 2063785332}
+  - {fileID: 767598385}
+  - {fileID: 1413312467}
+  - {fileID: 1518406406}
+  - {fileID: 1049428793}
+  - {fileID: 1479816716}
+  - {fileID: 1784450523}
+  - {fileID: 1167343500}
+  - {fileID: 1289048389}
+  - {fileID: 1547558135}
+  - {fileID: 1519303983}
+  - {fileID: 842498043}
+  - {fileID: 1103767116}
+  - {fileID: 1573617607}
+  - {fileID: 624536840}
+  - {fileID: 1354000216}
+  - {fileID: 144869356}
+  - {fileID: 7277755}
+  - {fileID: 197122287}
+  - {fileID: 1752565528}
+  - {fileID: 582307331}
+  - {fileID: 2087642798}
+  - {fileID: 866783264}
+  - {fileID: 569207960}
+  - {fileID: 1930801681}
+  - {fileID: 2144734125}
+  - {fileID: 2042457369}
+  - {fileID: 112890384}
+  - {fileID: 1011224880}
+  - {fileID: 1796062216}
+  - {fileID: 1786953544}
+  - {fileID: 844174059}
+  - {fileID: 801047654}
+  - {fileID: 1963884561}
+  - {fileID: 273221720}
+  - {fileID: 7577625}
+  - {fileID: 1285740838}
+  - {fileID: 1298467063}
+  - {fileID: 1350048324}
+  - {fileID: 1391713749}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 801047654}
+  m_AABB:
+    m_Center: {x: -0.027657265, y: 0.037744477, z: -0.005056635}
+    m_Extent: {x: 0.033465236, y: 0.04903616, z: 0.009192899}
+  m_DirtyAABB: 0
 --- !u!1001 &239872671
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2247,7 +2532,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3489013545420768317, guid: 50faafd9a54d3c7449fb0027ce0d5946,
+        type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 385192234}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1119528648065747808, guid: 50faafd9a54d3c7449fb0027ce0d5946,
         type: 3}
@@ -2258,12 +2547,50 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 454405343}
   m_SourcePrefab: {fileID: 100100000, guid: 50faafd9a54d3c7449fb0027ce0d5946, type: 3}
+--- !u!4 &243404953 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3489013545420768317, guid: 50faafd9a54d3c7449fb0027ce0d5946,
+    type: 3}
+  m_PrefabInstance: {fileID: 243404952}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &268866501 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5075834912776109641, guid: 9f30596c95e7a724895324c2e560157a,
     type: 3}
   m_PrefabInstance: {fileID: 1383528169}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &273221719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273221720}
+  m_Layer: 0
+  m_Name: Cape_bone.030
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &273221720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273221719}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.052153494, y: -0.0038768281, z: 0.049257003, w: 0.997416}
+  m_LocalPosition: {x: 8.5681673e-10, y: 0.010030241, z: 2.3283063e-11}
+  m_LocalScale: {x: 0.9999999, y: 0.9999997, z: 0.9999998}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7577625}
+  m_Father: {fileID: 1963884561}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &283420474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,6 +2979,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fe6826b96d853d469f7293f02edcb47, type: 3}
+--- !u!1 &385192233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 385192234}
+  m_Layer: 0
+  m_Name: Cape
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &385192234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385192233}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.011713547, y: -0.9702591, z: 0.23698121, w: 0.047958154}
+  m_LocalPosition: {x: 0.00246904, y: -0.031103937, z: 0.023815263}
+  m_LocalScale: {x: 0.049872722, y: 0.049872726, z: 0.049872737}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 696858678}
+  - {fileID: 233936610}
+  m_Father: {fileID: 243404953}
+  m_LocalEulerAnglesHint: {x: 27.451, y: -40.177, z: 0}
 --- !u!1 &405517175
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,12 +3701,108 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 989870366}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &569207959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 569207960}
+  m_Layer: 0
+  m_Name: Cape_bone.020_end
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &569207960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569207959}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000016172999, y: 0.00000009656651, z: 0.00000010037911,
+    w: 1}
+  m_LocalPosition: {x: 4.0046869e-10, y: 0.011816009, z: -2.4447216e-10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 866783264}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &582307330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 582307331}
+  m_Layer: 0
+  m_Name: Cape_bone.018
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &582307331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582307330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0072611314, y: -0.00046589936, z: 0.006908214, w: 0.9999497}
+  m_LocalPosition: {x: -0.0000000014854594, y: 0.011316041, z: -2.8412614e-11}
+  m_LocalScale: {x: 0.99999994, y: 1.0000001, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2087642798}
+  m_Father: {fileID: 1752565528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &620328426 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8420020214412610823, guid: 4fe6826b96d853d469f7293f02edcb47,
     type: 3}
   m_PrefabInstance: {fileID: 2025941158}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &624536839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 624536840}
+  m_Layer: 0
+  m_Name: Cape_bone.013
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &624536840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624536839}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.031272966, y: -0.00029281367, z: 0.008519779, w: 0.9994745}
+  m_LocalPosition: {x: -3.282912e-10, y: 0.011666013, z: -1.2223608e-11}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1354000216}
+  m_Father: {fileID: 1573617607}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &643279393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3616,6 +4072,42 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &696858677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696858678}
+  m_Layer: 0
+  m_Name: Armature
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &696858678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696858677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.78790295, y: 0, z: -0, w: 0.6157994}
+  m_LocalPosition: {x: -0, y: 1.2098583, z: -0.21696311}
+  m_LocalScale: {x: 10.297974, y: 10.297975, z: 10.297975}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2063785332}
+  - {fileID: 1289048389}
+  - {fileID: 144869356}
+  - {fileID: 1930801681}
+  - {fileID: 801047654}
+  m_Father: {fileID: 385192234}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &739463411 stripped
 Transform:
@@ -3989,6 +4481,38 @@ MonoBehaviour:
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
+--- !u!1 &767598384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 767598385}
+  m_Layer: 0
+  m_Name: Cape_bone.001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &767598385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767598384}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.02748428, y: -1.0616704e-16, z: -1.0616703e-16, w: 0.9996223}
+  m_LocalPosition: {x: -4.023345e-26, y: 0.01, z: -4.11319e-12}
+  m_LocalScale: {x: 1.0000001, y: 0.9999999, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1413312467}
+  m_Father: {fileID: 2063785332}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &769497518
 GameObject:
   m_ObjectHideFlags: 0
@@ -4347,6 +4871,38 @@ MonoBehaviour:
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
+--- !u!1 &801047653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 801047654}
+  m_Layer: 0
+  m_Name: Cape_bone.028
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &801047654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801047653}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.696102, y: 0.064604566, z: -0.07004103, w: 0.71159154}
+  m_LocalPosition: {x: 0.014905824, y: 0.0035580553, z: -0.0028599694}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1963884561}
+  m_Father: {fileID: 696858678}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &811016498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,6 +5611,102 @@ MonoBehaviour:
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
+--- !u!1 &842498042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842498043}
+  m_Layer: 0
+  m_Name: Cape_bone.010
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &842498043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842498042}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0036480245, y: -0.000007772831, z: -0.0009949537, w: 0.99999285}
+  m_LocalPosition: {x: -1.4551915e-10, y: 0.011319586, z: -2.2351741e-10}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 0.9999997}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1103767116}
+  m_Father: {fileID: 1519303983}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &844174058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 844174059}
+  m_Layer: 0
+  m_Name: Cape_bone.027_end
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &844174059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844174058}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000026172533, y: 5.2386895e-10, z: -0.0000000025465854,
+    w: 1}
+  m_LocalPosition: {x: 1.2340023e-10, y: 0.011816007, z: 5.797483e-10}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1786953544}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &866783263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 866783264}
+  m_Layer: 0
+  m_Name: Cape_bone.020
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &866783264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 866783263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.02353906, y: -0.0023809518, z: 0.022281708, w: 0.9994717}
+  m_LocalPosition: {x: 0.000000001490116, y: 0.011666012, z: 6.0375893e-10}
+  m_LocalScale: {x: 0.9999998, y: 1.0000001, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 569207960}
+  m_Father: {fileID: 2087642798}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &906591988
 Mesh:
   m_ObjectHideFlags: 0
@@ -5866,6 +6518,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906b3ce11f48dac429a134f6bab577eb, type: 3}
+--- !u!1 &1011224879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011224880}
+  m_Layer: 0
+  m_Name: Cape_bone.025
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1011224880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011224879}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.009672855, y: 0.00024745663, z: -0.002625277, w: 0.99994975}
+  m_LocalPosition: {x: 2.7008354e-10, y: 0.011316021, z: -2.302113e-10}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1796062216}
+  m_Father: {fileID: 112890384}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1012723015
 GameObject:
   m_ObjectHideFlags: 0
@@ -6323,6 +7007,70 @@ CanvasGroup:
     type: 3}
   m_PrefabInstance: {fileID: 2891697069884214472}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1049428792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049428793}
+  m_Layer: 0
+  m_Name: Cape_bone.004
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1049428793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049428792}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.010022536, y: 4.4987996e-19, z: -1.7182697e-18, w: 0.9999498}
+  m_LocalPosition: {x: -5.293956e-25, y: 0.011316024, z: 0.000000001490116}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999998}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1479816716}
+  m_Father: {fileID: 1518406406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1103767115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103767116}
+  m_Layer: 0
+  m_Name: Cape_bone.011
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103767116
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103767115}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.009669533, y: 0.000004224677, z: 0.0026371772, w: 0.9999498}
+  m_LocalPosition: {x: 5.0175003e-10, y: 0.011316018, z: 4.307367e-11}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 1.0000002}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1573617607}
+  m_Father: {fileID: 842498043}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1109240257
 GameObject:
   m_ObjectHideFlags: 0
@@ -6848,6 +7596,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe2c5b6c4e883794db10cb14fa5147e2, type: 3}
+--- !u!1 &1167343499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167343500}
+  m_Layer: 0
+  m_Name: Cape_bone.006_end
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1167343500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167343499}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000078231096, y: -3.330669e-16, z: 1.915441e-14, w: 1}
+  m_LocalPosition: {x: -1.17918e-16, y: 0.011816012, z: 7.45058e-10}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1784450523}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1177448947
 Mesh:
   m_ObjectHideFlags: 0
@@ -7136,6 +7915,166 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdc04fb15a5b9fc4883e0ac98d4aa313, type: 3}
+--- !u!1 &1285740837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285740838}
+  m_Layer: 0
+  m_Name: Cape_bone.032
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1285740838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285740837}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0072604464, y: 0.00035747697, z: -0.0069093443, w: 0.99994975}
+  m_LocalPosition: {x: -5.681068e-10, y: 0.011316041, z: -8.4390195e-10}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1298467063}
+  m_Father: {fileID: 7577625}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1289048388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1289048389}
+  m_Layer: 0
+  m_Name: Cape_bone.007
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1289048389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289048388}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.72115564, y: -0.021920698, z: 0.023031678, w: 0.69204307}
+  m_LocalPosition: {x: -0.0068417788, y: 0.0030062455, z: -0.00046794652}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1547558135}
+  m_Father: {fileID: 696858678}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1298467062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1298467063}
+  m_Layer: 0
+  m_Name: Cape_bone.033
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1298467063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298467062}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.002348121, y: -0.00012130801, z: 0.0022331914, w: 0.99999475}
+  m_LocalPosition: {x: -0.0000000018533319, y: 0.011841745, z: 5.651964e-10}
+  m_LocalScale: {x: 1.0000001, y: 0.9999999, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1350048324}
+  m_Father: {fileID: 1285740838}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1350048323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1350048324}
+  m_Layer: 0
+  m_Name: Cape_bone.034
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1350048324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350048323}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.023514789, y: 0.0014569995, z: -0.02230747, w: 0.9994735}
+  m_LocalPosition: {x: -0.000000001899898, y: 0.011666015, z: -9.27248e-10}
+  m_LocalScale: {x: 0.99999994, y: 1.0000002, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1391713749}
+  m_Father: {fileID: 1298467063}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1354000215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1354000216}
+  m_Layer: 0
+  m_Name: Cape_bone.013_end
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1354000216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354000215}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000014541092, y: -4.947651e-10, z: -0.0000000025320332,
+    w: 1}
+  m_LocalPosition: {x: 2.3283063e-11, y: 0.011816007, z: -7.136259e-10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 624536840}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1360260658
 GameObject:
   m_ObjectHideFlags: 0
@@ -7588,6 +8527,70 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f30596c95e7a724895324c2e560157a, type: 3}
+--- !u!1 &1391713748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391713749}
+  m_Layer: 0
+  m_Name: Cape_bone.034_end
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1391713749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391713748}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000044527052, y: -6.693882e-10, z: -0.000000012019884,
+    w: 1}
+  m_LocalPosition: {x: 0.0000000027194618, y: 0.011816001, z: 6.1234456e-10}
+  m_LocalScale: {x: 0.99999994, y: 0.9999998, z: 0.9999998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1350048324}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1413312466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1413312467}
+  m_Layer: 0
+  m_Name: Cape_bone.002
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1413312467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413312466}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.07173696, y: -3.4151942e-18, z: 1.2060467e-17, w: 0.9974236}
+  m_LocalPosition: {x: 5.7902643e-26, y: 0.010030242, z: -3.7252902e-11}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1518406406}
+  m_Father: {fileID: 767598385}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1420025027 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7061352336928290633, guid: 906b3ce11f48dac429a134f6bab577eb,
@@ -7863,6 +8866,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1121363667}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1479816715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1479816716}
+  m_Layer: 0
+  m_Name: Cape_bone.005
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1479816716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479816715}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0032405283, y: -1.4635466e-19, z: 5.5445296e-19, w: 0.99999475}
+  m_LocalPosition: {x: -0, y: 0.011841742, z: 2.9802322e-10}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1784450523}
+  m_Father: {fileID: 1049428793}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1485383424
 Mesh:
   m_ObjectHideFlags: 0
@@ -8034,6 +9069,70 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 965345282}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1518406405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1518406406}
+  m_Layer: 0
+  m_Name: Cape_bone.003
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1518406406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518406405}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0037811901, y: -1.6886599e-19, z: 6.493026e-19, w: 0.99999285}
+  m_LocalPosition: {x: 1.1249656e-24, y: 0.011319584, z: -5.9604643e-10}
+  m_LocalScale: {x: 1.0000001, y: 0.9999998, z: 0.9999998}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1049428793}
+  m_Father: {fileID: 1413312467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1519303982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1519303983}
+  m_Layer: 0
+  m_Name: Cape_bone.009
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1519303983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519303982}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.06923304, y: 0.0012745154, z: -0.018788058, w: 0.9974228}
+  m_LocalPosition: {x: 3.5041012e-10, y: 0.010030245, z: -3.259629e-11}
+  m_LocalScale: {x: 0.9999999, y: 1.0000001, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 842498043}
+  m_Father: {fileID: 1547558135}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1519539025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8127,6 +9226,70 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fe6826b96d853d469f7293f02edcb47, type: 3}
+--- !u!1 &1547558134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1547558135}
+  m_Layer: 0
+  m_Name: Cape_bone.008
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1547558135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547558134}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.026542695, y: 0.0012028317, z: -0.0071324417, w: 0.9996215}
+  m_LocalPosition: {x: 0.0000000012788223, y: 0.009999997, z: -7.21775e-11}
+  m_LocalScale: {x: 0.9999998, y: 0.99999976, z: 0.99999976}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1519303983}
+  m_Father: {fileID: 1289048389}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1573617606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1573617607}
+  m_Layer: 0
+  m_Name: Cape_bone.012
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1573617607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573617606}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.003126438, y: 0.000004466531, z: -0.0008526936, w: 0.99999475}
+  m_LocalPosition: {x: -1.0011717e-10, y: 0.011841769, z: 3.405148e-10}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999976}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 624536840}
+  m_Father: {fileID: 1103767116}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1583927385
 Mesh:
   m_ObjectHideFlags: 0
@@ -10975,6 +12138,38 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1752565527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1752565528}
+  m_Layer: 0
+  m_Name: Cape_bone.017
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1752565528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752565527}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0027383524, y: 0.00015794896, z: -0.0026072173, w: 0.99999285}
+  m_LocalPosition: {x: 9.313226e-10, y: 0.011319586, z: -1.3162207e-10}
+  m_LocalScale: {x: 1, y: 0.99999964, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 582307331}
+  m_Father: {fileID: 197122287}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1764115217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8420020214412610823, guid: 4fe6826b96d853d469f7293f02edcb47,
@@ -11512,6 +12707,103 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd9ba3c41e1eb14b8594d578c98445b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1784450522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784450523}
+  m_Layer: 0
+  m_Name: Cape_bone.006
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1784450523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784450522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.032412663, y: -0.00000011914665, z: -0.0000000038638888,
+    w: 0.9994746}
+  m_LocalPosition: {x: -2.646978e-25, y: 0.01166601, z: -8.9406965e-10}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 0.9999998}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1167343500}
+  m_Father: {fileID: 1479816716}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1786953543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786953544}
+  m_Layer: 0
+  m_Name: Cape_bone.027
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1786953544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786953543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.03129068, y: 0.0010837618, z: -0.00845383, w: 0.999474}
+  m_LocalPosition: {x: 0.0000000010873191, y: 0.0116660055, z: 0.0000000016004196}
+  m_LocalScale: {x: 0.9999998, y: 1.0000002, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 844174059}
+  m_Father: {fileID: 1796062216}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1796062215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1796062216}
+  m_Layer: 0
+  m_Name: Cape_bone.026
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1796062216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796062215}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0031275924, y: -0.00008507816, z: 0.0008482917, w: 0.99999475}
+  m_LocalPosition: {x: -5.1106325e-10, y: 0.011841775, z: 3.5506673e-10}
+  m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1786953544}
+  m_Father: {fileID: 1011224880}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1863191306
 Mesh:
   m_ObjectHideFlags: 0
@@ -12130,6 +13422,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb41f6769f1a3c46ac65f2a7b7ed3ed, type: 3}
+--- !u!1 &1930801680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1930801681}
+  m_Layer: 0
+  m_Name: Cape_bone.021
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1930801681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930801680}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7212191, y: 0.023916874, z: -0.02095144, w: 0.6919769}
+  m_LocalPosition: {x: 0.007014787, y: 0.0030062445, z: -0.00046795126}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2144734125}
+  m_Father: {fileID: 696858678}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1932911075
 Mesh:
   m_ObjectHideFlags: 0
@@ -12428,6 +13752,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 376972366}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1963884560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963884561}
+  m_Layer: 0
+  m_Name: Cape_bone.029
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1963884561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963884560}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.020097455, y: -0.0022865331, z: 0.018747361, w: 0.99961966}
+  m_LocalPosition: {x: -0.0000000010803342, y: 0.009999996, z: -1.4901161e-10}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 273221720}
+  m_Father: {fileID: 801047654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979517896
 GameObject:
   m_ObjectHideFlags: 0
@@ -12671,6 +14027,7 @@ MonoBehaviour:
   calledByButton: 1
   useToggle: 0
   animatorController: {fileID: 0}
+  photonView: {fileID: 0}
 --- !u!4 &2027601782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8420020214412610823, guid: 4fe6826b96d853d469f7293f02edcb47,
@@ -12842,6 +14199,70 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &2042457368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2042457369}
+  m_Layer: 0
+  m_Name: Cape_bone.023
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2042457369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042457368}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.06928664, y: -0.0029751344, z: 0.018589394, w: 0.9974192}
+  m_LocalPosition: {x: -2.6484484e-10, y: 0.010030241, z: 8.498318e-11}
+  m_LocalScale: {x: 0.9999998, y: 0.9999999, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 112890384}
+  m_Father: {fileID: 2144734125}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2063785331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063785332}
+  m_Layer: 0
+  m_Name: Cape_bone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2063785332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063785331}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071069, y: 0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 767598385}
+  m_Father: {fileID: 696858678}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2086536768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12935,6 +14356,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 906b3ce11f48dac429a134f6bab577eb, type: 3}
+--- !u!1 &2087642797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2087642798}
+  m_Layer: 0
+  m_Name: Cape_bone.019
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2087642798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087642797}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.002348424, y: 0.00016753795, z: -0.002232467, w: 0.99999475}
+  m_LocalPosition: {x: -4.2840836e-10, y: 0.011841745, z: 0.0000000010489021}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.99999994}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 866783264}
+  m_Father: {fileID: 582307331}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2095683125
 GameObject:
   m_ObjectHideFlags: 0
@@ -13736,6 +15189,38 @@ MonoBehaviour:
   walkPointOffset: 0.5
   stairOffset: 0.4
   customRotation: {x: 0, y: 0, z: 0}
+--- !u!1 &2144734124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2144734125}
+  m_Layer: 0
+  m_Name: Cape_bone.022
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2144734125
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144734124}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.026579212, y: -0.0018002412, z: 0.0069951764, w: 0.9996207}
+  m_LocalPosition: {x: -3.8417054e-11, y: 0.009999996, z: 0.000000001124572}
+  m_LocalScale: {x: 1, y: 0.9999998, z: 0.9999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2042457369}
+  m_Father: {fileID: 1930801681}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &2146552818
 Mesh:
   m_ObjectHideFlags: 0
@@ -14397,6 +15882,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas2
       objectReference: {fileID: 0}
+    - target: {fileID: 2776775199539892481, guid: 7b8f69201cb0dda47bc83d2a4c988c3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3102193513812435609, guid: 7b8f69201cb0dda47bc83d2a4c988c3c,
         type: 3}
       propertyPath: textManager
@@ -14524,6 +16014,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966253931012195632, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
