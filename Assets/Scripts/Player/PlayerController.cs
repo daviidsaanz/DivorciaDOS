@@ -165,8 +165,17 @@ public class PlayerController : MonoBehaviour
             //si el node es fill d'un interactuable i te la opcio de forçar escalada activada, el player escalara
             if((nav.isChildrenOfInteractuable && nav.GetInclination()) || nav.forceClimbing) { isClimbing = true; }
             else { isClimbing = false; } //sino, no escalara
-            //si el player esta en el nodo, activar occupied 
 
+            if (nav.ifPlayerWalksDisable && nav.GetComponentInParent<Interactuable>().isEnabled == true) //si el node desactiva el interactuable quan el player esta assobre i el interactuable esta activat
+            {
+                Debug.Log("Desactiva interactuable");
+                nav.DesactivateInteractuable(); //el desactiva
+            }
+            else if(!nav.ifPlayerWalksDisable && nav.neighbourInteractuable != null && nav.neighbourInteractuable.isEnabled == false) //si el node activa el interactuable quan el player esta assobre i el interactuable esta desactivat
+            {
+                Debug.Log("Activa interactuable");
+                nav.ActivateInteractuable(); //l'activa
+            }
 
             //moviment del player
             s.Append(transform.DOMove(nav.GetWalkPoint(), .2f * time).SetEase(Ease.Linear)); //mou el player al punt on ha de caminar
