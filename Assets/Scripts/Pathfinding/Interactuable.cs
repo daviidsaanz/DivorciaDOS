@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Photon.Pun;
 
 public class Interactuable : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class Interactuable : MonoBehaviour
     private bool toggled = false; //si volem alternar entre dos estats
     public Animator animatorController; //animacio que es vol reproduir
 
+    [Header("Photon")]
+    public PhotonView photonView;
+
     private Quaternion initialRotation;
 
 
@@ -35,6 +39,12 @@ public class Interactuable : MonoBehaviour
 
     public void Interact()
     {
+        if (photonView != null && !photonView.IsMine)
+        {
+            photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+            Debug.Log("Transfering ownership to " + PhotonNetwork.LocalPlayer);
+        }
+
         transform.DOComplete();
 
         if (calledByButton)
@@ -62,17 +72,17 @@ public class Interactuable : MonoBehaviour
         {
             if (useRotation && !useMove) //si nomes volem que roti
             {
-                transform.DORotate(toggled ? Vector3.zero : _rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack); //rota l'objecte com volem
+                transform.DORotate(toggled ? Vector3.zero : _rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack);
             }
             else if (useMove && !useRotation) //si nomes volem que es mogui
             {
-                transform.DOMove(toggled ? transform.position - _moveAmount : transform.position + _moveAmount, duration).SetEase(Ease.OutBack); //mou l'objecte com volem
+                transform.DOMove(toggled ? transform.position - _moveAmount : transform.position + _moveAmount, duration).SetEase(Ease.OutBack);
             }
 
             else if (useMove && useRotation) //si volem que es mogui i roti
             {
-                transform.DORotate(toggled ? Vector3.zero : _rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack); //rota l'objecte com volem
-                transform.DOMove(toggled ? transform.position - _moveAmount : transform.position + _moveAmount, duration).SetEase(Ease.OutBack); //mou l'objecte com volem
+                transform.DORotate(toggled ? Vector3.zero : _rotationAmount, duration, RotateMode.WorldAxisAdd).SetEase(Ease.OutBack);
+                transform.DOMove(toggled ? transform.position - _moveAmount : transform.position + _moveAmount, duration).SetEase(Ease.OutBack);
             }
         }
 

@@ -57,6 +57,8 @@ MonoBehaviour:
   marker: {fileID: 0}
   finalPath: []
   isEnabled: 1
+  isClimbing: 0
+  wasClimbing: 0
   photonView: {fileID: 5096689603528192145}
 --- !u!114 &3866768528999047784
 MonoBehaviour:

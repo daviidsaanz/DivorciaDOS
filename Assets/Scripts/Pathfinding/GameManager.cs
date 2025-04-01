@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
             return;
         } //commentat per testing
 
+        if (player1.walking || player2.walking)
+            return;///comentat per testing
+
         foreach (PathCondition pc in pathConditions) //per cada PathCondition que hi hagi a la llista
         {
             int count = 0;
@@ -76,8 +79,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        if (player1.walking || player2.walking)
-            return;///comentat per testing
+        
 
         /*if (player.walking)
         {
@@ -102,7 +104,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        foreach (Transform t in objectsToHide)
+        /*foreach (Transform t in objectsToHide)
         {
             t.gameObject.SetActive(pivots[0].eulerAngles.y > 45 && pivots[0].eulerAngles.y < 90 + 45);
         }
@@ -110,15 +112,15 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-        }
+        }*/
 
     }
 
     private bool IsRotationClose(Vector3 a, Vector3 b)
     {
-        return Mathf.Abs(Mathf.DeltaAngle(a.x, b.x)) < 1f &&
-               Mathf.Abs(Mathf.DeltaAngle(a.y, b.y)) < 1f &&
-               Mathf.Abs(Mathf.DeltaAngle(a.z, b.z)) < 1f;
+        return Mathf.Abs(Mathf.DeltaAngle(a.x, b.x)) < 5f &&
+               Mathf.Abs(Mathf.DeltaAngle(a.y, b.y)) < 5f &&
+               Mathf.Abs(Mathf.DeltaAngle(a.z, b.z)) < 5f;
     }
 
     public void RotateRightPivot() //ejemplo de rotacion de algun pivote al presionar un boton
