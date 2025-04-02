@@ -3,44 +3,52 @@ using UnityEngine.UI;
 
 public class PersonalizacionPersonaje : MonoBehaviour
 {
-    // Arrays de los accesorios (ya instanciados en la escena) 
-    public GameObject[] capas; // Array de prefabs de capas (ya instanciadas en la escena)
-    public GameObject[] sombreros; // Array de prefabs de sombreros (ya instanciados en la escena)
+    public GameObject personaje;
+    public Material[] colores;
+    public GameObject[] capas;
+    public GameObject[] sombreros;
+    public GameObject[] caras;
+    public GameObject[] pajaritas;
 
-    private int indexCapa = 0; // Índice actual de la capa seleccionada
-    private int indexSombrero = 0; // Índice actual del sombrero seleccionado
+    private int indexColor = 0;
+    private int indexCapa = 0;
+    private int indexSombrero = 0;
+    private int indexCara = 0;
+    private int indexPajarita = 0;
 
-    public Button botonCapa; // Botón para seleccionar capa
-    public Button botonSombrero; // Botón para seleccionar sombrero
-    public Button flechaIzquierda; // Botón flecha izquierda
-    public Button flechaDerecha; // Botón flecha derecha
+    public Button botonColor;
+    public Button botonCapa;
+    public Button botonSombrero;
+    public Button botonCara;
+    public Button botonPajarita;
+    public Button flechaIzquierda;
+    public Button flechaDerecha;
 
-    private enum TipoPersonalizacion { Capa, Sombrero }
+    private enum TipoPersonalizacion { Color, Capa, Sombrero, Cara, Pajarita }
     private TipoPersonalizacion tipoSeleccionado;
 
     void Start()
     {
         // Establecer los listeners para los botones
+        botonColor.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Color));
         botonCapa.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Capa));
         botonSombrero.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Sombrero));
+        botonCara.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Cara));
+        botonPajarita.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Pajarita));
         flechaIzquierda.onClick.AddListener(CambiarElementoIzquierda);
         flechaDerecha.onClick.AddListener(CambiarElementoDerecha);
 
-        // Asegurarse de que los accesorios estén en su estado inicial (activados/desactivados)
         ActualizarAccesorios();
     }
 
     void SeleccionarPersonalizacion(TipoPersonalizacion tipo)
     {
         tipoSeleccionado = tipo;
-
-        // Actualizar los accesorios según el tipo seleccionado
         ActualizarAccesorios();
     }
 
     void ActualizarAccesorios()
     {
-        // Desactivar todas las capas y sombreros
         foreach (GameObject capa in capas)
         {
             capa.SetActive(false);
@@ -51,7 +59,16 @@ public class PersonalizacionPersonaje : MonoBehaviour
             sombrero.SetActive(false);
         }
 
-        // Activar la capa y el sombrero correspondientes según los índices seleccionados
+        foreach (GameObject cara in caras)
+        {
+            cara.SetActive(false);
+        }
+
+        foreach (GameObject pajarita in pajaritas)
+        {
+            pajarita.SetActive(false);
+        }
+
         if (capas.Length > 0)
         {
             capas[indexCapa].SetActive(true);
@@ -61,11 +78,31 @@ public class PersonalizacionPersonaje : MonoBehaviour
         {
             sombreros[indexSombrero].SetActive(true);
         }
+
+        if (caras.Length > 0)
+        {
+            caras[indexCara].SetActive(true);
+        }
+
+        if (pajaritas.Length > 0)
+        {
+            pajaritas[indexPajarita].SetActive(true);
+        }
+
+        if (colores.Length > 0 && personaje != null)
+        {
+            personaje.GetComponent<Renderer>().material = colores[indexColor];
+        }
     }
 
     void CambiarElementoIzquierda()
     {
-        if (tipoSeleccionado == TipoPersonalizacion.Capa)
+        if (tipoSeleccionado == TipoPersonalizacion.Color)
+        {
+            indexColor = (indexColor - 1 + colores.Length) % colores.Length;
+            ActualizarAccesorios();
+        }
+        else if (tipoSeleccionado == TipoPersonalizacion.Capa)
         {
             indexCapa = (indexCapa - 1 + capas.Length) % capas.Length;
             ActualizarAccesorios();
@@ -75,11 +112,26 @@ public class PersonalizacionPersonaje : MonoBehaviour
             indexSombrero = (indexSombrero - 1 + sombreros.Length) % sombreros.Length;
             ActualizarAccesorios();
         }
+        else if (tipoSeleccionado == TipoPersonalizacion.Cara)
+        {
+            indexCara = (indexCara - 1 + caras.Length) % caras.Length;
+            ActualizarAccesorios();
+        }
+        else if (tipoSeleccionado == TipoPersonalizacion.Pajarita)
+        {
+            indexPajarita = (indexPajarita - 1 + pajaritas.Length) % pajaritas.Length;
+            ActualizarAccesorios();
+        }
     }
 
     void CambiarElementoDerecha()
     {
-        if (tipoSeleccionado == TipoPersonalizacion.Capa)
+        if (tipoSeleccionado == TipoPersonalizacion.Color)
+        {
+            indexColor = (indexColor + 1) % colores.Length;
+            ActualizarAccesorios();
+        }
+        else if (tipoSeleccionado == TipoPersonalizacion.Capa)
         {
             indexCapa = (indexCapa + 1) % capas.Length;
             ActualizarAccesorios();
@@ -87,6 +139,16 @@ public class PersonalizacionPersonaje : MonoBehaviour
         else if (tipoSeleccionado == TipoPersonalizacion.Sombrero)
         {
             indexSombrero = (indexSombrero + 1) % sombreros.Length;
+            ActualizarAccesorios();
+        }
+        else if (tipoSeleccionado == TipoPersonalizacion.Cara)
+        {
+            indexCara = (indexCara + 1) % caras.Length;
+            ActualizarAccesorios();
+        }
+        else if (tipoSeleccionado == TipoPersonalizacion.Pajarita)
+        {
+            indexPajarita = (indexPajarita + 1) % pajaritas.Length;
             ActualizarAccesorios();
         }
     }
