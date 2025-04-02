@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
+using Photon.Pun;
 
 public class FinalPointController : MonoBehaviour
 {
     public static FinalPointController instance;
 
-    public FinalPointP1 finalPointP1;
-    public FinalPointP2 finalPointP2;
+    public FinalPoint finalPointP1;
+    public FinalPoint finalPointP2;
+    public string nextScene;
 
     private void Awake()
     {
@@ -27,10 +30,10 @@ public class FinalPointController : MonoBehaviour
     {
         if (finalPointP1 != null && finalPointP2 != null)
         {
-            if (finalPointP1.player1IsOnPoint && finalPointP2.player2IsOnPoint)
+            if (finalPointP1.playerIsOnPoint && finalPointP2.playerIsOnPoint)
             {
                 Debug.Log("¡Ambos jugadores han llegado al checkpoint!");
-                // Aquí puedes poner la lógica que quieres ejecutar cuando ambos jugadores lleguen al checkpoint
+                PhotonNetwork.LoadLevel(nextScene);
             }
         }
     }
