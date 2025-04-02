@@ -25,13 +25,15 @@ public class Interactuable : MonoBehaviour
     public bool useToggle; //si volem alternar entre dos estats
     private bool toggled = false; //si volem alternar entre dos estats
     public bool isEnabled = true; //desactivar el objeto interactuable
+    public bool shake;
     public Animator animatorController; //animacio que es vol reproduir
-
 
     [Header("Photon")]
     public PhotonView photonView;
 
     private Quaternion initialRotation;
+
+    public CameraShakeController cameraShakeController;
 
 
     private void Start()
@@ -49,6 +51,7 @@ public class Interactuable : MonoBehaviour
 
     public void Interact()
     {
+
         if(!isEnabled)
         {
             return;
@@ -58,6 +61,8 @@ public class Interactuable : MonoBehaviour
             photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
             Debug.Log("Transfering ownership to " + PhotonNetwork.LocalPlayer);
         }
+
+        if (shake) { cameraShakeController.Shake(); }
 
         transform.DOComplete();
 

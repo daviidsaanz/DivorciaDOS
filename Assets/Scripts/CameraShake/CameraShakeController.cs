@@ -11,18 +11,12 @@ public class CameraShakeController : MonoBehaviour
         // Obtener el CameraShaker en la escena
         cameraShaker = CameraShaker.Instance;
     }
-
-    void Update()
+    public void Shake()
     {
-        // Detectar cuando se presiona la tecla espacio
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (cameraShaker != null)
         {
-            // Iniciar el shake de tipo "Earthquake" al presionar espacio
-            if (cameraShaker != null)
-            {
-                CameraShakeInstance earthquakeShake = CameraShakePresets.Earthquake;
-                cameraShaker.Shake(earthquakeShake);
-            }
+            CameraShakeInstance earthquakeShake = CameraShakePresets.Earthquake;
+            cameraShaker.Shake(earthquakeShake);
         }
     }
 }
