@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinalPointP1 : MonoBehaviour
+public class FinalPoint : MonoBehaviour
 {
-    public bool player1IsOnPoint = false;
+    public bool playerIsOnPoint = false;
+    public FinalPoint otherFinalPoint;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player1"))
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
-            player1IsOnPoint = true;
-            Debug.Log("Player 1 ha llegado al punto.");
+            playerIsOnPoint = true;
+            Debug.Log("Un player ha llegado al punto.");
 
             if (FinalPointController.instance != null)
             {
@@ -24,7 +25,7 @@ public class FinalPointP1 : MonoBehaviour
     {
         if (other.CompareTag("Player1"))
         {
-            player1IsOnPoint = false;
+            playerIsOnPoint = false;
             Debug.Log("Player 1 ha salido del punto.");
         }
     }
