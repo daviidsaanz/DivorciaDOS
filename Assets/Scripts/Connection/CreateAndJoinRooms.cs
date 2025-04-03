@@ -81,7 +81,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
             { 
                 { "Code", roomCode }, //codi de la sala
                 { "RoomName", roomName }, //nom de la sala
-                { "Level", 6 }, //nivell de la sala
+                { "Level", 1 }, //nivell de la sala
                 { "Player1", PhotonNetwork.LocalPlayer.UserId }, //jugador 1 sera l'usuari local
                 { "Player2", "" } //jugador 2 sera buit (de moment)
             },
@@ -212,7 +212,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         }
 
         string roomName = PlayerPrefs.GetString("SavedRoomName", "Sala guardada"); //si hi ha una sala guardada, agafem el nom de la sala guardada, default "Sala guardada"
-        int level = PlayerPrefs.GetInt("SavedRoomLevel", 6); //agafem el nivell de la sala guardada, default 1
+        int level = PlayerPrefs.GetInt("SavedRoomLevel", 1); //agafem el nivell de la sala guardada, default 1
 
         RoomOptions roomOptions = new RoomOptions //creem les opcions de la sala amb els parametres guardats
         {

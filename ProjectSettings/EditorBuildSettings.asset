@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Waiting.unity
     guid: 87ea6e9462e77f2459fd53b890c45989
   - enabled: 1
-    path: Assets/Scenes/Levels/LVL6.unity
+    path: Assets/Scenes/Levels/LVL2.unity
     guid: 97ec828c36b696142b806834c073838d
+  - enabled: 1
+    path: Assets/Scenes/Levels/LVL1.unity
+    guid: 01db997e4b6268642ae9525f9355d2dd
   m_configObjects: {}
