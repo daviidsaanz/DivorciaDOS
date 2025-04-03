@@ -42,20 +42,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (isEnabled)
+
+        GetInfoOfCurrentNode(); //pilla la info del node actual (tot el rato)
+
+        if (currentNode.GetComponent<Navigable>().movingGround) //si el node actual te movingGround activat (es a dir, es una plataforma que es mou) el jugador es moura amb la plataforma
         {
-            GetInfoOfCurrentNode(); //pilla la info del node actual (tot el rato)
+            Debug.Log("Moving ground");
+            transform.parent = currentNode.parent;
+        }
+        else
+        {
+            transform.parent = null;
+        }
 
-            if (currentNode.GetComponent<Navigable>().movingGround) //si el node actual te movingGround activat (es a dir, es una plataforma que es mou) el jugador es moura amb la plataforma
-            {
-                transform.parent = currentNode.parent;
-            }
-            else
-            {
-                transform.parent = null;
-            }
-
-            if (photonView.IsMine) //es per que funcioni el multiplayer i que nomes el jugador que controla el personatge pugui moure'l
+        if (photonView.IsMine) //es per que funcioni el multiplayer i que nomes el jugador que controla el personatge pugui moure'l
+        {
+            if (isEnabled)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
