@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class FinalPointController : MonoBehaviour
+public class FinalPointController : MonoBehaviourPunCallbacks
 {
     public static FinalPointController instance;
-
-    public FinalPoint finalPointP1;
-    public FinalPoint finalPointP2;
-    public string nextScene;
 
     private void Awake()
     {
@@ -21,9 +17,11 @@ public class FinalPointController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
     }
+
+    public FinalPoint finalPointP1;
+    public FinalPoint finalPointP2;
+    public string nextScene;
 
     public void CheckIfBothPlayersReachedCheckpoint()
     {
@@ -31,9 +29,28 @@ public class FinalPointController : MonoBehaviour
         {
             if (finalPointP1.playerIsOnPoint && finalPointP2.playerIsOnPoint)
             {
-                Debug.Log("¡Ambos jugadores han llegado al checkpoint!");
-                PhotonNetwork.LoadLevel(nextScene);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    Debug.Log("¡Ambos jugadores han llegado al checkpoint!");
+                    PhotonNetwork.LoadLevel(nextScene); // Cargar la siguiente escena
+                }
+                else
+                {
+                    Debug.Log("¡Ambos jugadores han llegado al checkpoint! (No soy el MasterClient)");
+                    photonView.RPC("RPC_RequestLevelChange", RpcTarget.MasterClient);
+                }
+
             }
         }
     }
+
+    [PunRPC]
+    public void RPC_RequestLevelChange()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel(nextScene);
+        }
+    }
 }
+
