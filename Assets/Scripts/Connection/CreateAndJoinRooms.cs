@@ -17,6 +17,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.JoinLobby(); //ens unim al lobby per rebre les sales disponibles de la llista de photon
         LoadSavedRooms(); //carregar la sala guardada
     }

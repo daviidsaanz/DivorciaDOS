@@ -40,6 +40,7 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - StartPlayerAnimation
+  - RPC_RequestLevelChange
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
