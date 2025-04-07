@@ -240,11 +240,11 @@ public class PlayerController : MonoBehaviour
 
                 if (playerHit.transform.GetComponent<Navigable>().isStair) //si es escala
                 {
-                    DOVirtual.Float(GetBlend(), blend, .1f, SetBlend); //la blend sera la que hem definit abans
+                    DOVirtual.Float(GetBlend(), blend, .1f, SetBlend).SetTarget(this); //la blend sera la que hem definit abans
                 }
                 else //sino
                 {
-                    DOVirtual.Float(GetBlend(), 0, .1f, SetBlend); //la blend sera 0
+                    DOVirtual.Float(GetBlend(), 0, .1f, SetBlend).SetTarget(this); //la blend sera 0
                 }
             }
         }
@@ -273,6 +273,7 @@ public class PlayerController : MonoBehaviour
     }
     void SetBlend(float x)
     {
+        if (this == null || GetComponentInChildren<Animator>() == null) return;
         GetComponentInChildren<Animator>().SetFloat("Blend", x);
     }
 
@@ -287,5 +288,8 @@ public class PlayerController : MonoBehaviour
         blend = transform.position.y - clickedNode.position.y > 0 ? -1 : 1; //si el jugador esta per sobre del node clicat, la blend sera -1, si esta per sota, sera 1 (a revisar)
 
     }
-
+    private void OnDestroy()
+    {
+        DOTween.Kill(this);
+    }
 }
