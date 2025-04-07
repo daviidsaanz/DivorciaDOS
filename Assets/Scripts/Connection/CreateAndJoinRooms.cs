@@ -8,6 +8,19 @@ using System.Collections;
 
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
+    //singleton
+    public static CreateAndJoinRooms instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public TMP_InputField createInput;
     public TMP_InputField joinInput;
     public Transform savedRoomsPanel;
@@ -213,7 +226,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         }
 
         string roomName = PlayerPrefs.GetString("SavedRoomName", "Sala guardada"); //si hi ha una sala guardada, agafem el nom de la sala guardada, default "Sala guardada"
-        int level = PlayerPrefs.GetInt("SavedRoomLevel", 1); //agafem el nivell de la sala guardada, default 1
+        //comentat per testing int level = PlayerPrefs.GetInt("Level", 1); //agafem el nivell de la sala guardada, default 1
+        int level = 1; //per testing, posem el nivell a 1
 
         RoomOptions roomOptions = new RoomOptions //creem les opcions de la sala amb els parametres guardats
         {
