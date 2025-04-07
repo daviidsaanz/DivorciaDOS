@@ -17,7 +17,15 @@ public class FinalPoint : MonoBehaviour
             if (FinalPointController.instance != null)
             {
                 Debug.Log("Llamando a CheckIfBothPlayersReachedCheckpoint desde FinalPoint.");
-                FinalPointController.instance.CheckIfBothPlayersReachedCheckpoint();
+                FinalPointController finalPointController = FinalPointController.instance;
+                if (finalPointController != null)
+                {
+                    StartCoroutine(finalPointController.CheckIfBothPlayersReachedCheckpoint());
+                }
+                else
+                {
+                    Debug.LogError("FinalPointController instance is null.");
+                }
             }
         }
     }
