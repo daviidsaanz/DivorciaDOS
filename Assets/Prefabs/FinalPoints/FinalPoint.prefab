@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3533077758822392660}
   - component: {fileID: 4523189975557869022}
   - component: {fileID: 1250054881642933430}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FinalPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -66,4 +66,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a76a35f25f64a74d8c324fa5b19109b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1IsOnPoint: 0
+  playerIsOnPoint: 0
+  otherFinalPoint: {fileID: 0}
