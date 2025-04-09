@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class PersonalizacionPersonaje : MonoBehaviour
 {
+
+    public bool esMenuDePersonalizacion = false;
+
     public GameObject personaje;
     public Material[] colores;
     public GameObject[] capas;
@@ -11,12 +14,12 @@ public class PersonalizacionPersonaje : MonoBehaviour
     public GameObject[] pajaritas;
     public GameObject[] alas;
 
-    private int indexColor = 0;
-    private int indexCapa = 0;
-    private int indexSombrero = 0;
-    private int indexCara = 0;
-    private int indexPajarita = 0;
-    private int indexAlas = 0;
+    public int indexColor = 0;
+    public int indexCapa = 0;
+    public int indexSombrero = 0;
+    public int indexCara = 0;
+    public int indexPajarita = 0;
+    public int indexAlas = 0;
 
     public Button botonColor;
     public Button botonCapa;
@@ -26,23 +29,29 @@ public class PersonalizacionPersonaje : MonoBehaviour
     public Button botonAlas;
     public Button flechaIzquierda;
     public Button flechaDerecha;
+    public Button botonGuardar;
+    public Button botonCargar;
 
     private enum TipoPersonalizacion { Color, Capa, Sombrero, Cara, Pajarita, Alas }
     private TipoPersonalizacion tipoSeleccionado;
 
     void Start()
     {
-        // Establecer los listeners para los botones
-        botonColor.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Color));
-        botonCapa.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Capa));
-        botonSombrero.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Sombrero));
-        botonCara.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Cara));
-        botonPajarita.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Pajarita));
-        botonAlas.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Alas));
-        flechaIzquierda.onClick.AddListener(CambiarElementoIzquierda);
-        flechaDerecha.onClick.AddListener(CambiarElementoDerecha);
+        if (esMenuDePersonalizacion)
+        {
+            botonColor.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Color));
+            botonCapa.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Capa));
+            botonSombrero.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Sombrero));
+            botonCara.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Cara));
+            botonPajarita.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Pajarita));
+            botonAlas.onClick.AddListener(() => SeleccionarPersonalizacion(TipoPersonalizacion.Alas));
+            flechaIzquierda.onClick.AddListener(CambiarElementoIzquierda);
+            flechaDerecha.onClick.AddListener(CambiarElementoDerecha);
+            botonGuardar.onClick.AddListener(GuardarPersonalizacion);
+            botonCargar.onClick.AddListener(CargarPersonalizacion);
 
-        ActualizarAccesorios();
+            ActualizarAccesorios();
+        }
     }
 
     void SeleccionarPersonalizacion(TipoPersonalizacion tipo)
@@ -51,7 +60,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
         ActualizarAccesorios();
     }
 
-    void ActualizarAccesorios()
+    public void ActualizarAccesorios()
     {
         foreach (GameObject capa in capas)
         {
@@ -176,4 +185,79 @@ public class PersonalizacionPersonaje : MonoBehaviour
             ActualizarAccesorios();
         }
     }
+
+    public void GuardarPersonalizacion()
+    {
+        DatosPersonalizacion datos = new DatosPersonalizacion()
+        {
+            indexColor = indexColor,
+            indexCapa = indexCapa,
+            indexSombrero = indexSombrero,
+            indexCara = indexCara,
+            indexPajarita = indexPajarita,
+            indexAlas = indexAlas
+        };
+
+        string json = JsonUtility.ToJson(datos);
+        string path = Application.persistentDataPath + "/personalizacion.json";
+        System.IO.File.WriteAllText(path, json);
+
+        Debug.Log("Personalización guardada en: " + path);
+    }
+
+
+    public void CargarPersonalizacion()
+    {
+        string path = Application.persistentDataPath + "/personalizacion.json";
+
+        if (System.IO.File.Exists(path))
+        {
+            string json = System.IO.File.ReadAllText(path);
+            DatosPersonalizacion datos = JsonUtility.FromJson<DatosPersonalizacion>(json);
+
+            indexColor = datos.indexColor;
+            indexCapa = datos.indexCapa;
+            indexSombrero = datos.indexSombrero;
+            indexCara = datos.indexCara;
+            indexPajarita = datos.indexPajarita;
+            indexAlas = datos.indexAlas;
+
+            ActualizarAccesorios();
+
+            Debug.Log("Personalización cargada desde JSON");
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró la personalización guardada.");
+        }
+    }
+
+    public DatosPersonalizacion GetDatosActuales()
+    {
+        return new DatosPersonalizacion()
+        {
+            indexColor = indexColor,
+            indexCapa = indexCapa,
+            indexSombrero = indexSombrero,
+            indexCara = indexCara,
+            indexPajarita = indexPajarita,
+            indexAlas = indexAlas
+        };
+    }
+
 }
+
+[System.Serializable]
+public class DatosPersonalizacion
+{
+    public int indexColor;
+    public int indexCapa;
+    public int indexSombrero;
+    public int indexCara;
+    public int indexPajarita;
+    public int indexAlas;
+
+}
+
+
+
