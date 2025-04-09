@@ -3,18 +3,6 @@ using UnityEngine.UI;
 
 public class PersonalizacionPersonaje : MonoBehaviour
 {
-    public static PersonalizacionPersonaje instance;
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     public bool esMenuDePersonalizacion = false;
 
@@ -26,12 +14,12 @@ public class PersonalizacionPersonaje : MonoBehaviour
     public GameObject[] pajaritas;
     public GameObject[] alas;
 
-    private int indexColor = 0;
-    private int indexCapa = 0;
-    private int indexSombrero = 0;
-    private int indexCara = 0;
-    private int indexPajarita = 0;
-    private int indexAlas = 0;
+    public int indexColor = 0;
+    public int indexCapa = 0;
+    public int indexSombrero = 0;
+    public int indexCara = 0;
+    public int indexPajarita = 0;
+    public int indexAlas = 0;
 
     public Button botonColor;
     public Button botonCapa;
@@ -72,7 +60,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
         ActualizarAccesorios();
     }
 
-    void ActualizarAccesorios()
+    public void ActualizarAccesorios()
     {
         foreach (GameObject capa in capas)
         {
@@ -244,6 +232,19 @@ public class PersonalizacionPersonaje : MonoBehaviour
         }
     }
 
+    public DatosPersonalizacion GetDatosActuales()
+    {
+        return new DatosPersonalizacion()
+        {
+            indexColor = indexColor,
+            indexCapa = indexCapa,
+            indexSombrero = indexSombrero,
+            indexCara = indexCara,
+            indexPajarita = indexPajarita,
+            indexAlas = indexAlas
+        };
+    }
+
 }
 
 [System.Serializable]
@@ -255,4 +256,8 @@ public class DatosPersonalizacion
     public int indexCara;
     public int indexPajarita;
     public int indexAlas;
+
 }
+
+
+

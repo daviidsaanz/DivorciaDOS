@@ -1159,6 +1159,8 @@ GameObject:
   - component: {fileID: 5061877727439526928}
   - component: {fileID: 1088200056471057852}
   - component: {fileID: 2384486980404751155}
+  - component: {fileID: 6280583497985357424}
+  - component: {fileID: 6135253334004324820}
   m_Layer: 0
   m_Name: Player2Customized
   m_TagString: Player2
@@ -1348,6 +1350,54 @@ MonoBehaviour:
   isClimbing: 0
   wasClimbing: 0
   photonView: {fileID: 6970769116283057274}
+--- !u!114 &6280583497985357424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985714233171832120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 577f247f1e06b664ba37279aff272b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6135253334004324820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5985714233171832120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214c37782b4a0fd41bc66f416017c4ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esMenuDePersonalizacion: 0
+  personaje: {fileID: 0}
+  colores: []
+  capas: []
+  sombreros: []
+  caras: []
+  pajaritas: []
+  alas: []
+  indexColor: 0
+  indexCapa: 0
+  indexSombrero: 0
+  indexCara: 0
+  indexPajarita: 0
+  indexAlas: 0
+  botonColor: {fileID: 0}
+  botonCapa: {fileID: 0}
+  botonSombrero: {fileID: 0}
+  botonCara: {fileID: 0}
+  botonPajarita: {fileID: 0}
+  botonAlas: {fileID: 0}
+  flechaIzquierda: {fileID: 0}
+  flechaDerecha: {fileID: 0}
+  botonGuardar: {fileID: 0}
+  botonCargar: {fileID: 0}
 --- !u!1 &6157819857164987888
 GameObject:
   m_ObjectHideFlags: 0

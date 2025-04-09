@@ -22,25 +22,32 @@ public class SpawnPlayers : MonoBehaviourPunCallbacks
             if (PhotonNetwork.IsMasterClient)
             {
                 player = PhotonNetwork.Instantiate(playerPrefab1.name, spawnPositions[0].position, Quaternion.identity);
-                if (PersonalizacionPersonaje.instance != null)
-                {
-                    Debug.Log("PersonalizacionPersonaje instance no es null");
-                    AsignarAccesoriosDesdePrefab(player);
-                    //el personaje es un children llamado Sphere dentro de la instancia con tag Player1
-                    PersonalizacionPersonaje.instance.CargarPersonalizacion();
-                }
+                var personalizacion = player.GetComponent<PersonalizacionPersonaje>();
+
+                Debug.Log("PersonalizacionPersonaje instance no es null");
+                AsignarAccesoriosDesdePrefab(player, personalizacion);
+                //el personaje es un children llamado Sphere dentro de la instancia con tag Player1
+                personalizacion.CargarPersonalizacion();
+                player.GetComponent<PlayerPersonalizacionRPC>().EnviarPersonalizacion();
+                
             }
             else
             {
-                PhotonNetwork.Instantiate(playerPrefab2.name, spawnPositions[1].position, Quaternion.identity);
+                player = PhotonNetwork.Instantiate(playerPrefab2.name, spawnPositions[1].position, Quaternion.identity);
+                var personalizacion = player.GetComponent<PersonalizacionPersonaje>();
+                
+                Debug.Log("Cliente NO master: asignando accesorios y enviando personalización");
+                AsignarAccesoriosDesdePrefab(player, personalizacion);
+                //personalizacion.CargarPersonalizacion();
+                //player.GetComponent<PlayerPersonalizacionRPC>().EnviarPersonalizacion();
+                
+
             }
         }
     }
 
-    private void AsignarAccesoriosDesdePrefab(GameObject player)
+    private void AsignarAccesoriosDesdePrefab(GameObject player, PersonalizacionPersonaje personalizacion)
     {
-        var personalizacion = PersonalizacionPersonaje.instance;
-
         // Asignar la referencia al personaje (ej: la malla que cambia color)
         personalizacion.personaje = player.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;
 
