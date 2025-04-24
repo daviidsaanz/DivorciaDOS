@@ -40,8 +40,6 @@ public class SpawnPlayers : MonoBehaviourPunCallbacks
                 AsignarAccesoriosDesdePrefab(player, personalizacion);
                 //personalizacion.CargarPersonalizacion();
                 //player.GetComponent<PlayerPersonalizacionRPC>().EnviarPersonalizacion();
-                
-
             }
         }
     }
@@ -99,8 +97,6 @@ public class SpawnPlayers : MonoBehaviourPunCallbacks
                 .ToArray();
         }
     }
-
-
 }
 
 public static class TransformExtensions
