@@ -115,11 +115,15 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     - _Rotation: 96.92996
 =======
     - _Rotation: 2.5520098
 >>>>>>> Stashed changes
+=======
+    - _Rotation: 15.081591
+>>>>>>> origin/dev
     - _RotationSpeed: 2
     - _Rotationn: 1
     - _SkyboxExtended: 1
