@@ -60,7 +60,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
         ActualizarAccesorios();
     }
 
-    public void ActualizarAccesorios()
+    public void ActualizarAccesorios() //funcio que nomes canvia els accessoris que estiguin actius i no els que estiguin desactivats (perque es vegi)
     {
         foreach (GameObject capa in capas)
         {
@@ -118,7 +118,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
         }
     }
 
-    void CambiarElementoIzquierda()
+    void CambiarElementoIzquierda() //funcio que canvia l'element seleccionat amb el boto de l'esquerra
     {
         if (tipoSeleccionado == TipoPersonalizacion.Color)
         {
@@ -152,7 +152,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
         }
     }
 
-    void CambiarElementoDerecha()
+    void CambiarElementoDerecha()//funcio que canvia l'element seleccionat amb el boto de la dreta
     {
         if (tipoSeleccionado == TipoPersonalizacion.Color)
         {
@@ -186,7 +186,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
         }
     }
 
-    public void GuardarPersonalizacion()
+    public void GuardarPersonalizacion() //funcio que guarda la personalitzacio en un json
     {
         DatosPersonalizacion datos = new DatosPersonalizacion()
         {
@@ -199,16 +199,32 @@ public class PersonalizacionPersonaje : MonoBehaviour
         };
 
         string json = JsonUtility.ToJson(datos);
-        string path = Application.persistentDataPath + "/personalizacion.json";
+        string path;
+        if (Application.isEditor)
+        {
+            path = Application.persistentDataPath + "/personalizacion_editor.json";  // Per al Playmode
+        }
+        else
+        {
+            path = Application.persistentDataPath + "/personalizacion_build.json";   // Per a la Build
+        }
         System.IO.File.WriteAllText(path, json);
 
         Debug.Log("Personalización guardada en: " + path);
     }
 
 
-    public void CargarPersonalizacion()
+    public void CargarPersonalizacion() //funcio que carrega la personalitzacio d'un json
     {
-        string path = Application.persistentDataPath + "/personalizacion.json";
+        string path;
+        if (Application.isEditor)
+        {
+            path = Application.persistentDataPath + "/personalizacion_editor.json";  // Per al Playmode
+        }
+        else
+        {
+            path = Application.persistentDataPath + "/personalizacion_build.json";   // Per a la Build
+        }
 
         if (System.IO.File.Exists(path))
         {
@@ -222,7 +238,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
             indexPajarita = datos.indexPajarita;
             indexAlas = datos.indexAlas;
 
-            ActualizarAccesorios();
+            ActualizarAccesorios(); //crida a actualitzar accessoris per aplicar la personalitzacio i que es vegi
 
             Debug.Log("Personalización cargada desde JSON");
         }
@@ -232,7 +248,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
         }
     }
 
-    public DatosPersonalizacion GetDatosActuales()
+    public DatosPersonalizacion GetDatosActuales() //retorna un objecte de la classe DatosPersonalizacion amb els indices actuals
     {
         return new DatosPersonalizacion()
         {
@@ -248,7 +264,7 @@ public class PersonalizacionPersonaje : MonoBehaviour
 }
 
 [System.Serializable]
-public class DatosPersonalizacion
+public class DatosPersonalizacion //classe que contindra les dades de la personalitzacio
 {
     public int indexColor;
     public int indexCapa;

@@ -189,7 +189,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
                 Debug.Log("La sala ahora tiene 2 jugadores, guardando...");
                 SaveRoom(roomCode, roomName); //cridem a la funció per guardar la sala
-                PhotonNetwork.LoadLevel("LVL" + (int)roomProperties["Level"]);
+                //PhotonNetwork.LoadLevel("LVL" + (int)roomProperties["Level"]); comentat per testing
+                PhotonNetwork.LoadLevel("LVL3"); //per testing
             }
         }
     }
