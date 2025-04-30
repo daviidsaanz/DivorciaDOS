@@ -9,42 +9,70 @@ using System.Linq;
 
 public class SpawnPlayers : MonoBehaviourPunCallbacks
 {
+    public static SpawnPlayers instance;
     public GameObject playerPrefab1;
     public GameObject playerPrefab2;
     public Transform[] spawnPositions; // Array con diferentes posiciones de spawn
+
+    void Awake()
+    {
+        // Asegurarse de que solo haya una instancia de SpawnPlayers
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Destruye el objeto si ya existe una instancia
+        }
+    }
 
     void Start()
     {
         if (PhotonNetwork.IsConnected)
         {
-            GameObject player = null;
-
-            if (PhotonNetwork.IsMasterClient)
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
             {
-                player = PhotonNetwork.Instantiate(playerPrefab1.name, spawnPositions[0].position, Quaternion.identity);
-                var personalizacion = player.GetComponent<PersonalizacionPersonaje>();
+                GameObject player = null;
 
-                Debug.Log("PersonalizacionPersonaje instance no es null");
-                AsignarAccesoriosDesdePrefab(player, personalizacion);
-                //el personaje es un children llamado Sphere dentro de la instancia con tag Player1
-                personalizacion.CargarPersonalizacion();
-                player.GetComponent<PlayerPersonalizacionRPC>().EnviarPersonalizacion();
-                
+                if (PhotonNetwork.IsMasterClient) //si es el player 1
+                {
+                    player = PhotonNetwork.Instantiate(playerPrefab1.name, spawnPositions[0].position, Quaternion.identity); //instancia el prefab del player 1 en la pososicio 0
+                    var personalizacion = player.GetComponent<PersonalizacionPersonaje>(); //agafa el script de personalitzacio del player 1
+
+                    Debug.Log("Client master provant d'assignar la seva personalitzacio local");
+                    AsignarAccesoriosDesdePrefab(player, personalizacion); //posa be els accessoris al prefab al inspector (busca i filtra en la jerarquia perque el script de personalitzacio agafi les referencies dinamicament)
+                    personalizacion.CargarPersonalizacion(); //carrega la personalitzacio del player 1 del JSON i ho aplica (perque es vegi)
+
+                    Debug.Log("Client master: enviant la seva personalizacio");
+
+                    PlayerPersonalizacionRPC playerPersonalizacionRPC = player.GetComponent<PlayerPersonalizacionRPC>();
+                    playerPersonalizacionRPC.EnviarPersonalizacion(player.GetComponent<PhotonView>().ViewID); //envia la personalitzacio al player 2
+
+                }
+                else //si es el player 2
+                {
+                    player = PhotonNetwork.Instantiate(playerPrefab2.name, spawnPositions[1].position, Quaternion.identity); //instancia el prefab del player 2 en la pososicio 1
+                    var personalizacion = player.GetComponent<PersonalizacionPersonaje>(); //agafa el script de personalitzacio del player 2
+
+                    Debug.Log("Client NO master: provant d'assignar la seva personalitzacio local");
+                    AsignarAccesoriosDesdePrefab(player, personalizacion); //posa be els accessoris al prefab al inspector (busca i filtra en la jerarquia perque el script de personalitzacio agafi les referencies dinamicament)
+                    personalizacion.CargarPersonalizacion(); //carrega la personalitzacio del player 2 del JSON i ho aplica (perque es vegi)
+
+                    Debug.Log("Client NO master: enviant la seva personalizacio");
+
+                    PlayerPersonalizacionRPC playerPersonalizacionRPC = player.GetComponent<PlayerPersonalizacionRPC>();
+                    playerPersonalizacionRPC.EnviarPersonalizacion(player.GetComponent<PhotonView>().ViewID); //envia la personalitzacio al player 1
+
+                }
+
             }
-            else
-            {
-                player = PhotonNetwork.Instantiate(playerPrefab2.name, spawnPositions[1].position, Quaternion.identity);
-                var personalizacion = player.GetComponent<PersonalizacionPersonaje>();
-                
-                Debug.Log("Cliente NO master: asignando accesorios y enviando personalización");
-                AsignarAccesoriosDesdePrefab(player, personalizacion);
-                //personalizacion.CargarPersonalizacion();
-                //player.GetComponent<PlayerPersonalizacionRPC>().EnviarPersonalizacion();
-            }
+            
         }
     }
 
-    private void AsignarAccesoriosDesdePrefab(GameObject player, PersonalizacionPersonaje personalizacion)
+
+    public void AsignarAccesoriosDesdePrefab(GameObject player, PersonalizacionPersonaje personalizacion)
     {
         // Asignar la referencia al personaje (ej: la malla que cambia color)
         personalizacion.personaje = player.GetComponentInChildren<SkinnedMeshRenderer>().gameObject;

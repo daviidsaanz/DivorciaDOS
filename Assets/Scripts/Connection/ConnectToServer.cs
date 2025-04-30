@@ -10,6 +10,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 {
     public GameObject userNamePanel;
     public TMP_InputField userNameInput;
+    public TMP_Text connected;
+    public TMP_Text noConnection;
 
     void Start()
     {
@@ -54,6 +56,20 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
+        connected.gameObject.SetActive(true);
+        StartCoroutine(LoadSceneWithDelay());
+
+    }
+
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        base.OnJoinRandomFailed(returnCode, message);
+        noConnection.gameObject.SetActive(true);
+    }
+
+    public IEnumerator LoadSceneWithDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene("Lobby");
     }
 }

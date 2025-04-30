@@ -1376,7 +1376,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   esMenuDePersonalizacion: 0
   personaje: {fileID: 0}
-  colores: []
+  colores:
+  - {fileID: 2100000, guid: b339d40511ebc6b4392be702a7eaaf2e, type: 2}
+  - {fileID: 2100000, guid: 14d8e8de8d9d6f24f985953d8e89e154, type: 2}
+  - {fileID: 2100000, guid: a81da84a0d4c68e48b71c99635742d30, type: 2}
+  - {fileID: 2100000, guid: 9894625dc52ecac49a18193c3e54e845, type: 2}
+  - {fileID: 2100000, guid: d0cd4427438572140b7477784d8a1105, type: 2}
+  - {fileID: 2100000, guid: ecfbd97a2ab038e4ba9418278b3adc9f, type: 2}
+  - {fileID: 2100000, guid: f01c3c28451e6cd4fb03ba90f3af356e, type: 2}
+  - {fileID: 2100000, guid: 42fc5bc342fcde143b39faf1bf319707, type: 2}
+  - {fileID: 2100000, guid: d102b4118275ba24c8e7ab762459ca3a, type: 2}
+  - {fileID: 2100000, guid: 86c517c87877b5f448211155d20095f5, type: 2}
+  - {fileID: 2100000, guid: 766141be2f55b8d439a0a162f789ade1, type: 2}
+  - {fileID: 2100000, guid: a800144f23e42f041aa0037ff60c4747, type: 2}
+  - {fileID: 2100000, guid: 1005795dc596e4949ba0aa5cbad4590b, type: 2}
+  - {fileID: 2100000, guid: e8df9d314cb915a4897461b57878ea20, type: 2}
+  - {fileID: 2100000, guid: d71b9a51b1bf43748a3ddafa9780acbf, type: 2}
+  - {fileID: 2100000, guid: f9601dc0f18c02943a200a7760583c41, type: 2}
+  - {fileID: 2100000, guid: 72c99eafedcd9894ca18a9b5c3816245, type: 2}
+  - {fileID: 2100000, guid: 1362d0351866ed6488396d5145465c27, type: 2}
+  - {fileID: 2100000, guid: 555d781831d43004d979a18d5710f9d7, type: 2}
+  - {fileID: 2100000, guid: 28c7691617f277f47b88a925d3e22563, type: 2}
+  - {fileID: 2100000, guid: f8d506f9a87a47f418f58683eec83a2e, type: 2}
+  - {fileID: 2100000, guid: 7250211f0debca84babbd8a6694bbc81, type: 2}
+  - {fileID: 2100000, guid: 75a3ca0c70185b84e819c971cc57719f, type: 2}
+  - {fileID: 2100000, guid: 362e7ec450493fd45bcb294f834c5d32, type: 2}
+  - {fileID: 2100000, guid: 40c123561add58b4a9bb18d24d0a7ea8, type: 2}
+  - {fileID: 2100000, guid: fe56b86ddf09288479242024112d6299, type: 2}
   capas: []
   sombreros: []
   caras: []
