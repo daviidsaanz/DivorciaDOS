@@ -30,13 +30,28 @@ public class PlayerController : MonoBehaviour
 
     public PhotonView photonView; //es per que funcioni el multiplayer
 
+    Transform currentPlatform = null;
+    Vector3 lastPlatformPosition;
+    Quaternion lastPlatformRotation;
+    bool isOnMovingGround = false;
+
     void Start()
     {
+        GetInfoOfCurrentNode(); //pilla la info del node actual
+        
+        if (currentNode.GetComponent<Navigable>().movingGround && currentNode.parent != null)
+        {
+            currentPlatform = currentNode.parent;
+            lastPlatformPosition = currentPlatform.position;
+            lastPlatformRotation = currentPlatform.rotation;
+            isOnMovingGround = true;
+        }
+       
         marker = GameObject.FindGameObjectWithTag("indicator").transform;
         photonView = GetComponent<PhotonView>();
         PhotonNetwork.SendRate = 30;
         PhotonNetwork.SerializationRate = 20;
-        GetInfoOfCurrentNode(); //pilla la info del node actual
+        
     }
 
 
@@ -45,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
         GetInfoOfCurrentNode(); //pilla la info del node actual (tot el rato)
 
-        if (currentNode.GetComponent<Navigable>().movingGround) //si el node actual te movingGround activat (es a dir, es una plataforma que es mou) el jugador es moura amb la plataforma
+        /*if (currentNode.GetComponent<Navigable>().movingGround) //si el node actual te movingGround activat (es a dir, es una plataforma que es mou) el jugador es moura amb la plataforma
         {
             Debug.Log("Moving ground");
             transform.parent = currentNode.parent;
@@ -53,7 +68,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             transform.parent = null;
-        }
+        }*/
 
         if (photonView.IsMine) //es per que funcioni el multiplayer i que nomes el jugador que controla el personatge pugui moure'l
         {
@@ -87,6 +102,24 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+
+   void LateUpdate()
+    {
+        if (isOnMovingGround && currentPlatform != null)
+        {
+            Vector3 delta = currentPlatform.position - lastPlatformPosition;
+            transform.position += delta;
+            
+            Quaternion deltaRot = currentPlatform.rotation * Quaternion.Inverse(lastPlatformRotation);
+
+            transform.RotateAround(currentPlatform.position, Vector3.up, deltaRot.eulerAngles.y);
+
+            lastPlatformPosition = currentPlatform.position;
+            lastPlatformRotation = currentPlatform.rotation;
+        }
+    }
+
 
     void FindPath() //busca el path fins al node clicat
     {
@@ -237,6 +270,23 @@ public class PlayerController : MonoBehaviour
             if (playerHit.transform.GetComponent<Navigable>() != null) //si el que ha tocat es un node
             {
                 currentNode = playerHit.transform; //el node hitejat passa a ser el current
+
+                Navigable nav = currentNode.GetComponent<Navigable>();
+
+                if (nav.movingGround && currentNode.parent != null)
+                {
+                    if (currentPlatform != currentNode.parent)
+                    {
+                        currentPlatform = currentNode.parent;
+                        lastPlatformPosition = currentPlatform.position;
+                    }
+                    isOnMovingGround = true;
+                }
+                else
+                {
+                    isOnMovingGround = false;
+                    currentPlatform = null;
+                }
 
                 if (playerHit.transform.GetComponent<Navigable>().isStair) //si es escala
                 {

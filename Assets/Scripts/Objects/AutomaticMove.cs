@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 public class AutomaticMove : MonoBehaviour
 {
@@ -15,9 +16,18 @@ public class AutomaticMove : MonoBehaviour
     private bool automaticMoveStarted = false;
     public float rotationTolerance = 1f; // Grados de tolerancia
 
+    private PhotonView view1;
+    private PhotonView view2;
+
+    void Start()
+    {
+        view1 = platform1.GetComponent<PhotonView>();
+        view2 = platform2.GetComponent<PhotonView>();
+    }
+
     void Update()
     {
-        if (!automaticMoveStarted && IsRotationMatch(objectCondition.transform.rotation, targetRotation.rotation))
+        if (!automaticMoveStarted && view1.IsMine && view2.IsMine && IsRotationMatch(objectCondition.transform.rotation, targetRotation.rotation))
         {
             automaticMoveStarted = true;
             StartCoroutine(StartAutomaticMove());
@@ -29,27 +39,30 @@ public class AutomaticMove : MonoBehaviour
         return Quaternion.Angle(a, b) <= rotationTolerance;
     }
 
-    IEnumerator StartAutomaticMove()
+    private IEnumerator StartAutomaticMove()
     {
-        
-        platform1.transform.DORotate(new Vector3(0, 45, 0), 1.5f);
-
-        yield return new WaitForSeconds(1f); 
-
-        platform2.transform.DORotate(new Vector3(0, -45, 0), 1.5f);
-
         yield return new WaitForSeconds(1f);
+        platform1.transform.DORotate(new Vector3(0, 45, 0), 3f);
 
-        platform2.transform.DOMove(new Vector3(-14.5f, -9.5f, 20.5f), 1.5f);
-        platform2.transform.DORotate(new Vector3(0, -45, 0), 1.5f);
-        platform1.transform.DORotate(new Vector3(0, 180, 0), 1.5f);
+        yield return new WaitForSeconds(3.5f);
 
-        yield return new WaitForSeconds(1f);
+        platform2.transform.DORotate(new Vector3(0, -45, 0), 3f);
+
+        yield return new WaitForSeconds(3.5f);
+
+        platform2.transform.DOMove(new Vector3(-14.5f, -9.5f, 20.5f), 3f);
+        yield return new WaitForSeconds(3.5f);
+        platform2.transform.DORotate(new Vector3(0, -45, 0), 3f);
+        yield return new WaitForSeconds(3.5f);
+        platform1.transform.DORotate(new Vector3(0, 180, 0), 3f);
+        yield return new WaitForSeconds(3.5f);
 
         platform1.transform.DOMove(new Vector3(-2f, -0.5f, 8f), 1.5f);
+        yield return new WaitForSeconds(2f);
         platform1.transform.DORotate(new Vector3(0, -180, 0), 1.5f);
-
+        yield return new WaitForSeconds(2f);
         platform2.transform.DOMove(new Vector3(-14f, -5f, 20f), 1.5f);
+        yield return new WaitForSeconds(2f);
         platform2.transform.DORotate(new Vector3(0, -90, 0), 1.5f);
 
         yield return new WaitForSeconds(1f);
@@ -57,6 +70,6 @@ public class AutomaticMove : MonoBehaviour
         end1.SetActive(true);
         end2.SetActive(true);
 
-
     }
+
 }
