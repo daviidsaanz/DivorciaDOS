@@ -30820,43 +30820,57 @@ PrefabInstance:
     - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: dialogues.Array.size
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: dialogues.Array.data[0].dialogue
-      value: "Nivel dos\u2026 \xBFEso significa que ya somos m\xE1s listos o solo
-        que fallamos menos?"
+      value: "Est\xE1 todo oscuro... pero no tengo miedo. No contigo."
       objectReference: {fileID: 0}
     - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: dialogues.Array.data[1].dialogue
-      value: "Dicen que el conocimiento es como un lago\u2026 profundo e infinito."
+      value: "Yo tampoco. Es raro, \xBFverdad? Como si t\xFA fueras la luz aqu\xED.."
       objectReference: {fileID: 0}
     - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: dialogues.Array.data[2].dialogue
-      value: Genial, porque yo solo veo agua y cero respuestas.
+      value: Oye, no te pongas cursi... que me derrito y no vemos nada.
       objectReference: {fileID: 0}
     - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: dialogues.Array.data[3].dialogue
-      value: "Mira el reflejo, tal vez ah\xED encontremos algo."
+      value: "Pues si me dejas guiar, igual encendemos algo m\xE1s que bombillas."
       objectReference: {fileID: 0}
     - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: dialogues.Array.data[4].dialogue
-      value: "S\xED, mi cara de confusi\xF3n en HD."
+      value: "\xBFEso ha sido una met\xE1fora? Porque suena a plan maestro."
       objectReference: {fileID: 0}
     - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: dialogues.Array.data[5].dialogue
-      value: "Bueno, aprender es eso, \xBFno? Mirar y entender\u2026 eventualmente."
+      value: Shh... anda, da un paso. A ver si hacemos brillar esto juntos.
       objectReference: {fileID: 0}
     - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: dialogues.Array.data[6].dialogue
       value: "Si no nos hundimos antes, s\xED."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
+        type: 3}
+      propertyPath: dialogues.Array.data[5].textColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
+        type: 3}
+      propertyPath: dialogues.Array.data[5].textColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
+        type: 3}
+      propertyPath: dialogues.Array.data[5].textColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7417528109429592158, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
@@ -30966,7 +30980,7 @@ PrefabInstance:
     - target: {fileID: 7966253931012195632, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33898,12 +33912,12 @@ PrefabInstance:
     - target: {fileID: 1913307615197974367, guid: 7b8f69201cb0dda47bc83d2a4c988c3c,
         type: 3}
       propertyPath: m_text
-      value: PENSAMIENTO  MUTUO
+      value: CHISPA INTERIOR
       objectReference: {fileID: 0}
     - target: {fileID: 2330645544638975366, guid: 7b8f69201cb0dda47bc83d2a4c988c3c,
         type: 3}
       propertyPath: m_text
-      value: II
+      value: III
       objectReference: {fileID: 0}
     - target: {fileID: 2776775199539892481, guid: 7b8f69201cb0dda47bc83d2a4c988c3c,
         type: 3}
@@ -33913,7 +33927,7 @@ PrefabInstance:
     - target: {fileID: 2776775199539892481, guid: 7b8f69201cb0dda47bc83d2a4c988c3c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3102193513812435609, guid: 7b8f69201cb0dda47bc83d2a4c988c3c,
         type: 3}
