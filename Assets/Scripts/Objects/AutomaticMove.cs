@@ -42,33 +42,52 @@ public class AutomaticMove : MonoBehaviour
     private IEnumerator StartAutomaticMove()
     {
         yield return new WaitForSeconds(1f);
-        platform1.transform.DORotate(new Vector3(0, 45, 0), 3f);
 
-        yield return new WaitForSeconds(3.5f);
+        Sequence s = DOTween.Sequence();
 
-        platform2.transform.DORotate(new Vector3(0, -45, 0), 3f);
+        s.Append(platform1.transform
+            .DORotate(new Vector3(0, 45, 0), 3f)
+            .SetEase(Ease.InOutSine));
 
-        yield return new WaitForSeconds(3.5f);
+        s.Append(platform2.transform
+            .DORotate(new Vector3(0, -45, 0), 3f)
+            .SetEase(Ease.InOutSine));
 
-        platform2.transform.DOMove(new Vector3(-14.5f, -9.5f, 20.5f), 3f);
-        yield return new WaitForSeconds(3.5f);
-        platform2.transform.DORotate(new Vector3(0, -45, 0), 3f);
-        yield return new WaitForSeconds(3.5f);
-        platform1.transform.DORotate(new Vector3(0, 180, 0), 3f);
-        yield return new WaitForSeconds(3.5f);
+        s.Append(platform2.transform
+            .DOMove(new Vector3(-14.5f, -9.5f, 20.5f), 3f)
+            .SetEase(Ease.InOutSine));
 
-        platform1.transform.DOMove(new Vector3(-2f, -0.5f, 8f), 1.5f);
-        yield return new WaitForSeconds(2f);
-        platform1.transform.DORotate(new Vector3(0, -180, 0), 1.5f);
-        yield return new WaitForSeconds(2f);
-        platform2.transform.DOMove(new Vector3(-14f, -5f, 20f), 1.5f);
-        yield return new WaitForSeconds(2f);
-        platform2.transform.DORotate(new Vector3(0, -90, 0), 1.5f);
+        s.Join(platform2.transform
+            .DORotate(new Vector3(0, -45, 0), 3f)
+            .SetEase(Ease.InOutSine));
 
-        yield return new WaitForSeconds(1f);
+        s.Append(platform1.transform
+            .DORotate(new Vector3(0, 180, 0), 3f)
+            .SetEase(Ease.InOutSine));
 
-        end1.SetActive(true);
-        end2.SetActive(true);
+        s.Append(platform1.transform
+            .DOMove(new Vector3(-2f, -0.5f, 8f), 1.5f)
+            .SetEase(Ease.InOutSine));
+
+        s.Join(platform1.transform
+            .DORotate(new Vector3(0, -180, 0), 1.5f)
+            .SetEase(Ease.InOutSine));
+
+        s.Append(platform2.transform
+            .DOMove(new Vector3(-14f, -5f, 20f), 1.5f)
+            .SetEase(Ease.InOutSine));
+
+        s.Join(platform2.transform
+            .DORotate(new Vector3(0, -90, 0), 1.5f)
+            .SetEase(Ease.InOutSine));
+
+        s.AppendCallback(() =>
+        {
+            end1.SetActive(true);
+            end2.SetActive(true);
+        });
+
+        yield return s.WaitForCompletion();
 
     }
 
