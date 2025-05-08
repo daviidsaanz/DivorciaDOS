@@ -122,7 +122,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b339d40511ebc6b4392be702a7eaaf2e, type: 2}
+  - {fileID: 2100000, guid: 2dcb43287fd3f8f408b5b0fdf9f153fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1239,8 +1239,8 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 3
-    InterpolateMoveTowardsSpeed: 1
+    InterpolateOption: 1
+    InterpolateMoveTowardsSpeed: 5
     InterpolateLerpSpeed: 1
     ExtrapolateOption: 1
     ExtrapolateSpeed: 1

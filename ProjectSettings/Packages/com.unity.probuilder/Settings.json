@@ -7,11 +7,14 @@
                 "value": "{\"m_Value\":1}"
             },
             {
+<<<<<<< HEAD
                 "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.lastMeshSelectMode",
                 "value": "{\"m_Value\":4}"
             },
             {
+=======
+>>>>>>> 77ce5de (lvl 5 i lvl 6 aplicats per photon i fet sistema de renaudar lvl)
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "editor.backFaceSelectEnabled",
                 "value": "{\"m_Value\":false}"
@@ -23,6 +26,7 @@
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+<<<<<<< HEAD
 <<<<<<< HEAD
                 "key": "experimental.enabled",
                 "value": "{\"m_Value\":false}"
@@ -48,17 +52,37 @@
 <<<<<<< HEAD
                 "key": "editor.autoRecalculateCollisions",
 =======
+=======
+>>>>>>> 77ce5de (lvl 5 i lvl 6 aplicats per photon i fet sistema de renaudar lvl)
                 "key": "experimental.enabled",
->>>>>>> origin/dev
                 "value": "{\"m_Value\":false}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                "key": "editor.stripProBuilderScriptsOnBuild",
+                "value": "{\"m_Value\":true}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "lightmapping.autoUnwrapLightmapUV",
+                "value": "{\"m_Value\":true}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "ShapeComponent.ResetSettings",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+>>>>>>> 77ce5de (lvl 5 i lvl 6 aplicats per photon i fet sistema de renaudar lvl)
                 "key": "editor.toolbarIconGUI",
                 "value": "{\"m_Value\":false}"
             },
             {
+<<<<<<< HEAD
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeComponent.SettingsEnabled",
                 "value": "{\"m_Value\":false}"
@@ -80,6 +104,8 @@
             },
             {
 >>>>>>> origin/dev
+=======
+>>>>>>> 77ce5de (lvl 5 i lvl 6 aplicats per photon i fet sistema de renaudar lvl)
                 "type": "UnityEngine.ProBuilder.SelectionModifierBehavior, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "editor.rectSelectModifier",
                 "value": "{\"m_Value\":2}"

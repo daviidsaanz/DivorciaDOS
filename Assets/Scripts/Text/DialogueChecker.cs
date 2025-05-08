@@ -76,11 +76,14 @@ public class DialogueChecker : MonoBehaviour
 
         // Fade out the first canvas
         yield return StartCoroutine(FadeCanvasGroup(canvasGroup, 1f, 0f, fadeDuration));
-
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false; 
         Debug.Log("Fade-out complete for the first canvas. Starting fade-out for the second canvas.");
 
         // Fade out the second canvas
-        yield return StartCoroutine(FadeCanvasGroup(secondCanvasGroup, 1f, 0f, fadeDuration));
+        yield return StartCoroutine(FadeCanvasGroup(secondCanvasGroup, 1f, 0f, fadeDuration)); //desactiva el dialogue canvas
+        secondCanvasGroup.blocksRaycasts = false; // Disable interaction with the second canvas
+        secondCanvasGroup.interactable = false; // Disable interaction with the second canvas
 
         Debug.Log("Fade-out complete for both canvases. Both are now hidden.");
 
@@ -109,6 +112,9 @@ public class DialogueChecker : MonoBehaviour
 
         // Ensure the alpha is set to the end value at the end
         group.alpha = endAlpha;
+
+        group.blocksRaycasts = endAlpha > 0.1f;
+        group.interactable = endAlpha > 0.1f;
 
     }
 }

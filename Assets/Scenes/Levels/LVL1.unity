@@ -14619,6 +14619,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].textColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].textColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282062212521875829, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].textColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7417528109429592158, guid: ccee16b010bc2dc4bae8fe0fb80dbedf,
         type: 3}
       propertyPath: m_Pivot.x
