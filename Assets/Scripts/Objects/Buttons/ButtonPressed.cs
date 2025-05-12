@@ -61,7 +61,7 @@ public class ButtonPressed : MonoBehaviour
                 if (!disabled && !otherButton.disabled) // Asegurarse de que no se activa varias veces
                 {
                     SetMovmentAndRotation(); // Asigna los valores al objeto a mover
-                    yield return new WaitForSeconds(0.25f);
+                    yield return new WaitForSeconds(0.5f);
                     objectToMove.GetComponent<Interactuable>().Interact();
                     disabled = true;
                     otherButton.disabled = true;
