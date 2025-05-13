@@ -189,8 +189,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
                 Debug.Log("La sala ahora tiene 2 jugadores, guardando...");
                 SaveRoom(roomCode, roomName); //cridem a la funció per guardar la sala
-                //PhotonNetwork.LoadLevel("LVL" + (int)roomProperties["Level"]); comentat per testing
-                PhotonNetwork.LoadLevel("LVL2"); //per testing
+                PhotonNetwork.LoadLevel("LVL" + (int)roomProperties["Level"]); //comentat per testing
+                //PhotonNetwork.LoadLevel("LVL1"); //per testing
             }
         }
     }
@@ -200,6 +200,10 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         PlayerPrefs.SetString("SavedRoomCode", roomCode); //guardem el codi de la sala
         PlayerPrefs.SetString("SavedRoomName", roomName); //guardem el nom de la sala
+        if(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Level"))
+        {
+            PlayerPrefs.SetInt("Level", (int)PhotonNetwork.CurrentRoom.CustomProperties["Level"]); //guardem el nivell de la sala
+        }
         PlayerPrefs.Save();
         Debug.Log("Última sala guardada: " + roomName + " (" + roomCode + ")");
     }
@@ -228,7 +232,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
         string roomName = PlayerPrefs.GetString("SavedRoomName", "Sala guardada"); //si hi ha una sala guardada, agafem el nom de la sala guardada, default "Sala guardada"
         //comentat per testing int level = PlayerPrefs.GetInt("Level", 1); //agafem el nivell de la sala guardada, default 1
-        int level = 1; //per testing, posem el nivell a 1
+        int level = PlayerPrefs.GetInt("Level", 1);
 
         RoomOptions roomOptions = new RoomOptions //creem les opcions de la sala amb els parametres guardats
         {

@@ -42,8 +42,8 @@ public class FinalPointController : MonoBehaviourPunCallbacks
                 yield return new WaitForSeconds(fade.fadeDuration); //espera el rato del fade
 
                 //Guarda el lvl i carrega la següent escena
-                //int newLevel = PlayerPrefs.GetInt("Level") + 1;
-                int newLevel = 2; //per testing
+                int newLevel = PlayerPrefs.GetInt("Level") + 1;
+                //int newLevel = 2; //per testing
                 PlayerPrefs.SetInt("Level", newLevel);
                 PlayerPrefs.Save();
                 PhotonNetwork.CurrentRoom.SetCustomProperties(new ExitGames.Client.Photon.Hashtable { { "Level", newLevel } });

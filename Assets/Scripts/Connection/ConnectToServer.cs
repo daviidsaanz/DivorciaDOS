@@ -12,10 +12,14 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public TMP_InputField userNameInput;
     public TMP_Text connected;
     public TMP_Text noConnection;
+    public ChangeScene changeScene;
 
     void Start()
     {
-        if(PlayerPrefs.HasKey("PhotonUserId")) //si ja te un id guardat
+        //esborra el playerPrefs de PhotonUserID
+        PlayerPrefs.DeleteKey("PhotonUserId");
+
+        if (PlayerPrefs.HasKey("PhotonUserId")) //si ja te un id guardat
         {
             ConnectToPhoton();
             Debug.Log("PhotonUserId: " + PlayerPrefs.GetString("PhotonUserId"));
@@ -40,7 +44,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
         userNamePanel.SetActive(false);
         ConnectToPhoton();
-
+        Debug.Log("PhotonUserId: " + PlayerPrefs.GetString("PhotonUserId"));
     }
 
     private void ConnectToPhoton()
@@ -56,9 +60,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        connected.gameObject.SetActive(true);
         StartCoroutine(LoadSceneWithDelay());
-
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -69,7 +71,11 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     public IEnumerator LoadSceneWithDelay()
     {
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Lobby");
+        yield return new WaitForSeconds(2f);
+        connected.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(changeScene.TransitionOfScene("Lobby", true)); //carrega la escena de lobby
+        Debug.Log("Cambiando a la escena: Lobby");
+
     }
 }
