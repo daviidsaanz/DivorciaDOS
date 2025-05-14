@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +7,9 @@ public class TextManager : MonoBehaviour
 {
     private AudioSource audioClip;
     private TMP_Text TextBox;
+
+    // Public variable to assign the AudioClip from the Inspector
+    public AudioClip typingSound;  // New variable to assign the clip in the Inspector
 
     // Speed between characters being added to text
     public float LetterDelay;
@@ -35,6 +37,23 @@ public class TextManager : MonoBehaviour
         TextBox = this.gameObject.GetComponent<TextMeshProUGUI>();
         TextBox.text = "";
         audioClip = GetComponent<AudioSource>();
+
+        // Verificar si el audioClip está presente
+        if (audioClip == null)
+        {
+            Debug.LogError("No se ha encontrado un AudioSource en el objeto.");
+        }
+
+        // Verificar si el clip ha sido asignado correctamente
+        if (typingSound == null)
+        {
+            Debug.LogWarning("El AudioClip no ha sido asignado en el Inspector.");
+        }
+        else
+        {
+            // Si todo está bien, asignar el clip al AudioSource
+            audioClip.clip = typingSound;
+        }
     }
 
     public void TextRequest(float StartDelay, string Dialogue, float ReadTime, Color color)
@@ -49,7 +68,16 @@ public class TextManager : MonoBehaviour
         // Si no hay ningún diálogo en curso, empezar a mostrar el nuevo texto
         if (Stack.Count == 1)
         {
+            OnLetter = 0; // Reiniciar posición de letra
             Letters = Stack[0].Dialogue.ToCharArray();
+
+            // Iniciar sonido de escritura si el clip está asignado
+            if (audioClip != null && audioClip.clip != null)
+            {
+                audioClip.loop = true;   // Para que suene mientras escribe
+                audioClip.Play();
+            }
+
             StartCoroutine("AddChar", StartDelay);
         }
     }
@@ -59,15 +87,23 @@ public class TextManager : MonoBehaviour
     // Adding text
     public void NextCharacter()
     {
-        TextBox.text += Letters[OnLetter];
-        OnLetter++;
-        if (OnLetter > Letters.Length - 1)
+        if (Letters == null || Stack.Count == 0)
         {
-            StartCoroutine("RemoveChar", Stack[0].ReadTime);
-            Stack.Remove(Stack[0]);
-            CheckIfDialogueFinished(); // Check if dialogue is finished after removing from stack
+            Debug.LogWarning("No hay diálogo disponible para mostrar.");
             return;
         }
+
+        if (OnLetter >= Letters.Length)
+        {
+            float readTime = Stack[0].ReadTime;
+            audioClip.Stop(); // Detener el sonido al finalizar el texto
+            StartCoroutine("RemoveChar", readTime);
+            return;
+        }
+
+        TextBox.text += Letters[OnLetter];
+
+        OnLetter++;
         StartCoroutine("AddChar", LetterDelay);
     }
 
@@ -80,22 +116,40 @@ public class TextManager : MonoBehaviour
     // Removing text
     public void NextCharacterRemove()
     {
-        audioClip.Stop();
-        TextBox.text = TextBox.text.Remove(OnLetter - 1);
-        OnLetter--;
+        if (OnLetter > 0)
+        {
+            TextBox.text = TextBox.text.Remove(OnLetter - 1);
+            OnLetter--;
+        }
+
+        // Detener el sonido solo cuando el texto esté completamente borrado
         if (OnLetter == 0)
         {
             if (Stack.Count > 0)
             {
-                Letters = Stack[0].Dialogue.ToCharArray();
-                StartCoroutine("AddChar", Stack[0].StartDelay);
+                Stack.RemoveAt(0);
+
+                if (Stack.Count > 0)
+                {
+                    OnLetter = 0;
+                    Letters = Stack[0].Dialogue.ToCharArray();
+                    StartCoroutine("AddChar", Stack[0].StartDelay);
+                }
+                else
+                {
+                    CheckIfDialogueFinished();
+                }
             }
-            else
+
+            // Detener el sonido después de que el texto se ha borrado por completo
+            if (audioClip.isPlaying)
             {
-                CheckIfDialogueFinished(); // Check if dialogue is finished when all characters are removed
+                audioClip.Stop();
             }
+
             return;
         }
+
         StartCoroutine("RemoveChar", RemoveDelay);
     }
 

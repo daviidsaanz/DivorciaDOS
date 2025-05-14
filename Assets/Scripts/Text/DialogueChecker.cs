@@ -14,10 +14,18 @@ public class DialogueChecker : MonoBehaviour
     public float delayBetweenFades = 2f; // Delay between fade-in and fade-out
     public float delayBeforeFadeIn = 0.5f; // Delay before the first canvas fades in
 
+    public AudioSource musicSource;
+    public AudioClip musicClip;
+    [Range(0f, 1f)]
+    public float targetMusicVolume = 1f; // Volumen final deseado
+    public float musicFadeInDuration = 15f; // Duración del fade-in de música
+
+
     void Start()
     {
         // Ensure the GameObject is active
         gameObject.SetActive(true);
+        musicSource = GetComponent<AudioSource>();
 
         // Get or add a CanvasGroup component for the fade effect on the first canvas
         canvasGroup = GetComponent<CanvasGroup>();
@@ -62,6 +70,15 @@ public class DialogueChecker : MonoBehaviour
     private IEnumerator FadeInAndOut()
     {
         isFading = true; // Mark fading as in progress
+
+        if (musicSource != null && musicClip != null)
+        {
+            musicSource.clip = musicClip;
+            musicSource.loop = true;
+            musicSource.Play();
+            StartCoroutine(FadeInMusic());
+            Debug.Log("Música de fondo iniciada.");
+        }
 
         // Wait for the specified delay before starting the fade-in
         yield return new WaitForSeconds(delayBeforeFadeIn);
@@ -117,4 +134,21 @@ public class DialogueChecker : MonoBehaviour
         group.interactable = endAlpha > 0.1f;
 
     }
+    private IEnumerator FadeInMusic()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < musicFadeInDuration)
+        {
+            float easedVolume = Mathf.SmoothStep(0f, targetMusicVolume, elapsed / musicFadeInDuration);
+
+            musicSource.volume = easedVolume;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        musicSource.volume = targetMusicVolume;
+    }
+
+
 }
