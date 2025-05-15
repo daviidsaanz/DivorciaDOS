@@ -95,8 +95,12 @@ public class GameManager : MonoBehaviour
                 if(mouseHit.transform.CompareTag("interactuable"))
                 {
                     Interactuable interactuable = mouseHit.transform.GetComponentInParent<Interactuable>();
+                    if(interactuable.isPlayerNecessary && interactuable.isPlayer == false)
+                    {
+                        return;
+                    }
 
-                    if (interactuable != null)
+                    else if (interactuable != null)
                     {
                         interactuable.Interact(); //crudem a la funcio Interact de Interactuable
                     }

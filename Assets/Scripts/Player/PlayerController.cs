@@ -211,6 +211,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Activa interactuable");
                 nav.ActivateInteractuable(); //l'activa
             }
+            if (nav.GetComponentInParent<Interactuable>() != null && nav.GetComponentInParent<Interactuable>().isPlayerNecessary)
+            {
+                Interactuable interactuable = nav.GetComponentInParent<Interactuable>();
+                interactuable.isPlayer = true; //marca el interactuable com a que el player hi es
+            }
 
             //moviment del player
             s.Append(transform.DOMove(nav.GetWalkPoint(), .2f * time).SetEase(Ease.Linear)); //mou el player al punt on ha de caminar

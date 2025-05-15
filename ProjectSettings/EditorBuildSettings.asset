@@ -50,4 +50,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/LVL7.unity
     guid: dec0ec7882261ef47bbff8de5f0ba779
+  - enabled: 1
+    path: Assets/Scenes/Levels/LVL8.unity
+    guid: 8e79d0f0cd16bf544a667cf34f1cce34
   m_configObjects: {}
