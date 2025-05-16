@@ -6,9 +6,9 @@
 
 ## 🧠 Sobre el juego
 
-**Relational Realms** es una experiencia cooperativa en tercera persona donde dos jugadores exploran las diferentes etapas de una relación sentimental. A través de mecánicas de perspectiva, sincronización y resolución de puzles, los jugadores deberán colaborar para avanzar juntos en un mundo emocional y simbólico.
+**DIVORCIA DOS** es una experiencia cooperativa en tercera persona donde dos jugadores exploran las diferentes etapas de una relación sentimental. A través de mecánicas de perspectiva, sincronización y resolución de puzles, los jugadores deberán colaborar para avanzar juntos en un mundo emocional y simbólico.
 
-Inspirado en juegos como *It Takes Two* o *Unravel Two*, este título apuesta por una narrativa emocional integrada en las mecánicas, donde cada fase representa un momento clave en el desarrollo de la relación: **Conexión, Conflicto, Rutina, Perdón y Despedida**.
+Inspirado en juegos como *It Takes Two* o *Monument Valley*, este juego apuesta por una narrativa emocional integrada en las mecánicas, donde cada fase representa un momento clave en el desarrollo de la relación: **Conexión, Chispa, Enamoramiento, Rutina, Discusiones y Divorcio**.
 
 ---
 
@@ -39,5 +39,4 @@ Inspirado en juegos como *It Takes Two* o *Unravel Two*, este título apuesta po
 
 ---
 
-## 📂 Estructura del proyecto
 
