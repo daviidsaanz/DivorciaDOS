@@ -11,7 +11,7 @@ public class CameraFollowXY : MonoBehaviour
     private float xOffsetFromMiddle;
     private float yOffsetFromMiddle;
 
-    private bool offsetCalculated = false;
+    public bool offsetCalculated = false;
 
     void Start()
     {

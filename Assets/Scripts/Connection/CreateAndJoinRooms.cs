@@ -25,6 +25,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     public TMP_InputField joinInput;
     public Transform savedRoomsPanel;
     public GameObject roomButtonPrefab;
+    public GameObject panelWaiting; //per crear el botó de la sala guardada
+    public TMPro.TMP_Text roomCodeText; //per mostrar el codi de la sala guardada
 
     private List<RoomInfo> cachedRoomList = new List<RoomInfo>(); // Lista de salas activas
 
@@ -80,6 +82,10 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public void CreateRoom() //crea una sala amb el nom introduit i un codi generat
     {
+        if(string.IsNullOrEmpty(createInput.text)) //si el nom de la sala es buit, no fem res
+        {
+            return;
+        }
         string roomName = createInput.text; //nom de la sala
         string roomCode = GenerateRoomCode(); //genera un codi unic per la sala
         if (roomCode == null) //si la funcio retorna null, fem return
@@ -103,6 +109,9 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
         };
         PhotonNetwork.CreateRoom(roomCode, roomOptions); //crea la sala amb el codi generat i les opcions de la sala
         Debug.Log("Creando sala: " + roomName + " con código: " + roomCode);
+        roomCodeText.text = "CODIGO DE LA SALA: " + roomCode; //mostra el codi de la sala al panell d'espera
+        panelWaiting.SetActive(true); //mostra el panell d'espera
+       
     }
 
     public override void OnCreatedRoom() //s'executa quan la sala s'ha creat correctament
@@ -189,8 +198,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
                 Debug.Log("La sala ahora tiene 2 jugadores, guardando...");
                 SaveRoom(roomCode, roomName); //cridem a la funció per guardar la sala
-                //PhotonNetwork.LoadLevel("LVL" + (int)roomProperties["Level"]); //comentat per testing
-                PhotonNetwork.LoadLevel("LVL8"); //per testing
+                PhotonNetwork.LoadLevel("LVL" + (int)roomProperties["Level"]); //comentat per testing
+                //PhotonNetwork.LoadLevel("LVL8"); //per testing
             }
         }
     }
@@ -258,5 +267,13 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         joinInput.text = code; //posem el codi de la sala al input
         JoinOrCreateSavedRoom(); //cridem a la funció JoinOrCreateSavedRoom que intenta unir-se a la sala amb el codi guardat
+    }
+
+    public void LeaveRoom() //funcio per sortir de la sala
+    {
+        PhotonNetwork.LeaveRoom(); //sortim de la sala
+        panelWaiting.SetActive(false); //tanquem el panell d'espera
+        createInput.text = ""; //buidem el input de crear sala
+        Debug.Log("Has salido de la sala.");
     }
 }

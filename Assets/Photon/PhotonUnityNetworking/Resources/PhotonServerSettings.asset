@@ -45,6 +45,7 @@ MonoBehaviour:
   - AplicarPersonalizacionRPC_Player1
   - AplicarPersonalizacionRPC_Player2
   - RPC_LoadPreviousScene
+  - RPC_StartEndingCinematic
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

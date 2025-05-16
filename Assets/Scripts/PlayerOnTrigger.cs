@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerOnTrigger : MonoBehaviour
 {
-    [SerializeField] private MovingGroundTrigger movingGroundTrigger;  // Referencia al script de MovingGroundTrigger
+    /*[SerializeField] private MovingGroundTrigger movingGroundTrigger;  // Referencia al script de MovingGroundTrigger
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,5 +32,5 @@ public class PlayerOnTrigger : MonoBehaviour
             Debug.Log("Player 2 ha salido del punto.");
             movingGroundTrigger.player2OnTrigger = false;  // Desactivar cuando Player 2 sale
         }
-    }
+    }*/
 }

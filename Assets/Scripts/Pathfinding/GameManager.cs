@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem.LowLevel;
 
 public class GameManager : MonoBehaviour
 {
