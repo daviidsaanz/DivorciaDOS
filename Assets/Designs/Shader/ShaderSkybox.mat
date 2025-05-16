@@ -64,11 +64,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Skybox1:
-        m_Texture: {fileID: 8900000, guid: c2fee59fa02bd474f8b4e18786076465, type: 3}
+        m_Texture: {fileID: 8900000, guid: da8cc6a34e1460541b8d12ceb2e2d894, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Skybox2:
-        m_Texture: {fileID: 8900000, guid: da8cc6a34e1460541b8d12ceb2e2d894, type: 3}
+        m_Texture: {fileID: 8900000, guid: 8b12525bde2aa1d41b3110b5afaf969c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:

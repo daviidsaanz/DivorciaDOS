@@ -25,6 +25,11 @@ public class ChangeScene : MonoBehaviour
         }
     }
 
+    public void CambiarSinTransition(string nombreEscena)
+    {
+        SceneManager.LoadScene(nombreEscena);
+    }
+
 
     public void CambiarEscena(string nombreEscena)
     {

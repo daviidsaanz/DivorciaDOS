@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class FinalPointController : MonoBehaviourPunCallbacks
 {
@@ -51,10 +52,24 @@ public class FinalPointController : MonoBehaviourPunCallbacks
 
                 if (PhotonNetwork.IsMasterClient)
                 {
+                    if(SceneManager.GetActiveScene().name == "LVL8")
+                    {
+                        PhotonNetwork.LeaveRoom();  
+                        PhotonNetwork.Disconnect();
+                        SceneManager.LoadScene("MainMenu");
+                    }
+
                     PhotonNetwork.LoadLevel(nextScene); //carrega la seguent escena
                 }
                 else
                 {
+                    if (SceneManager.GetActiveScene().name == "LVL8")
+                    {
+                        PhotonNetwork.LeaveRoom();
+                        PhotonNetwork.Disconnect();
+                        SceneManager.LoadScene("MainMenu");
+                    }
+
                     //si no es el master, fa una petició al master perque carregui la següent escena
                     photonView.RPC("RPC_RequestLevelChange", RpcTarget.MasterClient);
                 }

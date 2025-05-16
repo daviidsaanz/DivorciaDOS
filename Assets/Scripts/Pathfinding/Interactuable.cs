@@ -26,7 +26,10 @@ public class Interactuable : MonoBehaviour
     private bool toggled = false; //si volem alternar entre dos estats
     public bool isEnabled = true; //desactivar el objeto interactuable
     public bool shake;
+    public bool isPlayerNecessary = false;
+    public bool isPlayer = false;
     public Animator animatorController; //animacio que es vol reproduir
+
 
     [Header("Photon")]
     public PhotonView photonView;

@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     Quaternion lastPlatformRotation;
     bool isOnMovingGround = false;
 
+    public AudioSource audioSource;
+
     void Start()
     {
         GetInfoOfCurrentNode(); //pilla la info del node actual
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour
         photonView = GetComponent<PhotonView>();
         PhotonNetwork.SendRate = 30;
         PhotonNetwork.SerializationRate = 20;
+
+        audioSource = GetComponent<AudioSource>();
         
     }
 
@@ -74,28 +78,31 @@ public class PlayerController : MonoBehaviour
         {
             if (isEnabled)
             {
-                if (Input.GetMouseButtonDown(0))
+                if(walking == false)
                 {
-                    Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition); RaycastHit mouseHit; //tira el raycast per veure on ha clicat el jugador
-
-                    if (Physics.Raycast(mouseRay, out mouseHit))
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        if (mouseHit.transform.GetComponent<Navigable>() != null) //si el que ha clicat es un node
+                        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition); RaycastHit mouseHit; //tira el raycast per veure on ha clicat el jugador
+
+                        if (Physics.Raycast(mouseRay, out mouseHit))
                         {
-                            clickedNode = mouseHit.transform;
-                            DOTween.Kill(gameObject.transform); //para l'animacio actual
-                            finalPath.Clear(); //neteja el path actual
-                            FindPath(); //busca el path fins al node clicat
+                            if (mouseHit.transform.GetComponent<Navigable>() != null) //si el que ha clicat es un node
+                            {
+                                clickedNode = mouseHit.transform;
+                                DOTween.Kill(gameObject.transform); //para l'animacio actual
+                                finalPath.Clear(); //neteja el path actual
+                                FindPath(); //busca el path fins al node clicat
 
-                            blend = transform.position.y - clickedNode.position.y > 0 ? -1 : 1; //si el jugador esta per sobre del node clicat, la blend sera -1, si esta per sota, sera 1 (a revisar)
+                                blend = transform.position.y - clickedNode.position.y > 0 ? -1 : 1; //si el jugador esta per sobre del node clicat, la blend sera -1, si esta per sota, sera 1 (a revisar)
 
-                            marker.position = mouseHit.transform.GetComponent<Navigable>().GetWalkPoint(); //posa el marker al punt on ha de caminar el jugador
-                            Sequence s = DOTween.Sequence(); //crea una sequencia de moviments
-                            s.AppendCallback(() => marker.GetComponentInChildren<ParticleSystem>().Play()); //activa les particules del marker
-                            s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.white, .1f));
-                            s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.black, .3f).SetDelay(.2f));
-                            s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.clear, .3f));
+                                marker.position = mouseHit.transform.GetComponent<Navigable>().GetWalkPoint(); //posa el marker al punt on ha de caminar el jugador
+                                Sequence s = DOTween.Sequence(); //crea una sequencia de moviments
+                                s.AppendCallback(() => marker.GetComponentInChildren<ParticleSystem>().Play()); //activa les particules del marker
+                                s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.white, .1f));
+                                s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.black, .3f).SetDelay(.2f));
+                                s.Append(marker.GetComponent<Renderer>().material.DOColor(Color.clear, .3f));
 
+                            }
                         }
                     }
                 }
@@ -192,6 +199,11 @@ public class PlayerController : MonoBehaviour
         Sequence s = DOTween.Sequence(); //crea una sequencia de moviments
         walking = true;
 
+        if(audioSource != null && !audioSource.isPlaying) //si el audio source no esta sonant, el fa sonar
+        {
+            audioSource.Play();
+        }
+
         for (int i = finalPath.Count - 1; i > 0; i--) //per cada node del path final
         {
             Navigable nav = finalPath[i].GetComponent<Navigable>(); //agafa el component Navigable del node
@@ -210,6 +222,11 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Activa interactuable");
                 nav.ActivateInteractuable(); //l'activa
+            }
+            if (nav.GetComponentInParent<Interactuable>() != null && nav.GetComponentInParent<Interactuable>().isPlayerNecessary)
+            {
+                Interactuable interactuable = nav.GetComponentInParent<Interactuable>();
+                interactuable.isPlayer = true; //marca el interactuable com a que el player hi es
             }
 
             //moviment del player
@@ -246,7 +263,16 @@ public class PlayerController : MonoBehaviour
         }*/
 
         // Limpieza al terminar el movimiento
-        s.AppendCallback(() => Clear()); //neteja el cami final
+        s.AppendCallback(() =>
+        {
+            currentNode = clickedNode;
+            Clear(); //neteja el cami final
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop(); //para el so
+            }
+
+        });
     }
 
 
