@@ -1,3 +1,5 @@
+**Los commits están hechos con cuentas que no se corresponden con quienes los realizaron, ya que los ordenadores utilizados para el proyecto pertenecían a otros compañeros de clase.**
+
 # 🎮 DIVORCIA DOS
 
 **Un juego narrativo y cooperativo creado por David Sanz, Marta Alarcón y Arnau Molano.**
